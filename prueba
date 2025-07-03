@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Activos Dinámicos</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f9f9f9; }
+    table { width: 100%; margin-bottom: 20px; }
+    td { padding: 6px; }
+    input[type="text"] { width: 90%; border: none; background: transparent; }
+    input[type="number"] { width: 80px; border: none; background: transparent; text-align: right; }
+    input:focus { outline: none; background: #ffffcc; }
+    button { padding: 4px 10px; margin-left: 4px; }
+    .total-row td { font-weight: bold; background: #efefef; }
+  </style>
+</head>
+<body>
+
+<h2>🧾 Activos Líquidos</h2>
+
+<table id="tabla-activos">
+  <tbody id="filas-activos">
+    <tr>
+      <td><input type="text" value="Efectivo en mano" /></td>
+      <td><input type="number" class="monto-activo" value="20000" /></td>
+      <td><button onclick="eliminarFila(this)">🗑️</button></td>
+    </tr>
+    <tr>
+      <td><input type="text" value="Cuenta corriente" /></td>
+      <td><input type="number" class="monto-activo" value="5000" /></td>
+      <td><button onclick="eliminarFila(this)">🗑️</button></td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr class="total-row">
+      <td>Total activos líquidos:</td>
+      <td><input type="text" id="total-activos" readonly /></td>
+      <td></td>
+    </tr>
+  </tfoot>
+</table>
+
+<button onclick="agregarFila()">➕ Añadir categoría</button>
+
+<script>
+function parseMonto(valor) {
+  const n = parseFloat(valor);
+  return isNaN(n) ? 0 : n;
+}
+
+function actualizarTotal() {
+  const montos = document.querySelectorAll(".monto-activo");
+  let total = 0;
+  montos.forEach(input => total += parseMonto(input.value));
+  document.getElementById("total-activos").value = total.toFixed(2);
+}
+
+function eliminarFila(btn) {
+  btn.closest("tr").remove();
+  actualizarTotal();
+}
+
+function agregarFila() {
+  const tbody = document.getElementById("filas-activos");
+  const tr = document.createElement("tr");
+  tr.innerHTML = `
+    <td><input type="text" placeholder="Nueva categoría" /></td>
+    <td><input type="number" class="monto-activo" value="0" /></td>
+    <td><button onclick="eliminarFila(this)">🗑️</button></td>
+  `;
+  tbody.appendChild(tr);
+  tr.querySelector(".monto-activo").addEventListener("input", actualizarTotal);
+  actualizarTotal();
+}
+
+document.querySelectorAll(".monto-activo").forEach(input => {
+  input.addEventListener("input", actualizarTotal);
+});
+window.onload = actualizarTotal;
+</script>
+
+</body>
+</html>
