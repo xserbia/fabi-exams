@@ -5,13 +5,15 @@
   <title>Activos Dinámicos</title>
   <style>
     body { font-family: Arial, sans-serif; padding: 20px; background: #f9f9f9; }
-    table { width: 100%; margin-bottom: 20px; }
+    table { width: 100%; margin-bottom: 10px; }
     td { padding: 6px; }
     input[type="text"] { width: 90%; border: none; background: transparent; }
     input[type="number"] { width: 80px; border: none; background: transparent; text-align: right; }
     input:focus { outline: none; background: #ffffcc; }
-    button { padding: 4px 10px; margin-left: 4px; }
+    button { padding: 4px 10px; margin-left: 4px; cursor: pointer; }
     .total-row td { font-weight: bold; background: #efefef; }
+    .btn-agregar { margin-top: 5px; background: #d0eaff; border: 1px solid #007acc; }
+    .btn-eliminar { color: red; font-weight: bold; background: none; border: none; }
   </style>
 </head>
 <body>
@@ -23,12 +25,12 @@
     <tr>
       <td><input type="text" value="Efectivo en mano" /></td>
       <td><input type="number" class="monto-activo" value="20000" /></td>
-      <td><button onclick="eliminarFila(this)">🗑️</button></td>
+      <td><button class="btn-eliminar" onclick="eliminarFila(this)">x</button></td>
     </tr>
     <tr>
       <td><input type="text" value="Cuenta corriente" /></td>
       <td><input type="number" class="monto-activo" value="5000" /></td>
-      <td><button onclick="eliminarFila(this)">🗑️</button></td>
+      <td><button class="btn-eliminar" onclick="eliminarFila(this)">x</button></td>
     </tr>
   </tbody>
   <tfoot>
@@ -40,7 +42,8 @@
   </tfoot>
 </table>
 
-<button onclick="agregarFila()">➕ Añadir categoría</button>
+<!-- Botón debajo de la tabla -->
+<button class="btn-agregar" onclick="agregarFila()">➕ Añadir categoría</button>
 
 <script>
 function parseMonto(valor) {
@@ -66,7 +69,7 @@ function agregarFila() {
   tr.innerHTML = `
     <td><input type="text" placeholder="Nueva categoría" /></td>
     <td><input type="number" class="monto-activo" value="0" /></td>
-    <td><button onclick="eliminarFila(this)">🗑️</button></td>
+    <td><button class="btn-eliminar" onclick="eliminarFila(this)">x</button></td>
   `;
   tbody.appendChild(tr);
   tr.querySelector(".monto-activo").addEventListener("input", actualizarTotal);
