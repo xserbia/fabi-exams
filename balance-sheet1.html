@@ -55,109 +55,151 @@
     <th colspan="2">PASIVOS</th>
   </tr>
 
+  <!-- Activos Líquidos y Pasivos Corrientes -->
   <tr class="seccion">
     <td colspan="2">Activos Líquidos</td>
     <td colspan="2">Pasivos Corrientes</td>
   </tr>
   <tr>
-    <td>Efectivo en mano</td><td><input type="text" value="20000.00" /></td>
-    <td>Servicios públicos</td><td><input type="text" value="6000.00" /></td>
+    <td>Efectivo en mano</td><td><input type="text" class="activos-liquidos" value="20000.00" /></td>
+    <td>Servicios públicos</td><td><input type="text" class="pasivos-corrientes" value="6000.00" /></td>
   </tr>
   <tr>
-    <td>Cuenta corriente</td><td><input type="text" value="0.00" /></td>
-    <td>Renta</td><td><input type="text" value="30000.00" /></td>
+    <td>Cuenta corriente</td><td><input type="text" class="activos-liquidos" value="0.00" /></td>
+    <td>Renta</td><td><input type="text" class="pasivos-corrientes" value="30000.00" /></td>
   </tr>
   <tr>
-    <td>Cuentas de ahorro</td><td><input type="text" value="5000.00" /></td>
-    <td>Primas de seguro</td><td><input type="text" value="-" /></td>
+    <td>Cuentas de ahorro</td><td><input type="text" class="activos-liquidos" value="5000.00" /></td>
+    <td>Facturas de reparación</td><td><input type="text" class="pasivos-corrientes" value="4500.00" /></td>
   </tr>
   <tr>
-    <td>Fondos del mercado monetario</td><td><input type="text" value="100000.00" /></td>
-    <td>Impuestos</td><td><input type="text" value="" /></td>
-  </tr>
-  <tr>
-    <td>CD (&lt;1 año)</td><td><input type="text" value="0.00" /></td>
-    <td>Gastos médicos/dentales</td><td><input type="text" value="" /></td>
-  </tr>
-  <tr>
-    <td>Total activos líquidos</td><td><input type="text" value="125000.00" /></td>
-    <td>Facturas de reparación</td><td><input type="text" value="4500.00" /></td>
-  </tr>
-  <tr>
+    <td>Fondos del mercado monetario</td><td><input type="text" class="activos-liquidos" value="100000.00" /></td>
     <td></td><td></td>
-    <td>Total pasivos corrientes</td><td><input type="text" value="40500.00" /></td>
+  </tr>
+  <tr>
+    <td>CD (&lt;1 año)</td><td><input type="text" class="activos-liquidos" value="0.00" /></td>
+    <td></td><td></td>
+  </tr>
+  <tr>
+    <td>Total activos líquidos</td><td><input type="text" id="total-activos-liquidos" readonly /></td>
+    <td>Total pasivos corrientes</td><td><input type="text" id="total-pasivos-corrientes" readonly /></td>
   </tr>
 
+  <!-- Inversiones y Pasivos a Largo Plazo -->
   <tr class="seccion">
     <td colspan="2">Inversiones</td>
     <td colspan="2">Pasivos a Largo Plazo</td>
   </tr>
   <tr>
-    <td>Acciones</td><td><input type="text" value="0.00" /></td>
-    <td>Hipoteca residencia principal</td><td><input type="text" value="250000.00" /></td>
+    <td>Acciones</td><td><input type="text" class="inversiones" value="0.00" /></td>
+    <td>Hipoteca</td><td><input type="text" class="pasivos-largo" value="250000.00" /></td>
   </tr>
   <tr>
-    <td>Bonos</td><td><input type="text" value="0.00" /></td>
+    <td>Bonos</td><td><input type="text" class="inversiones" value="0.00" /></td>
     <td></td><td></td>
   </tr>
   <tr>
-    <td>CD (&gt;1 año)</td><td><input type="text" value="0.00" /></td>
+    <td>CD (&gt;1 año)</td><td><input type="text" class="inversiones" value="0.00" /></td>
     <td></td><td></td>
   </tr>
   <tr>
-    <td>Fondos mutuos</td><td><input type="text" value="10000.00" /></td>
+    <td>Fondos mutuos</td><td><input type="text" class="inversiones" value="10000.00" /></td>
     <td></td><td></td>
   </tr>
   <tr>
-    <td>Fondos de retiro (IRA)</td><td><input type="text" value="5000.00" /></td>
+    <td>Fondos de retiro (IRA)</td><td><input type="text" class="inversiones" value="5000.00" /></td>
     <td></td><td></td>
   </tr>
   <tr>
-    <td>Total inversiones</td><td><input type="text" value="15000.00" /></td>
-    <td>Total pasivos a largo plazo</td><td><input type="text" value="250000.00" /></td>
+    <td>Total inversiones</td><td><input type="text" id="total-inversiones" readonly /></td>
+    <td>Total pasivos largo plazo</td><td><input type="text" id="total-pasivos-largo" readonly /></td>
   </tr>
 
+  <!-- Bienes Raíces -->
   <tr class="seccion">
     <td colspan="2">Bienes Raíces</td>
     <td colspan="2"></td>
   </tr>
   <tr>
-    <td>Residencia principal</td><td><input type="text" value="350000.00" /></td>
+    <td>Residencia principal</td><td><input type="text" class="bienes-raices" value="350000.00" /></td>
     <td></td><td></td>
   </tr>
   <tr>
-    <td>Total bienes raíces</td><td><input type="text" value="350000.00" /></td>
+    <td>Total bienes raíces</td><td><input type="text" id="total-bienes-raices" readonly /></td>
     <td></td><td></td>
   </tr>
 
+  <!-- Bienes Personales -->
   <tr class="seccion">
     <td colspan="2">Bienes Personales</td>
     <td colspan="2"></td>
   </tr>
   <tr>
-    <td>Vehículos</td><td><input type="text" value="0.00" /></td>
+    <td>Vehículos</td><td><input type="text" class="bienes-personales" value="0.00" /></td>
     <td></td><td></td>
   </tr>
   <tr>
-    <td>Otros</td><td><input type="text" value="0.00" /></td>
+    <td>Otros</td><td><input type="text" class="bienes-personales" value="0.00" /></td>
     <td></td><td></td>
   </tr>
   <tr>
-    <td>Total bienes personales</td><td><input type="text" value="0.00" /></td>
+    <td>Total bienes personales</td><td><input type="text" id="total-bienes-personales" readonly /></td>
     <td></td><td></td>
   </tr>
 
+  <!-- Totales Generales -->
   <tr class="seccion">
-    <td>Total activos</td><td><input type="text" value="490000.00" /></td>
-    <td>Total pasivos</td><td><input type="text" value="290500.00" /></td>
+    <td>Total activos</td><td><input type="text" id="total-activos" readonly /></td>
+    <td>Total pasivos</td><td><input type="text" id="total-pasivos" readonly /></td>
   </tr>
   <tr class="seccion">
     <td colspan="4">Patrimonio Neto = Total activos - Total pasivos</td>
   </tr>
   <tr>
-    <td colspan="4">Patrimonio Neto: <input type="text" value="199500.00" /></td>
+    <td colspan="4">Patrimonio Neto: <input type="text" id="patrimonio-neto" readonly /></td>
   </tr>
 </table>
+
+<script>
+function parseNumber(value) {
+  const n = parseFloat(value.replace(/[^0-9.-]/g, ''));
+  return isNaN(n) ? 0 : n;
+}
+
+function sumInputs(className) {
+  return Array.from(document.querySelectorAll('.' + className)).reduce((acc, input) => acc + parseNumber(input.value), 0);
+}
+
+function actualizarTotales() {
+  const totalActivosLiquidos = sumInputs('activos-liquidos');
+  const totalInversiones = sumInputs('inversiones');
+  const totalBienesRaices = sumInputs('bienes-raices');
+  const totalBienesPersonales = sumInputs('bienes-personales');
+  const totalPasivosCorrientes = sumInputs('pasivos-corrientes');
+  const totalPasivosLargo = sumInputs('pasivos-largo');
+
+  const totalActivos = totalActivosLiquidos + totalInversiones + totalBienesRaices + totalBienesPersonales;
+  const totalPasivos = totalPasivosCorrientes + totalPasivosLargo;
+  const patrimonioNeto = totalActivos - totalPasivos;
+
+  document.getElementById('total-activos-liquidos').value = totalActivosLiquidos.toFixed(2);
+  document.getElementById('total-inversiones').value = totalInversiones.toFixed(2);
+  document.getElementById('total-bienes-raices').value = totalBienesRaices.toFixed(2);
+  document.getElementById('total-bienes-personales').value = totalBienesPersonales.toFixed(2);
+  document.getElementById('total-pasivos-corrientes').value = totalPasivosCorrientes.toFixed(2);
+  document.getElementById('total-pasivos-largo').value = totalPasivosLargo.toFixed(2);
+  document.getElementById('total-activos').value = totalActivos.toFixed(2);
+  document.getElementById('total-pasivos').value = totalPasivos.toFixed(2);
+  document.getElementById('patrimonio-neto').value = patrimonioNeto.toFixed(2);
+}
+
+// Ejecutar al cargar
+document.querySelectorAll('input[type="text"]').forEach(input => {
+  input.addEventListener('input', actualizarTotales);
+});
+
+window.onload = actualizarTotales;
+</script>
 
 </body>
 </html>
