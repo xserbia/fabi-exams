@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Exam — Math and Reading (6 years old)</title>
+<style>
+  :root{
+    --bg:#f8fafc;
+    --card:#ffffff;
+    --ink:#0f172a;
+    --muted:#475569;
+    --ok:#16a34a;
+    --bad:#ef4444;
+    --brand:#4f46e5;
+    --key:#0ea5e9;
+    --shadow:0 8px 24px rgba(2,6,23,.08);
+    --radius:16px;
+  }
+  html,body{height:100%}
+  body{
+    margin:0;
+    background:linear-gradient(180deg,#eef2ff 0%, #f8fafc 30%);
+    color:var(--ink);
+    font-family: ui-rounded, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+    line-height:1.4;
+  }
+  .wrap{ max-width:900px; margin:24px auto 64px; padding:0 16px; }
+  header{
+    background:var(--card);
+    border-radius:20px;
+    padding:20px;
+    box-shadow:var(--shadow);
+    display:flex; gap:16px; align-items:center;
+  }
+  .badge{ background:var(--brand); color:#fff; font-weight:700; padding:10px 14px; border-radius:12px; font-size:14px; }
+  h1{margin:0; font-size:clamp(20px, 2.6vw, 28px)}
+  .sub{color:var(--muted); font-size:14px; margin-top:4px}
+
+  form{
+    margin-top:20px;
+    background:var(--card);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:10px 12px;
+  }
+  .section-title{
+    margin:18px 8px 6px; font-size:18px; font-weight:800; color:#1e293b;
+    display:flex; align-items:center; gap:10px;
+  }
+  .pill{font-size:12px; background:#e2e8f0; color:#334155; padding:4px 10px; border-radius:999px}
+  .grid{ display:grid; gap:12px; grid-template-columns:1fr; }
+  @media(min-width:720px){ .grid{ grid-template-columns:1fr 1fr; } }
+
+  fieldset.question{
+    border:0; margin:0; padding:0;
+    background:#ffffff;
+    border-radius:14px;
+    padding:14px;
+    outline:1px solid #e5e7eb;
+  }
+  legend{ font-weight:800; margin-bottom:8px; padding:0 2px; font-size:16px; }
+  .options{ display:grid; gap:8px; }
+
+  /* Big, tappable options */
+  .option{
+    display:flex; align-items:center; gap:12px;
+    border:1.5px solid #e5e7eb;
+    border-radius:12px; padding:12px;
+    background:#fafafa;
+    cursor:pointer;
+    transition: transform .06s ease, border-color .15s ease, background .15s ease;
+    user-select:none;
+  }
+  .option:hover{ transform: translateY(-1px); }
+  .option input{ width:20px; height:20px; accent-color:var(--brand); }
+  .shape{
+    display:inline-block; width:48px; height:48px; background:#dbeafe; border:2px solid #bfdbfe; border-radius:10px;
+  }
+  .square{ border-radius:8px }
+  .circle{ border-radius:50% }
+  .rect{ width:80px; height:40px; }
+
+  /* Feedback after checking */
+  .option.correct { border-color: var(--ok); background:#ecfdf5; position:relative; }
+  .option.correct::after{ content:"✅"; position:absolute; right:10px; top:10px; font-size:20px }
+  .option.incorrect { border-color: var(--bad); background:#fef2f2; position:relative; }
+  .option.incorrect::after{ content:"❌"; position:absolute; right:10px; top:10px; font-size:20px }
+  .option.key { outline:2px dashed var(--key); background:#eff6ff; }
+
+  .controls{ display:flex; flex-wrap:wrap; gap:10px; margin:16px 6px 6px; }
+  button{ font-weight:800; font-size:16px; padding:12px 16px; border-radius:12px; border:0; cursor:pointer; }
+  .primary{ background:var(--brand); color:#fff; }
+  .ghost{ background:#e2e8f0; color:#0f172a; }
+
+  .results{
+    margin-top:16px;
+    background:#ffffff; border-radius:16px; padding:16px; box-shadow:var(--shadow);
+    display:none;
+  }
+  .results.show{ display:block; }
+  .score{ display:grid; gap:10px; grid-template-columns:1fr; }
+  @media(min-width:560px){ .score{ grid-template-columns:1.4fr 1fr 1fr; } }
+  .card{ background:#f8fafc; border:1px solid #e5e7eb; border-radius:12px; padding:12px; }
+  .big{ font-size:28px; font-weight:900; }
+  .good{ color:var(--ok) } .meh{ color:#d97706 } .bad{ color:var(--bad) }
+
+  .note{ color:var(--muted); font-size:13px; margin-top:6px }
+  .passage{ background:#f1f5f9; border:1px solid #e2e8f0; border-radius:12px; padding:12px; margin:10px 6px 14px; }
+
+  /* Accessibility */
+  .sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="badge">Exam</div>
+      <div>
+        <h1>Math and Reading Comprehension · 6 years old</h1>
+        <div class="sub">Choose one answer per question. At the end, press <b>Check answers</b>.</div>
+      </div>
+    </header>
+
+    <form id="quiz" novalidate>
+      <!-- MATH -->
+      <div class="section-title">🧮 Math <span class="pill">6 questions</span></div>
+      <div class="grid">
+
+        <!-- Q1 -->
+        <fieldset class="question" data-answer="b" data-section="math">
+          <legend>1) What is <b>2 + 3</b>?</legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="q1" value="a"> 4</label>
+            <label class="option"><input type="radio" name="q1" value="b"> 5</label>
+            <label class="option"><input type="radio" name="q1" value="c"> 6</label>
+          </div>
+        </fieldset>
+
+        <!-- Q2 -->
+        <fieldset class="question" data-answer="c" data-section="math">
+          <legend>2) How many apples are there? 🍎🍎🍎🍎🍎</legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="q2" value="a"> 4</label>
+            <label class="option"><input type="radio" name="q2" value="b"> 6</label>
+            <label class="option"><input type="radio" name="q2" value="c"> 5</label>
+          </div>
+        </fieldset>
+
+        <!-- Q3 -->
+        <fieldset class="question" data-answer="a" data-section="math">
+          <legend>3) What is <b>8 − 5</b>?</legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="q3" value="a"> 3</label>
+            <label class="option"><input type="radio" name="q3" value="b"> 2</label>
+            <label class="option"><input type="radio" name="q3" value="c"> 4</label>
+          </div>
+        </fieldset>
+
+        <!-- Q4 -->
+        <fieldset class="question" data-answer="b" data-section="math">
+          <legend>4) Which number is bigger: <b>7</b> or <b>9</b>?</legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="q4" value="a"> 7</label>
+            <label class="option"><input type="radio" name="q4" value="b"> 9</label>
+          </div>
+        </fieldset>
+
+        <!-- Q5 (shapes) -->
+        <fieldset class="question" data-answer="a" data-section="math">
+          <legend>5) Which of these shapes is a <b>square</b>?</legend>
+          <div class="options">
+            <label class="option">
+              <input type="radio" name="q5" value="a">
+              <span class="shape square" aria-hidden="true"></span>
+              <span>Square</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="q5" value="b">
+              <span class="shape circle" aria-hidden="true"></span>
+              <span>Circle</span>
+            </label>
+            <label class="option">
+              <input type="radio" name="q5" value="c">
+              <span class="shape rect" aria-hidden="true"></span>
+              <span>Rectangle</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <!-- Q6 -->
+        <fieldset class="question" data-answer="b" data-section="math">
+          <legend>6) If you have 4 balloons 🎈 and you get 2 more, how many do you have in total?</legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="q6" value="a"> 5</label>
+            <label class="option"><input type="radio" name="q6" value="b"> 6</label>
+            <label class="option"><input type="radio" name="q6" value="c"> 7</label>
+          </div>
+        </fieldset>
+
+      </div>
+
+      <!-- READING -->
+      <div class="section-title" style="margin-top:22px;">📖 Reading Comprehension <span class="pill">4 questions</span></div>
+
+      <div class="passage" aria-label="Text to read">
+        <strong>Read the text:</strong><br/>
+        Maria has a little dog named <b>Sol</b>. Every morning, Sol runs to the garden to look for his <b>blue ball</b>.
+        One day, it rained and the ball hid under a <b>big leaf</b>. Maria and Sol found it together.
+      </div>
+
+      <div class="grid">
+        <!-- Q7 -->
+        <fieldset class="question" data-answer="a" data-section="read">
+          <legend>7) What is the dog’s name?</legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="q7" value="a"> Sol</label>
+            <label class="option"><input type="radio" name="q7" value="b"> Luna</label>
+            <label class="option"><input type="radio" name="q7" value="c"> Max</label>
+          </div>
+        </fieldset>
+
+        <!-- Q8 -->
+        <fieldset class="question" data-answer="c" data-section="read">
+          <legend>8) What color is the ball?</legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="q8" value="a"> Red</label>
+            <label class="option"><input type="radio" name="q8" value="b"> Green</label>
+            <label class="option"><input type="radio" name="q8" value="c"> Blue</label>
+          </div>
+        </fieldset>
+
+        <!-- Q9 -->
+        <fieldset class="question" data-answer="b" data-section="read">
+          <legend>9) Where did the ball hide?</legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="q9" value="a"> In the house</label>
+            <label class="option"><input type="radio" name="q9" value="b"> Under a leaf</label>
+            <label class="option"><input type="radio" name="q9" value="c"> In the tree</label>
+          </div>
+        </fieldset>
+
+        <!-- Q10 -->
+        <fieldset class="question" data-answer="c" data-section="read">
+          <legend>10) Who found the ball?</legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="q10" value="a"> Maria alone</label>
+            <label class="option"><input type="radio" name="q10" value="b"> Sol alone</label>
+            <label class="option"><input type="radio" name="q10" value="c"> Maria and Sol</label>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="controls">
+        <button type="button" class="primary" id="checkBtn">Check answers</button>
+        <button type="button" class="ghost" id="resetBtn">Reset</button>
+        <div class="note">💡 Tip: You can try again with <b>Reset</b>.</div>
+      </div>
+
+      <div class="results" id="results" aria-live="polite">
+        <div class="score">
+          <div class="card">
+            <div class="big" id="totalScore">—/10</div>
+            <div id="totalMsg" class="note">Your score will appear here</div>
+          </div>
+          <div class="card">
+            <div><b>🧮 Math</b></div>
+            <div id="mathScore">—/6</div>
+          </div>
+          <div class="card">
+            <div><b>📖 Reading</b></div>
+            <div id="readScore">—/4</div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+<script>
+(function(){
+  const form = document.getElementById('quiz');
+  const checkBtn = document.getElementById('checkBtn');
+  const resetBtn = document.getElementById('resetBtn');
+  const resBox = document.getElementById('results');
+  const totalScore = document.getElementById('totalScore');
+  const totalMsg = document.getElementById('totalMsg');
+  const mathScore = document.getElementById('mathScore');
+  const readScore = document.getElementById('readScore');
+
+  function clearFeedback(){
+    document.querySelectorAll('.option').forEach(l=>{
+      l.classList.remove('correct','incorrect','key');
+    });
+  }
+
+  function scrollToResults(){
+    resBox.classList.add('show');
+    resBox.scrollIntoView({behavior:'smooth', block:'center'});
+  }
+
+  function checkAnswers(){
+    clearFeedback();
+    let total=0, math=0, read=0, answered=0;
+    const questions = form.querySelectorAll('.question');
+
+    questions.forEach((fs)=>{
+      const correct = fs.dataset.answer;
+      const section = fs.dataset.section;
+      const checked = fs.querySelector('input[type="radio"]:checked');
+
+      // Always mark the correct option (answer key)
+      const keyLabel = fs.querySelector(`input[value="${correct}"]`)?.closest('.option');
+      if(keyLabel){ keyLabel.classList.add('key'); }
+
+      if(checked){
+        answered++;
+        const chosen = checked.value;
+        const chosenLabel = checked.closest('.option');
+        if(chosen === correct){
+          total++; chosenLabel.classList.add('correct');
+          if(section==='math') math++; else if(section==='read') read++;
+        }else{
+          chosenLabel.classList.add('incorrect');
+        }
+      }
+    });
+
+    // Update UI
+    totalScore.textContent = `${total}/10`;
+    mathScore.textContent = `${math}/6`;
+    readScore.textContent = `${read}/4`;
+
+    // Message
+    let cls='meh', msg='Nice try! Keep practicing.';
+    if(total>=9){ cls='good'; msg='🌟 Excellent job!'; }
+    else if(total>=7){ cls='good'; msg='✅ Very good!'; }
+    else if(total<=4){ cls='bad'; msg='🚀 You can do it! Try again.'; }
+
+    totalScore.classList.remove('good','meh','bad');
+    totalScore.classList.add(cls);
+
+    const unanswered = 10 - answered;
+    totalMsg.textContent = unanswered>0
+      ? `${msg} (Unanswered: ${unanswered})`
+      : msg;
+
+    scrollToResults();
+  }
+
+  function resetQuiz(){
+    // Clear radios
+    form.querySelectorAll('input[type="radio"]').forEach(r=>r.checked=false);
+    clearFeedback();
+    resBox.classList.remove('show');
+    totalScore.textContent='—/10';
+    totalScore.classList.remove('good','meh','bad');
+    totalMsg.textContent='Your score will appear here';
+    mathScore.textContent='—/6';
+    readScore.textContent='—/4';
+    // Scroll to top
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+
+  checkBtn.addEventListener('click', checkAnswers);
+  resetBtn.addEventListener('click', resetQuiz);
+})();
+</script>
+</body>
+</html>
