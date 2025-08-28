@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Exam — Math and Reading (1st Grade · Level 2)</title>
+  <style>
+    :root{
+      --bg:#f8fafc; --card:#ffffff; --ink:#0f172a; --muted:#475569;
+      --ok:#16a34a; --bad:#ef4444; --brand:#4f46e5; --key:#0ea5e9;
+      --shadow:0 8px 24px rgba(2,6,23,.08); --radius:16px;
+    }
+    html,body{height:100%}
+    body{
+      margin:0; background:linear-gradient(180deg,#eef2ff 0%, #f8fafc 30%);
+      color:var(--ink); font-family: ui-rounded, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+    }
+    .wrap{max-width:880px; margin:32px auto; padding:0 16px}
+    .card{
+      background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow);
+      padding:24px 22px; margin-bottom:20px
+    }
+    h1{margin:0 0 8px; font-size:clamp(1.25rem, 2.8vw, 1.8rem)}
+    p.lead{margin:0 0 16px; color:var(--muted)}
+    h2{font-size:1.1rem; margin:8px 0 12px}
+    .q{padding:14px 16px; border:1px solid #e5e7eb; border-radius:12px; margin:12px 0}
+    .q b{display:block; margin-bottom:6px}
+    .opts{display:flex; flex-wrap:wrap; gap:10px; margin-top:6px}
+    label.opt{
+      display:inline-flex; align-items:center; gap:8px; padding:8px 10px; border:1px solid #e5e7eb;
+      border-radius:999px; cursor:pointer; user-select:none; background:#fff;
+    }
+    input[type="radio"]{accent-color:var(--brand)}
+    .actions{display:flex; gap:10px; margin-top:16px; flex-wrap:wrap}
+    button{
+      padding:10px 14px; border-radius:12px; border:none; cursor:pointer; font-weight:600;
+      box-shadow:var(--shadow)
+    }
+    .primary{background:var(--brand); color:#fff}
+    .ghost{background:#fff; color:var(--ink); border:1px solid #e5e7eb}
+    .score{
+      display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:12px; margin-top:14px
+    }
+    .pill{
+      background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:12px;
+    }
+    .good{border-color:#bbf7d0; background:#f0fdf4}
+    .bad{border-color:#fecaca; background:#fef2f2}
+    .hint{color:var(--muted); font-size:.9rem}
+    .result{font-weight:700}
+    .tag{display:inline-block; font-size:.8rem; padding:3px 8px; border-radius:999px; background:#eef2ff; color:#3730a3; margin-left:8px}
+    .footer{color:var(--muted); font-size:.9rem; margin-top:16px}
+    @media (max-width:680px){ .score{grid-template-columns:1fr} }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Math and Reading · 1st Grade <span class="tag">Level 2</span></h1>
+      <p class="lead">Choose one answer for each question. At the end, press <b>Check</b>. Use <b>Reset</b> to try again.</p>
+    </div>
+
+    <!-- MATH -->
+    <div class="card">
+      <h2>🧮 Math (6 questions)</h2>
+
+      <div class="q" data-q="1">
+        <b>1) 14 + 6 =</b>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q1" value="18">18</label>
+          <label class="opt"><input type="radio" name="q1" value="20">20</label>
+          <label class="opt"><input type="radio" name="q1" value="21">21</label>
+        </div>
+      </div>
+
+      <div class="q" data-q="2">
+        <b>2) 12 − 7 =</b>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q2" value="4">4</label>
+          <label class="opt"><input type="radio" name="q2" value="5">5</label>
+          <label class="opt"><input type="radio" name="q2" value="6">6</label>
+        </div>
+      </div>
+
+      <div class="q" data-q="3">
+        <b>3) Sofia has 9 apples and her friend gives her 4 more. How many does she have now?</b>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q3" value="12">12</label>
+          <label class="opt"><input type="radio" name="q3" value="13">13</label>
+          <label class="opt"><input type="radio" name="q3" value="14">14</label>
+        </div>
+      </div>
+
+      <div class="q" data-q="4">
+        <b>4) Fill in the missing number: 2, 4, 6, __, 10</b>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q4" value="7">7</label>
+          <label class="opt"><input type="radio" name="q4" value="8">8</label>
+          <label class="opt"><input type="radio" name="q4" value="9">9</label>
+        </div>
+      </div>
+
+      <div class="q" data-q="5">
+        <b>5) Which number is greater?</b>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q5" value="35">35</label>
+          <label class="opt"><input type="radio" name="q5" value="53">53</label>
+        </div>
+      </div>
+
+      <div class="q" data-q="6">
+        <b>6) You have 5 one-dollar bills and someone gives you 2 more. How much money do you have?</b>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q6" value="6">$6</label>
+          <label class="opt"><input type="radio" name="q6" value="7">$7</label>
+          <label class="opt"><input type="radio" name="q6" value="8">$8</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- READING -->
+    <div class="card">
+      <h2>📖 Reading Comprehension (4 questions)</h2>
+      <div class="q">
+        <b>Read the text:</b>
+        <p class="hint">
+          “Carlos went to the park with his dog. The dog ran after a red ball.
+          Carlos sat on the bench and ate a cookie. When the dog came back,
+          they both walked home together.”
+        </p>
+      </div>
+
+      <div class="q" data-q="7">
+        <b>7) Who went with Carlos to the park?</b>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q7" value="his dog">His dog</label>
+          <label class="opt"><input type="radio" name="q7" value="his cat">His cat</label>
+          <label class="opt"><input type="radio" name="q7" value="his friend">His friend</label>
+        </div>
+      </div>
+
+      <div class="q" data-q="8">
+        <b>8) What color was the ball?</b>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q8" value="blue">Blue</label>
+          <label class="opt"><input type="radio" name="q8" value="red">Red</label>
+          <label class="opt"><input type="radio" name="q8" value="green">Green</label>
+        </div>
+      </div>
+
+      <div class="q" data-q="9">
+        <b>9) What did Carlos eat on the bench?</b>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q9" value="a cookie">A cookie</label>
+          <label class="opt"><input type="radio" name="q9" value="an apple">An apple</label>
+          <label class="opt"><input type="radio" name="q9" value="a sandwich">A sandwich</label>
+        </div>
+      </div>
+
+      <div class="q" data-q="10">
+        <b>10) What did Carlos and the dog do at the end?</b>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q10" value="stayed at the park">They stayed at the park</label>
+          <label class="opt"><input type="radio" name="q10" value="went home">They went home</label>
+          <label class="opt"><input type="radio" name="q10" value="went to the store">They went to the store</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- ACTIONS -->
+    <div class="card">
+      <div class="actions">
+        <button class="primary" id="checkBtn">Check</button>
+        <button class="ghost" id="resetBtn">Reset</button>
+      </div>
+      <div class="score" id="scoreBoxes" aria-live="polite">
+        <div class="pill"><div class="result" id="overall">—/10</div>Total</div>
+        <div class="pill"><div class="result" id="math">—/6</div>Math</div>
+        <div class="pill"><div class="result" id="reading">—/4</div>Reading</div>
+      </div>
+      <p class="footer">Tip: You can try again with <b>Reset</b>.</p>
+    </div>
+  </div>
+
+  <script>
+    // Correct answers
+    const key = {
+      q1:"20", q2:"5", q3:"13", q4:"8", q5:"53", q6:"7",
+      q7:"his dog", q8:"red", q9:"a cookie", q10:"went home"
+    };
+
+    const mathQs = ["q1","q2","q3","q4","q5","q6"];
+    const readQs = ["q7","q8","q9","q10"];
+
+    const $ = (s,scope=document)=>scope.querySelector(s);
+    const $$ = (s,scope=document)=>[...scope.querySelectorAll(s)];
+
+    function getAnswer(name){
+      const checked = $(`input[name="${name}"]:checked`);
+      return checked ? checked.value : null;
+    }
+
+    function clearSelections(){
+      $$('input[type="radio"]').forEach(i=>i.checked=false);
+      $$('#scoreBoxes .pill').forEach(p=>p.classList.remove('good','bad'));
+      $('#overall').textContent = '—/10';
+      $('#math').textContent = '—/6';
+      $('#reading').textContent = '—/4';
+      $$('.q').forEach(q=>q.style.borderColor='#e5e7eb');
+    }
+
+    function grade(){
+      let mathScore=0, readScore=0;
+
+      mathQs.forEach(q=>{
+        const val = getAnswer(q);
+        if(val === key[q]) mathScore++;
+      });
+      readQs.forEach(q=>{
+        const val = getAnswer(q);
+        if(val === key[q]) readScore++;
+      });
+
+      const total = mathScore + readScore;
+
+      // Feedback color per question
+      Object.keys(key).forEach(q=>{
+        const box = document.querySelector(`.q[data-q="${q.replace('q','')}"]`);
+        if(!box) return;
+        const val = getAnswer(q);
+        box.style.borderColor = val === key[q] ? '#86efac' : '#fecaca';
+      });
+
+      // Show totals
+      $('#overall').textContent = `${total}/10`;
+      $('#math').textContent = `${mathScore}/6`;
+      $('#reading').textContent = `${readScore}/4`;
+
+      // Highlight score boxes
+      const pills = $$('#scoreBoxes .pill');
+      pills[0].classList.add(total >= 8 ? 'good' : 'bad');
+      pills[1].classList.add(mathScore >= 4 ? 'good' : 'bad');
+      pills[2].classList.add(readScore >= 3 ? 'good' : 'bad');
+    }
+
+    $('#checkBtn').addEventListener('click', grade);
+    $('#resetBtn').addEventListener('click', clearSelections);
+  </script>
+</body>
+</html>
