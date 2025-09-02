@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grade 1 Test – Math & Reading</title>
+<style>
+  body {font-family: Arial, sans-serif; background:#f9fafb; margin:20px; color:#111;}
+  h1{text-align:center; color:#4f46e5;}
+  .question{margin:20px 0; padding:15px; background:#fff; border-radius:12px; box-shadow:0 4px 8px rgba(0,0,0,.05);}
+  .options label{display:block; margin:6px 0; cursor:pointer;}
+  .feedback{margin-top:10px; font-weight:bold;}
+  .correct{color:green;}
+  .incorrect{color:red;}
+  button{display:block; margin:20px auto; padding:10px 20px; border:none; border-radius:8px; background:#4f46e5; color:#fff; font-size:1rem; cursor:pointer;}
+</style>
+</head>
+<body>
+
+<h1>Grade 1 Test – Level A</h1>
+<form id="testForm">
+
+<!-- Math -->
+<div class="question" data-answer="B" data-explain="There are 5 stars in the picture.">
+  <p>1) Counting: How many stars? ⭐⭐⭐⭐⭐</p>
+  <div class="options">
+    <label><input type="radio" name="q1" value="A"> 4</label>
+    <label><input type="radio" name="q1" value="B"> 5</label>
+    <label><input type="radio" name="q1" value="C"> 6</label>
+  </div>
+</div>
+
+<div class="question" data-answer="C" data-explain="7 + 5 = 12.">
+  <p>2) Addition: 7 + 5 = ?</p>
+  <div class="options">
+    <label><input type="radio" name="q2" value="A"> 11</label>
+    <label><input type="radio" name="q2" value="B"> 13</label>
+    <label><input type="radio" name="q2" value="C"> 12</label>
+  </div>
+</div>
+
+<div class="question" data-answer="A" data-explain="13 − 6 = 7.">
+  <p>3) Subtraction: 13 − 6 = ?</p>
+  <div class="options">
+    <label><input type="radio" name="q3" value="A"> 7</label>
+    <label><input type="radio" name="q3" value="B"> 8</label>
+    <label><input type="radio" name="q3" value="C"> 9</label>
+  </div>
+</div>
+
+<div class="question" data-answer="B" data-explain="47 has 4 tens and 7 ones.">
+  <p>4) Place Value: How many tens and ones in 47?</p>
+  <div class="options">
+    <label><input type="radio" name="q4" value="A"> 7 tens, 4 ones</label>
+    <label><input type="radio" name="q4" value="B"> 4 tens, 7 ones</label>
+    <label><input type="radio" name="q4" value="C"> 3 tens, 17 ones</label>
+  </div>
+</div>
+
+<div class="question" data-answer="C" data-explain="1 dime = 10¢, 3 pennies = 3¢, total 13¢.">
+  <p>5) Money: 1 dime and 3 pennies = ?</p>
+  <div class="options">
+    <label><input type="radio" name="q5" value="A"> 10¢</label>
+    <label><input type="radio" name="q5" value="B"> 15¢</label>
+    <label><input type="radio" name="q5" value="C"> 13¢</label>
+  </div>
+</div>
+
+<div class="question" data-answer="A" data-explain="The clock shows 3:00.">
+  <p>6) Time: 🕒 What time is it?</p>
+  <div class="options">
+    <label><input type="radio" name="q6" value="A"> 3:00</label>
+    <label><input type="radio" name="q6" value="B"> 6:00</label>
+    <label><input type="radio" name="q6" value="C"> 9:00</label>
+  </div>
+</div>
+
+<div class="question" data-answer="B" data-explain="The pencil is longer than the eraser.">
+  <p>7) Measurement: Which is longer?</p>
+  <div class="options">
+    <label><input type="radio" name="q7" value="A"> Eraser</label>
+    <label><input type="radio" name="q7" value="B"> Pencil</label>
+    <label><input type="radio" name="q7" value="C"> Same length</label>
+  </div>
+</div>
+
+<div class="question" data-answer="C" data-explain="A triangle has 3 sides.">
+  <p>8) Geometry: Which shape has 3 sides?</p>
+  <div class="options">
+    <label><input type="radio" name="q8" value="A"> Circle</label>
+    <label><input type="radio" name="q8" value="B"> Square</label>
+    <label><input type="radio" name="q8" value="C"> Triangle</label>
+  </div>
+</div>
+
+<!-- Reading/Writing -->
+<div class="question" data-answer="B" data-explain="The fact is that bees make honey.">
+  <p>9) Informational Text: Bees live in hives. They make honey. What do bees make?</p>
+  <div class="options">
+    <label><input type="radio" name="q9" value="A"> Milk</label>
+    <label><input type="radio" name="q9" value="B"> Honey</label>
+    <label><input type="radio" name="q9" value="C"> Bread</label>
+  </div>
+</div>
+
+<div class="question" data-answer="A" data-explain="The plural of cat is cats.">
+  <p>10) Language: Choose the correct plural.</p>
+  <div class="options">
+    <label><input type="radio" name="q10" value="A"> Cats</label>
+    <label><input type="radio" name="q10" value="B"> Cat’s</label>
+    <label><input type="radio" name="q10" value="C"> Catt</label>
+  </div>
+</div>
+
+<div class="question" data-answer="C" data-explain="The main character is the dog.">
+  <p>11) Literature: The story is about a dog that finds a bone. Who is the main character?</p>
+  <div class="options">
+    <label><input type="radio" name="q11" value="A"> The cat</label>
+    <label><input type="radio" name="q11" value="B"> The bone</label>
+    <label><input type="radio" name="q11" value="C"> The dog</label>
+  </div>
+</div>
+
+<div class="question" data-answer="B" data-explain="‘Blue’ starts with the /bl/ sound.">
+  <p>12) Foundational Skills: Which word starts with /bl/?</p>
+  <div class="options">
+    <label><input type="radio" name="q12" value="A"> Clue</label>
+    <label><input type="radio" name="q12" value="B"> Blue</label>
+    <label><input type="radio" name="q12" value="C"> Glue</label>
+  </div>
+</div>
+
+<div class="question" data-answer="A" data-explain="A correct sentence begins with a capital and ends with a period.">
+  <p>13) Writing: Which sentence is correct?</p>
+  <div class="options">
+    <label><input type="radio" name="q13" value="A"> The cat ran.</label>
+    <label><input type="radio" name="q13" value="B"> the cat ran</label>
+    <label><input type="radio" name="q13" value="C"> The cat ran</label>
+  </div>
+</div>
+
+<!-- Social Studies -->
+<div class="question" data-answer="C" data-explain="Firefighters put out fires.">
+  <p>14) Social Studies: Who helps put out fires in our community?</p>
+  <div class="options">
+    <label><input type="radio" name="q14" value="A"> Doctor</label>
+    <label><input type="radio" name="q14" value="B"> Teacher</label>
+    <label><input type="radio" name="q14" value="C"> Firefighter</label>
+  </div>
+</div>
+
+<!-- Science -->
+<div class="question" data-answer="B" data-explain="You smell with your nose.">
+  <p>15) Science: Which sense do you use to smell?</p>
+  <div class="options">
+    <label><input type="radio" name="q15" value="A"> Eyes</label>
+    <label><input type="radio" name="q15" value="B"> Nose</label>
+    <label><input type="radio" name="q15" value="C"> Ears</label>
+  </div>
+</div>
+
+<div class="question" data-answer="A" data-explain="A tree is a living thing.">
+  <p>16) Science: Which is a living thing?</p>
+  <div class="options">
+    <label><input type="radio" name="q16" value="A"> Tree</label>
+    <label><input type="radio" name="q16" value="B"> Rock</label>
+    <label><input type="radio" name="q16" value="C"> Chair</label>
+  </div>
+</div>
+
+<button type="button" onclick="checkAnswers()">Submit Answers</button>
+</form>
+
+<script>
+function checkAnswers(){
+  const questions = document.querySelectorAll('.question');
+  questions.forEach((q,i)=>{
+    const selected = q.querySelector('input[type="radio"]:checked');
+    const correct = q.dataset.answer;
+    const explanation = q.dataset.explain;
+    let fb = q.querySelector('.feedback');
+    if(!fb){
+      fb = document.createElement('div');
+      fb.classList.add('feedback');
+      q.appendChild(fb);
+    }
+    if(selected){
+      if(selected.value === correct){
+        fb.innerHTML = "✅ Correct! " + explanation;
+        fb.className = "feedback correct";
+      } else {
+        fb.innerHTML = "❌ Incorrect. Correct answer is " + correct + ". " + explanation;
+        fb.className = "feedback incorrect";
+      }
+    } else {
+      fb.innerHTML = "⚠️ No answer selected.";
+      fb.className = "feedback incorrect";
+    }
+  });
+}
+</script>
+
+</body>
+</html>
