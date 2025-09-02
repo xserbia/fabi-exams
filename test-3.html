@@ -16,38 +16,30 @@
   #resultSummary{text-align:center; font-size:1.2rem; font-weight:bold; margin-top:30px;}
 
   /* reloj */
-  .clock {
-    width: 200px;
-    height: 200px;
-    border: 6px solid #333;
-    border-radius: 50%;
-    margin: 20px auto;
-    position: relative;
-    background: white;
+  .clock{
+    width: 220px; height: 220px; margin: 20px auto;
+    border: 6px solid #333; border-radius: 50%; position: relative; background: #fff;
   }
-  .hand {
-    width: 50%;
-    height: 4px;
-    background: #333;
-    position: absolute;
-    top: 50%;
-    left: 50%;
+  .hand{
+    position:absolute; top:50%; left:50%;
     transform-origin: left center;
+    height:4px; background:#333;
+    transform: rotate(var(--angle));
   }
-  .hand.hour { height: 6px; background: #4f46e5; }
-  .hand.minute { background: #16a34a; }
-  .number {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    line-height: 30px;
-    font-weight: bold;
-    font-size: 18px;
-    transform: rotate(calc(30deg * var(--i))) translate(85px) rotate(calc(-30deg * var(--i)));
-    top: 50%;
-    left: 50%;
-    margin: -15px;
+  .hand.hour{ width:36%; height:6px; background:#4f46e5; }   /* más corta */
+  .hand.minute{ width:44%; background:#16a34a; }              /* más larga */
+  .number{
+    position:absolute; top:50%; left:50%;
+    width:30px; height:30px; margin:-15px;
+    text-align:center; line-height:30px; font-weight:700; font-size:18px;
+    transform:
+      rotate(calc(30deg * var(--i) - 90deg))   /* offset -90° */
+      translate(92px)
+      rotate(calc(-30deg * var(--i) + 90deg));
+  }
+  .center-dot{
+    position:absolute; top:50%; left:50%; width:10px; height:10px;
+    margin:-5px; background:#333; border-radius:50%;
   }
 </style>
 </head>
@@ -105,9 +97,8 @@
 <div class="question" data-answer="A" data-explain="The clock shows 3:00.">
   <p>6) Time: What time is it?</p>
   <div class="clock">
-    <div class="hand hour" style="transform: rotate(90deg);"></div> <!-- Hora 3 -->
-    <div class="hand minute" style="transform: rotate(0deg);"></div> <!-- Minuto 00 -->
-    <!-- Números -->
+    <div class="hand hour"   style="--angle: 0deg;"></div>     <!-- Hora: 3 en punto -->
+    <div class="hand minute" style="--angle: -90deg;"></div>   <!-- Minuto: 00 -->
     <div class="number" style="--i:1">1</div>
     <div class="number" style="--i:2">2</div>
     <div class="number" style="--i:3">3</div>
@@ -120,6 +111,7 @@
     <div class="number" style="--i:10">10</div>
     <div class="number" style="--i:11">11</div>
     <div class="number" style="--i:12">12</div>
+    <div class="center-dot"></div>
   </div>
   <div class="options">
     <label><input type="radio" name="q6" value="A"> 3:00</label>
