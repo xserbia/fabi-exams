@@ -14,6 +14,41 @@
   .incorrect{color:red;}
   button{display:block; margin:20px auto; padding:10px 20px; border:none; border-radius:8px; background:#4f46e5; color:#fff; font-size:1rem; cursor:pointer;}
   #resultSummary{text-align:center; font-size:1.2rem; font-weight:bold; margin-top:30px;}
+
+  /* reloj */
+  .clock {
+    width: 200px;
+    height: 200px;
+    border: 6px solid #333;
+    border-radius: 50%;
+    margin: 20px auto;
+    position: relative;
+    background: white;
+  }
+  .hand {
+    width: 50%;
+    height: 4px;
+    background: #333;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-origin: left center;
+  }
+  .hand.hour { height: 6px; background: #4f46e5; }
+  .hand.minute { background: #16a34a; }
+  .number {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    font-weight: bold;
+    font-size: 18px;
+    transform: rotate(calc(30deg * var(--i))) translate(85px) rotate(calc(-30deg * var(--i)));
+    top: 50%;
+    left: 50%;
+    margin: -15px;
+  }
 </style>
 </head>
 <body>
@@ -69,7 +104,23 @@
 
 <div class="question" data-answer="A" data-explain="The clock shows 3:00.">
   <p>6) Time: What time is it?</p>
-  <div style="font-size: 80px; text-align: center; margin: 15px 0;">🕒</div>
+  <div class="clock">
+    <div class="hand hour" style="transform: rotate(90deg);"></div> <!-- Hora 3 -->
+    <div class="hand minute" style="transform: rotate(0deg);"></div> <!-- Minuto 00 -->
+    <!-- Números -->
+    <div class="number" style="--i:1">1</div>
+    <div class="number" style="--i:2">2</div>
+    <div class="number" style="--i:3">3</div>
+    <div class="number" style="--i:4">4</div>
+    <div class="number" style="--i:5">5</div>
+    <div class="number" style="--i:6">6</div>
+    <div class="number" style="--i:7">7</div>
+    <div class="number" style="--i:8">8</div>
+    <div class="number" style="--i:9">9</div>
+    <div class="number" style="--i:10">10</div>
+    <div class="number" style="--i:11">11</div>
+    <div class="number" style="--i:12">12</div>
+  </div>
   <div class="options">
     <label><input type="radio" name="q6" value="A"> 3:00</label>
     <label><input type="radio" name="q6" value="B"> 6:00</label>
