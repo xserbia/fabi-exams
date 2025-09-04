@@ -122,11 +122,24 @@
 </div>
 
 <div class="question" data-answer="A" data-explain="Hour at 9, minute at 12 → 9:00.">
-  <p>9) What time is it?</p>
+  <p>9) Time: What time is it?</p>
   <div class="clock">
+    <!-- manecillas -->
     <div class="hand hour"   style="--angle:-90deg;"></div>
     <div class="hand minute" style="--angle:-90deg;"></div>
-    ${Array.from({length:12},(_,k)=>`<div class="number" style="--i:${k+1}">${k+1}</div>`).join('')}
+    <!-- números -->
+    <div class="number" style="--i:1">1</div>
+    <div class="number" style="--i:2">2</div>
+    <div class="number" style="--i:3">3</div>
+    <div class="number" style="--i:4">4</div>
+    <div class="number" style="--i:5">5</div>
+    <div class="number" style="--i:6">6</div>
+    <div class="number" style="--i:7">7</div>
+    <div class="number" style="--i:8">8</div>
+    <div class="number" style="--i:9">9</div>
+    <div class="number" style="--i:10">10</div>
+    <div class="number" style="--i:11">11</div>
+    <div class="number" style="--i:12">12</div>
     <div class="center-dot"></div>
   </div>
   <div class="options">
