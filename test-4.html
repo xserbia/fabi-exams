@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grade 1 Test – Math & Reading</title>
+<style>
+  body {font-family: Arial, sans-serif; background:#f9fafb; margin:20px; color:#111;}
+  h1{text-align:center; color:#4f46e5;}
+  .question{margin:20px 0; padding:15px; background:#fff; border-radius:12px; box-shadow:0 4px 8px rgba(0,0,0,.05);}
+  .options label{display:block; margin:6px 0; cursor:pointer;}
+  .feedback{margin-top:10px; font-weight:bold;}
+  .correct{color:green;}
+  .incorrect{color:red;}
+  button{display:block; margin:20px auto; padding:10px 20px; border:none; border-radius:8px; background:#4f46e5; color:#fff; font-size:1rem; cursor:pointer;}
+  #resultSummary{text-align:center; font-size:1.2rem; font-weight:bold; margin-top:30px;}
+
+  /* reloj */
+  .clock{
+    width: 220px; height: 220px; margin: 20px auto;
+    border: 6px solid #333; border-radius: 50%; position: relative; background: #fff;
+  }
+  .hand{
+    position:absolute; top:50%; left:50%;
+    transform-origin: left center;
+    height:4px; background:#333;
+    transform: rotate(var(--angle));
+  }
+  .hand.hour{ width:36%; height:6px; background:#4f46e5; }
+  .hand.minute{ width:44%; background:#16a34a; }
+  .number{
+    position:absolute; top:50%; left:50%;
+    width:30px; height:30px; margin:-15px;
+    text-align:center; line-height:30px; font-weight:700; font-size:18px;
+    transform:
+      rotate(calc(30deg * var(--i) - 90deg))
+      translate(92px)
+      rotate(calc(-30deg * var(--i) + 90deg));
+  }
+  .center-dot{
+    position:absolute; top:50%; left:50%; width:10px; height:10px;
+    margin:-5px; background:#333; border-radius:50%;
+  }
+</style>
+</head>
+<body>
+
+<h1>Grade 1 Test – Level A (Exam 2)</h1>
+<form id="testForm">
+
+<!-- Math -->
+<div class="question" data-answer="A" data-explain="9 + 3 = 12.">
+  <p>1) 9 + 3 = ?</p>
+  <div class="options">
+    <label><input type="radio" name="q1" value="A"> 12</label>
+    <label><input type="radio" name="q1" value="B"> 11</label>
+    <label><input type="radio" name="q1" value="C"> 13</label>
+  </div>
+</div>
+
+<div class="question" data-answer="B" data-explain="A bucket holds more than a cup.">
+  <p>2) Which holds more water?</p>
+  <div class="options">
+    <label><input type="radio" name="q2" value="A"> Cup</label>
+    <label><input type="radio" name="q2" value="B"> Bucket</label>
+    <label><input type="radio" name="q2" value="C"> Same</label>
+  </div>
+</div>
+
+<div class="question" data-answer="A" data-explain="Plants need sun and water to grow.">
+  <p>3) Plants need sun and water to grow. What do plants need?</p>
+  <div class="options">
+    <label><input type="radio" name="q3" value="A"> Sun and water</label>
+    <label><input type="radio" name="q3" value="B"> Milk and juice</label>
+    <label><input type="radio" name="q3" value="C"> Only shade</label>
+  </div>
+</div>
+
+<div class="question" data-answer="B" data-explain="There are 3 turtles.">
+  <p>4) Counting: How many turtles? 🐢🐢🐢</p>
+  <div class="options">
+    <label><input type="radio" name="q4" value="A"> 2</label>
+    <label><input type="radio" name="q4" value="B"> 3</label>
+    <label><input type="radio" name="q4" value="C"> 4</label>
+  </div>
+</div>
+
+<div class="question" data-answer="B" data-explain="10 − 4 = 6.">
+  <p>5) 10 − 4 = ?</p>
+  <div class="options">
+    <label><input type="radio" name="q5" value="A"> 7</label>
+    <label><input type="radio" name="q5" value="B"> 6</label>
+    <label><input type="radio" name="q5" value="C"> 5</label>
+  </div>
+</div>
+
+<div class="question" data-answer="B" data-explain="Maps show places and directions.">
+  <p>6) A map shows…</p>
+  <div class="options">
+    <label><input type="radio" name="q6" value="A"> Music notes</label>
+    <label><input type="radio" name="q6" value="B"> Places and directions</label>
+    <label><input type="radio" name="q6" value="C"> Weather only</label>
+  </div>
+</div>
+
+<div class="question" data-answer="C" data-explain="This is a statement, so it ends with a period.">
+  <p>7) Choose the best ending punctuation: "I like pizza"</p>
+  <div class="options">
+    <label><input type="radio" name="q7" value="A"> !</label>
+    <label><input type="radio" name="q7" value="B"> ?</label>
+    <label><input type="radio" name="q7" value="C"> .</label>
+  </div>
+</div>
+
+<div class="question" data-answer="B" data-explain="A square has 4 equal sides.">
+  <p>8) Which has 4 equal sides?</p>
+  <div class="options">
+    <label><input type="radio" name="q8" value="A"> Rectangle</label>
+    <label><input type="radio" name="q8" value="B"> Square</label>
+    <label><input type="radio" name="q8" value="C"> Triangle</label>
+  </div>
+</div>
+
+<div class="question" data-answer="A" data-explain="Hour at 9, minute at 12 → 9:00.">
+  <p>9) What time is it?</p>
+  <div class="clock">
+    <div class="hand hour"   style="--angle:-90deg;"></div>
+    <div class="hand minute" style="--angle:-90deg;"></div>
+    ${Array.from({length:12},(_,k)=>`<div class="number" style="--i:${k+1}">${k+1}</div>`).join('')}
+    <div class="center-dot"></div>
+  </div>
+  <div class="options">
+    <label><input type="radio" name="q9" value="A"> 9:00</label>
+    <label><input type="radio" name="q9" value="B"> 3:00</label>
+    <label><input type="radio" name="q9" value="C"> 12:00</label>
+  </div>
+</div>
+
+<div class="question" data-answer="B" data-explain="83 is greater than 38.">
+  <p>10) Which is greater?</p>
+  <div class="options">
+    <label><input type="radio" name="q10" value="A"> 38</label>
+    <label><input type="radio" name="q10" value="B"> 83</label>
+    <label><input type="radio" name="q10" value="C"> Both same</label>
+  </div>
+</div>
+
+<div class="question" data-answer="A" data-explain="The theme is helping others.">
+  <p>11) Tim helps his friend. What is the theme?</p>
+  <div class="options">
+    <label><input type="radio" name="q11" value="A"> Helping others</label>
+    <label><input type="radio" name="q11" value="B"> Being mean</label>
+    <label><input type="radio" name="q11" value="C"> Being late</label>
+  </div>
+</div>
+
+<div class="question" data-answer="B" data-explain="The opposite of hot is cold.">
+  <p>12) Which word means the opposite of 'hot'?</p>
+  <div class="options">
+    <label><input type="radio" name="q12" value="A"> Warm</label>
+    <label><input type="radio" name="q12" value="B"> Cold</label>
+    <label><input type="radio" name="q12" value="C"> Heat</label>
+  </div>
+</div>
+
+<div class="question" data-answer="B" data-explain="Cat rhymes with hat.">
+  <p>13) Which word rhymes with 'cat'?</p>
+  <div class="options">
+    <label><input type="radio" name="q13" value="A"> Dog</label>
+    <label><input type="radio" name="q13" value="B"> Hat</label>
+    <label><input type="radio" name="q13" value="C"> Sun</label>
+  </div>
+</div>
+
+<div class="question" data-answer="B" data-explain="Two nickels = 10¢.">
+  <p>14) 2 nickels = ?</p>
+  <div class="options">
+    <label><input type="radio" name="q14" value="A"> 5¢</label>
+    <label><input type="radio" name="q14" value="B"> 10¢</label>
+    <label><input type="radio" name="q14" value="C"> 15¢</label>
+  </div>
+</div>
+
+<div class="question" data-answer="A" data-explain="A tree is a living thing.">
+  <p>15)  Which is a living thing?</p>
+  <div class="options">
+    <label><input type="radio" name="q15" value="A"> Tree</label>
+    <label><input type="radio" name="q15" value="B"> Rock</label>
+    <label><input type="radio" name="q15" value="C"> Chair</label>
+  </div>
+</div>
+
+<div class="question" data-answer="A" data-explain="Plants need sunlight.">
+  <p>16) Which needs sunlight to make food?</p>
+  <div class="options">
+    <label><input type="radio" name="q16" value="A"> Plant</label>
+    <label><input type="radio" name="q16" value="B"> Rock</label>
+    <label><input type="radio" name="q16" value="C"> Car</label>
+  </div>
+</div>
+
+<button type="button" onclick="checkAnswers()">Submit Answers</button>
+</form>
+
+<div id="resultSummary"></div>
+
+<script>
+function checkAnswers(){
+  const questions = document.querySelectorAll('.question');
+  let correctCount = 0;
+  let total = questions.length;
+  questions.forEach((q)=>{
+    const selected = q.querySelector('input[type="radio"]:checked');
+    const correct = q.dataset.answer;
+    const explanation = q.dataset.explain;
+    let fb = q.querySelector('.feedback');
+    if(!fb){ fb=document.createElement('div'); fb.classList.add('feedback'); q.appendChild(fb);}
+    if(selected){
+      if(selected.value===correct){
+        fb.innerHTML="✅ Correct! "+explanation;
+        fb.className="feedback correct";
+        correctCount++;
+      } else {
+        fb.innerHTML="❌ Incorrect. Correct answer is "+correct+". "+explanation;
+        fb.className="feedback incorrect";
+      }
+    } else {
+      fb.innerHTML="⚠️ No answer selected.";
+      fb.className="feedback incorrect";
+    }
+  });
+  document.getElementById("resultSummary").innerHTML="You got "+correctCount+" out of "+total+" correct.";
+}
+</script>
+
+</body>
+</html>
