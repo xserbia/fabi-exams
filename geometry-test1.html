@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grade 1 Test – Geometry (2D & 3D)</title>
+<style>
+  body {font-family: Arial, sans-serif; background:#f9fafb; margin:20px; color:#111;}
+  h1{text-align:center; color:#4f46e5;}
+  .subtitle{ text-align:center; color:#64748b; margin-top:-8px;}
+  .question{margin:20px 0; padding:15px; background:#fff; border-radius:12px; box-shadow:0 4px 8px rgba(0,0,0,.05);}
+  .options label{display:block; margin:6px 0; cursor:pointer;}
+  .feedback{margin-top:10px; font-weight:bold;}
+  .correct{color:green;}
+  .incorrect{color:red;}
+  button{display:block; margin:20px auto; padding:10px 20px; border:none; border-radius:8px; background:#4f46e5; color:#fff; font-size:1rem; cursor:pointer;}
+  #resultSummary{text-align:center; font-size:1.2rem; font-weight:bold; margin-top:30px;}
+  .shape-preview{ font-size:22px; margin-left:6px; color:#334155;}
+</style>
+</head>
+<body>
+
+<h1>Grade 1 Test – Geometry (2D & 3D)</h1>
+<p class="subtitle">Figuras planas (2D) y sólidos (3D)</p>
+
+<form id="testForm">
+
+<!-- 2D SHAPES -->
+<div class="question" data-answer="A" data-explain="A triangle has 3 sides and 3 corners.">
+  <p>1) Which 2D shape has <strong>3 sides</strong>?</p>
+  <div class="options">
+    <label><input type="radio" name="q1" value="A"> Triangle 🔺</label>
+    <label><input type="radio" name="q1" value="B"> Square ⬜️</label>
+    <label><input type="radio" name="q1" value="C"> Circle ⭕️</label>
+  </div>
+</div>
+
+<div class="question" data-answer="B" data-explain="A square has 4 equal sides.">
+  <p>2) Which 2D shape has <strong>4 equal sides</strong>?</p>
+  <div class="options">
+    <label><input type="radio" name="q2" value="A"> Rectangle ▭</label>
+    <label><input type="radio" name="q2" value="B"> Square ⬜️</label>
+    <label><input type="radio" name="q2" value="C"> Triangle 🔺</label>
+  </div>
+</div>
+
+<div class="question" data-answer="C" data-explain="A circle is round and has no corners.">
+  <p>3) Which 2D shape is <strong>round</strong> and has <strong>no corners</strong>?</p>
+  <div class="options">
+    <label><input type="radio" name="q3" value="A"> Pentagon ⬟</label>
+    <label><input type="radio" name="q3" value="B"> Hexagon ⬢</label>
+    <label><input type="radio" name="q3" value="C"> Circle ⭕️</label>
+  </div>
+</div>
+
+<div class="question" data-answer="A" data-explain="A rectangle has 4 sides with opposite sides equal and 4 corners.">
+  <p>4) Which 2D shape has <strong>4 corners</strong> and <strong>2 long + 2 short sides</strong>?</p>
+  <div class="options">
+    <label><input type="radio" name="q4" value="A"> Rectangle ▭</label>
+    <label><input type="radio" name="q4" value="B"> Circle ⭕️</label>
+    <label><input type="radio" name="q4" value="C"> Triangle 🔺</label>
+  </div>
+</div>
+
+<div class="question" data-answer="B" data-explain="A pentagon has 5 sides.">
+  <p>5) Which 2D shape has <strong>5 sides</strong>?</p>
+  <div class="options">
+    <label><input type="radio" name="q5" value="A"> Hexagon (6 sides) ⬢</label>
+    <label><input type="radio" name="q5" value="B"> Pentagon ⬟</label>
+    <label><input type="radio" name="q5" value="C"> Octagon (8 sides) ⬣</label>
+  </div>
+</div>
+
+<div class="question" data-answer="C" data-explain="An octagon has 8 sides (like a stop sign).">
+  <p>6) Which 2D shape has <strong>8 sides</strong>?</p>
+  <div class="options">
+    <label><input type="radio" name="q6" value="A"> Triangle 🔺</label>
+    <label><input type="radio" name="q6" value="B"> Pentagon ⬟</label>
+    <label><input type="radio" name="q6" value="C"> Octagon ⬣</label>
+  </div>
+</div>
+
+<!-- 3D SHAPES -->
+<div class="question" data-answer="A" data-explain="A sphere is like a ball.">
+  <p>7) Which 3D shape looks like a <strong>ball</strong>?</p>
+  <div class="options">
+    <label><input type="radio" name="q7" value="A"> Sphere ⚽️</label>
+    <label><input type="radio" name="q7" value="B"> Cube 🧊</label>
+    <label><input type="radio" name="q7" value="C"> Cylinder 🥫</label>
+  </div>
+</div>
+
+<div class="question" data-answer="B" data-explain="A cube has 6 equal square faces.">
+  <p>8) Which 3D shape has <strong>6 equal square faces</strong>?</p>
+  <div class="options">
+    <label><input type="radio" name="q8" value="A"> Cone 🍦</label>
+    <label><input type="radio" name="q8" value="B"> Cube 🧊</label>
+    <label><input type="radio" name="q8" value="C"> Pyramid ⛏</label>
+  </div>
+</div>
+
+<div class="question" data-answer="C" data-explain="A cylinder is like a can of soup.">
+  <p>9) Which 3D shape looks like a <strong>can</strong>?</p>
+  <div class="options">
+    <label><input type="radio" name="q9" value="A"> Sphere ⚽️</label>
+    <label><input type="radio" name="q9" value="B"> Cube 🧊</label>
+    <label><input type="radio" name="q9" value="C"> Cylinder 🥫</label>
+  </div>
+</div>
+
+<div class="question" data-answer="A" data-explain="A cone has one circular base and a point (vertex).">
+  <p>10) Which 3D shape has a <strong>circle base</strong> and a <strong>point at the top</strong> (like an ice-cream cone)?</p>
+  <div class="options">
+    <label><input type="radio" name="q10" value="A"> Cone 🍦</label>
+    <label><input type="radio" name="q10" value="B"> Cylinder 🥫</label>
+    <label><input type="radio" name="q10" value="C"> Sphere ⚽️</label>
+  </div>
+</div>
+
+<div class="question" data-answer="B" data-explain="A pyramid can have a square base and triangular faces meeting at a point.">
+  <p>11) Which 3D shape looks like a <strong>tent with a square base</strong>?</p>
+  <div class="options">
+    <label><input type="radio" name="q11" value="A"> Cube 🧊</label>
+    <label><input type="radio" name="q11" value="B"> Pyramid ⛏</label>
+    <label><input type="radio" name="q11" value="C"> Cylinder 🥫</label>
+  </div>
+</div>
+
+<div class="question" data-answer="C" data-explain="A rectangular prism (cuboid) has 6 rectangular faces (like a box).">
+  <p>12) Which 3D shape is like a <strong>box</strong> with <strong>rectangular faces</strong>?</p>
+  <div class="options">
+    <label><input type="radio" name="q12" value="A"> Sphere ⚽️</label>
+    <label><input type="radio" name="q12" value="B"> Cone 🍦</label>
+    <label><input type="radio" name="q12" value="C"> Rectangular prism 📦</label>
+  </div>
+</div>
+
+<button type="button" onclick="checkAnswers()">Submit Answers</button>
+</form>
+
+<div id="resultSummary"></div>
+
+<script>
+function checkAnswers(){
+  const questions = document.querySelectorAll('.question');
+  let correctCount = 0;
+  let total = questions.length;
+  questions.forEach((q)=>{
+    const selected = q.querySelector('input[type="radio"]:checked');
+    const correct = q.dataset.answer;
+    const explanation = q.dataset.explain;
+    let fb = q.querySelector('.feedback');
+    if(!fb){ fb=document.createElement('div'); fb.classList.add('feedback'); q.appendChild(fb);}
+    if(selected){
+      if(selected.value===correct){
+        fb.innerHTML="✅ Correct! "+explanation;
+        fb.className="feedback correct";
+        correctCount++;
+      } else {
+        fb.innerHTML="❌ Incorrect. Correct answer is "+correct+". "+explanation;
+        fb.className="feedback incorrect";
+      }
+    } else {
+      fb.innerHTML="⚠️ No answer selected.";
+      fb.className="feedback incorrect";
+    }
+  });
+  document.getElementById("resultSummary").innerHTML="You got "+correctCount+" out of "+total+" correct.";
+}
+</script>
+
+</body>
+</html>
