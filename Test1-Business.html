@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grade 1 Exam – Finance & Entrepreneurship</title>
+  <style>
+    :root{
+      --bg:#f7f8fb; --card:#ffffff; --ink:#0f172a; --sub:#64748b; --brand:#4f46e5; --ok:#16a34a; --warn:#eab308; --bad:#dc2626; --muted:#e5e7eb;
+    }
+    *{box-sizing:border-box}
+    body{font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji"; background:var(--bg); color:var(--ink); margin:0;}
+    .wrap{max-width:900px; margin:24px auto; padding:0 16px}
+    header{ text-align:center; margin-bottom:18px}
+    h1{font-size:1.75rem; color:var(--brand); margin:0}
+    .subtitle{color:var(--sub); margin-top:6px}
+
+    .section{background:var(--card); border-radius:16px; box-shadow:0 4px 12px rgba(0,0,0,.06); margin:18px 0; padding:18px}
+    .section h2{margin:0 0 8px 0; font-size:1.25rem}
+    .hint{color:var(--sub); font-size:.95rem; margin-bottom:8px}
+
+    .question{border:1px solid var(--muted); border-radius:12px; padding:14px; margin:12px 0}
+    .question p{margin:0 0 10px 0}
+    .eq{display:inline-block; background:#f1f5f9; padding:2px 8px; border-radius:8px; font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size:.95rem}
+    .options label{display:block; margin:6px 0; cursor:pointer}
+    .feedback{margin-top:8px; font-weight:600; display:none}
+    .feedback.ok{color:var(--ok)}
+    .feedback.bad{color:var(--bad)}
+
+    .controls{display:flex; gap:10px; justify-content:center; margin:22px 0}
+    button{border:none; border-radius:10px; padding:10px 16px; cursor:pointer; background:var(--brand); color:#fff; font-weight:600}
+    button.secondary{background:#1118270d; color:#111827}
+
+    .result{background:var(--card); border:1px dashed var(--muted); border-radius:12px; padding:16px; text-align:center; font-weight:700;}
+    .result .score{font-size:1.25rem}
+    .tag{display:inline-block; padding:4px 10px; border-radius:999px; font-size:.85rem; margin-top:8px}
+    .tag.ok{background:#dcfce7; color:#14532d}
+    .tag.mid{background:#fef9c3; color:#713f12}
+    .tag.bad{background:#fee2e2; color:#7f1d1d}
+
+    .small{font-size:.9rem; color:var(--sub)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Grade 1 Exam – Finance & Entrepreneurship</h1>
+      <div class="subtitle">Algebra • Geometry • Math • Reading (business themed)</div>
+    </header>
+
+    <!-- A) Business Algebra -->
+    <section class="section" id="algebra">
+      <h2>🅰 Business Algebra</h2>
+      <div class="hint">Solve for <strong>x</strong>. Use only addition and subtraction.</div>
+
+      <div class="question" data-id="a1" data-answer="B">
+        <p><strong>1)</strong> Sofía started the day with 10 lemonades. At the end of the day she had 2 left. How many lemonades did she sell?</p>
+        <p class="eq">10 − x = 2</p>
+        <div class="options">
+          <label><input type="radio" name="a1" value="A"> 12</label>
+          <label><input type="radio" name="a1" value="B"> 8</label>
+          <label><input type="radio" name="a1" value="C"> 2</label>
+        </div>
+        <div class="feedback">—</div>
+      </div>
+
+      <div class="question" data-id="a2" data-answer="A">
+        <p><strong>2)</strong> Sofía made $8 in sales and her profit was $4. What was the cost?</p>
+        <p class="eq">8 − x = 4</p>
+        <div class="options">
+          <label><input type="radio" name="a2" value="A"> $4</label>
+          <label><input type="radio" name="a2" value="B"> $8</label>
+          <label><input type="radio" name="a2" value="C"> $2</label>
+        </div>
+        <div class="feedback">—</div>
+      </div>
+
+      <div class="question" data-id="a3" data-answer="B">
+        <p><strong>3)</strong> A child saved $5. Mom gave more money and now there is $9. How much did Mom give?</p>
+        <p class="eq">5 + x = 9</p>
+        <div class="options">
+          <label><input type="radio" name="a3" value="A"> $3</label>
+          <label><input type="radio" name="a3" value="B"> $4</label>
+          <label><input type="radio" name="a3" value="C"> $5</label>
+        </div>
+        <div class="feedback">—</div>
+      </div>
+
+      <div class="question" data-id="a4" data-answer="B">
+        <p><strong>4)</strong> Pedro had $12. He bought a notebook and has $7 left. How much did the notebook cost?</p>
+        <p class="eq">12 − x = 7</p>
+        <div class="options">
+          <label><input type="radio" name="a4" value="A"> $4</label>
+          <label><input type="radio" name="a4" value="B"> $5</label>
+          <label><input type="radio" name="a4" value="C"> $6</label>
+        </div>
+        <div class="feedback">—</div>
+      </div>
+
+      <div class="question" data-id="a5" data-answer="C">
+        <p><strong>5)</strong> Ana had $6 in her piggy bank. Grandma gave some money and now she has $10. How much did Grandma give?</p>
+        <p class="eq">6 + x = 10</p>
+        <div class="options">
+          <label><input type="radio" name="a5" value="A"> $2</label>
+          <label><input type="radio" name="a5" value="B"> $3</label>
+          <label><input type="radio" name="a5" value="C"> $4</label>
+        </div>
+        <div class="feedback">—</div>
+      </div>
+    </section>
+
+    <!-- B) Business Geometry -->
+    <section class="section" id="geometria">
+      <h2>🅱 Business Geometry</h2>
+      <div class="question" data-id="g1" data-answer="B">
+        <p><strong>1)</strong> A dollar bill is a rectangle. How many sides does a rectangle have?</p>
+        <div class="options">
+          <label><input type="radio" name="g1" value="A"> 3</label>
+          <label><input type="radio" name="g1" value="B"> 4</label>
+          <label><input type="radio" name="g1" value="C"> 5</label>
+        </div>
+        <div class="feedback">—</div>
+      </div>
+
+      <div class="question" data-id="g2" data-answer="A">
+        <p><strong>2)</strong> Sofía’s lemonade stand table is a square. How many sides does a square have?</p>
+        <div class="options">
+          <label><input type="radio" name="g2" value="A"> 4</label>
+          <label><input type="radio" name="g2" value="B"> 5</label>
+          <label><input type="radio" name="g2" value="C"> 6</label>
+        </div>
+        <div class="feedback">—</div>
+      </div>
+
+      <div class="question" data-id="g3" data-answer="B">
+        <p><strong>3)</strong> The coin you use to pay is round. Which shape best represents a coin?</p>
+        <div class="options">
+          <label><input type="radio" name="g3" value="A"> Triangle</label>
+          <label><input type="radio" name="g3" value="B"> Circle</label>
+          <label><input type="radio" name="g3" value="C"> Square</label>
+        </div>
+        <div class="feedback">—</div>
+      </div>
+
+      <div class="question" data-id="g4" data-answer="B">
+        <p><strong>4)</strong> The “FOR SALE” sign on the shop is a triangle. How many sides does a triangle have?</p>
+        <div class="options">
+          <label><input type="radio" name="g4" value="A"> 2</label>
+          <label><input type="radio" name="g4" value="B"> 3</label>
+          <label><input type="radio" name="g4" value="C"> 4</label>
+        </div>
+        <div class="feedback">—</div>
+      </div>
+
+      <div class="question" data-id="g5" data-answer="A">
+        <p><strong>5)</strong> A shopping cart wheel is circular. Which shape has no corners?</p>
+        <div class="options">
+          <label><input type="radio" name="g5" value="A"> Circle</label>
+          <label><input type="radio" name="g5" value="B"> Square</label>
+          <label><input type="radio" name="g5" value="C"> Rectangle</label>
+        </div>
+        <div class="feedback">—</div>
+      </div>
+    </section>
+
+    <!-- C) Business Math -->
+    <section class="section" id="math">
+      <h2>🅲 Business Math</h2>
+      <div class="question" data-id="m1" data-answer="B">
+        <p><strong>1)</strong> Sofía sold one lemonade for $2 and another for $3. How much money did she collect in total?</p>
+        <div class="options">
+          <label><input type="radio" name="m1" value="A"> $4</label>
+          <label><input type="radio" name="m1" value="B"> $5</label>
+          <label><input type="radio" name="m1" value="C"> $6</label>
+        </div>
+        <div class="feedback">—</div>
+      </div>
+
+      <div class="question" data-id="m2" data-answer="B">
+        <p><strong>2)</strong> Pedro had $10. He bought an ice cream for $4. How much money is left?</p>
+        <div class="options">
+          <label><input type="radio" name="m2" value="A"> $4</label>
+          <label><input type="radio" name="m2" value="B"> $6</label>
+          <label><input type="radio" name="m2" value="C"> $7</label>
+        </div>
+        <div class="feedback">—</div>
+      </div>
+
+      <div class="question" data-id="m3" data-answer="B">
+        <p><strong>3)</strong> Ana had $8. Her brother lent her $2 more. How much money does Ana have now?</p>
+        <div class="options">
+          <label><input type="radio" name="m3" value="A"> $9</label>
+          <label><input type="radio" name="m3" value="B"> $10</label>
+          <label><input type="radio" name="m3" value="C"> $12</label>
+        </div>
+        <div class="feedback">—</div>
+      </div>
+
+      <div class="question" data-id="m4" data-answer="B">
+        <p><strong>4)</strong> Luis earned $12 selling candy. He spent $5 to buy more. How much is left?</p>
+        <div class="options">
+          <label><input type="radio" name="m4" value="A"> $6</label>
+          <label><input type="radio" name="m4" value="B"> $7</label>
+          <label><input type="radio" name="m4" value="C"> $8</label>
+        </div>
+        <div class="feedback">—</div>
+      </div>
+
+      <div class="question" data-id="m5" data-answer="B">
+        <p><strong>5)</strong> A child saved $15. They bought a $9 toy. How much is left in the piggy bank?</p>
+        <div class="options">
+          <label><input type="radio" name="m5" value="A"> $5</label>
+          <label><input type="radio" name="m5" value="B"> $6</label>
+          <label><input type="radio" name="m5" value="C"> $7</label>
+        </div>
+        <div class="feedback">—</div>
+      </div>
+    </section>
+
+    <!-- D) Reading Comprehension -->
+    <section class="section" id="reading">
+      <h2>🅳 Reading Comprehension – Entrepreneurship</h2>
+      <p class="small"><em>Read the text and answer.</em></p>
+      <blockquote style="background:#f8fafc; border-left:4px solid var(--brand); padding:10px 12px; border-radius:8px; margin:8px 0 14px">
+        "Carla wants to open a small cookie stand. To start, she buys flour and chocolate. Her dad lends the garage table and her mom helps her bake. Carla sells all the cookies and earns $12. With that money, she saves $6 and uses $6 to buy more ingredients."
+      </blockquote>
+
+      <div class="question" data-id="r1" data-answer="B">
+        <p><strong>1)</strong> What did Carla want to do?</p>
+        <div class="options">
+          <label><input type="radio" name="r1" value="A"> Play with friends</label>
+          <label><input type="radio" name="r1" value="B"> Open a cookie stand</label>
+          <label><input type="radio" name="r1" value="C"> Buy a toy</label>
+        </div>
+        <div class="feedback">—</div>
+      </div>
+
+      <div class="question" data-id="r2" data-answer="C">
+        <p><strong>2)</strong> How much money did Carla earn from selling cookies?</p>
+        <div class="options">
+          <label><input type="radio" name="r2" value="A"> $6</label>
+          <label><input type="radio" name="r2" value="B"> $10</label>
+          <label><input type="radio" name="r2" value="C"> $12</label>
+        </div>
+        <div class="feedback">—</div>
+      </div>
+
+      <div class="question" data-id="r3" data-answer="A">
+        <p><strong>3)</strong> Who helped her bake?</p>
+        <div class="options">
+          <label><input type="radio" name="r3" value="A"> Her mom</label>
+          <label><input type="radio" name="r3" value="B"> Her friends</label>
+          <label><input type="radio" name="r3" value="C"> Her neighbors</label>
+        </div>
+        <div class="feedback">—</div>
+      </div>
+
+      <div class="question" data-id="r4" data-answer="C">
+        <p><strong>4)</strong> What did Carla do with the money she earned?</p>
+        <div class="options">
+          <label><input type="radio" name="r4" value="A"> Spent it all on candy</label>
+          <label><input type="radio" name="r4" value="B"> Saved all of it in the bank</label>
+          <label><input type="radio" name="r4" value="C"> Saved some and bought more ingredients</label>
+        </div>
+        <div class="feedback">—</div>
+      </div>
+
+      <div class="question" data-id="r5" data-answer="B">
+        <p><strong>5)</strong> Where did Carla set up her cookie stand?</p>
+        <div class="options">
+          <label><input type="radio" name="r5" value="A"> In the kitchen</label>
+          <label><input type="radio" name="r5" value="B"> In the garage</label>
+          <label><input type="radio" name="r5" value="C"> In the park</label>
+        </div>
+        <div class="feedback">—</div>
+      </div>
+    </section>
+
+    <div class="controls">
+      <button id="gradeBtn">Grade</button>
+      <button class="secondary" id="resetBtn">Reset</button>
+    </div>
+
+    <div id="result" class="result" aria-live="polite">
+      <div class="score">Score: — / 20</div>
+      <div class="tag mid">Answer and click “Grade”</div>
+    </div>
+
+    <p class="small" style="text-align:center; margin-top:12px">© Educational exam with entrepreneurship & finance themes (Grade 1).</p>
+  </div>
+
+  <script>
+    const gradeBtn = document.getElementById('gradeBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const resultBox = document.getElementById('result');
+
+    function grade(){
+      const questions = document.querySelectorAll('.question');
+      let score = 0, total = questions.length;
+      let firstWrong = null;
+
+      questions.forEach(q => {
+        const correct = q.getAttribute('data-answer');
+        const name = q.getAttribute('data-id');
+        const chosen = (q.querySelector('input[name="'+name+'"]:checked')||{}).value;
+        const fb = q.querySelector('.feedback');
+        fb.style.display = 'block';
+        if(chosen === correct){
+          fb.textContent = '✔️ Correct!';
+          fb.className = 'feedback ok';
+          score++;
+        }else{
+          fb.textContent = '✖️ Incorrect. Try again.';
+          fb.className = 'feedback bad';
+          if(!firstWrong) firstWrong = q;
+        }
+      });
+
+      const scoreEl = resultBox.querySelector('.score');
+      scoreEl.textContent = `Score: ${score} / ${total}`;
+
+      const tag = resultBox.querySelector('.tag');
+      tag.className = 'tag';
+      if(score === total){ tag.classList.add('ok'); tag.textContent = 'Excellent! 🏆'; }
+      else if(score >= Math.ceil(total*0.7)){ tag.classList.add('mid'); tag.textContent = 'Good job! Keep practicing.'; }
+      else { tag.classList.add('bad'); tag.textContent = 'You can do it! Try again.'; }
+
+      if(firstWrong){ firstWrong.scrollIntoView({behavior:'smooth', block:'center'}); }
+    }
+
+    function resetAll(){
+      document.querySelectorAll('input[type=radio]').forEach(r=> r.checked=false);
+      document.querySelectorAll('.feedback').forEach(fb=>{ fb.style.display='none'; fb.textContent='—'; fb.className='feedback'; });
+      resultBox.querySelector('.score').textContent = 'Score: — / 20';
+      const tag = resultBox.querySelector('.tag');
+      tag.className='tag mid';
+      tag.textContent='Answer and click “Grade”';
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+
+    gradeBtn.addEventListener('click', grade);
+    resetBtn.addEventListener('click', resetAll);
+  </script>
+</body>
+</html>
