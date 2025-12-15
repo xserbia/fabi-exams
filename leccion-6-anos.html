@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Lección (6 años) – Matemática + Lectura</title>
+  <title>Lesson (Age 6) – Math + Reading</title>
   <style>
     :root{
       --bg:#0b1220;
@@ -313,7 +313,7 @@
     .k .label{ color: var(--muted); font-size: 12px; margin-bottom: 4px;}
     .k .val{ font-size: 16px; font-weight: 900; }
 
-    /* “Coins” */
+    /* Coins */
     .coins{
       display:flex;
       flex-wrap:wrap;
@@ -376,224 +376,224 @@
 <header>
   <div class="top-row">
     <div class="title">
-      <h1>Lección lista para iPad (6 años)</h1>
-      <p>Hoy: sumar “juntar” + lectura de frases cortas (con comprensión).</p>
+      <h1>iPad-Ready Lesson (Age 6)</h1>
+      <p>Today: addition as “putting together” + short reading (with comprehension).</p>
     </div>
     <div class="controls">
       <span class="chip" id="timerChip">⏱️ 00:00</span>
-      <button class="small ghost" id="toggleVoiceBtn" title="Lee en voz alta (si el iPad lo permite)">🔊 Voz: OFF</button>
-      <button class="small" id="resetBtn">↻ Reiniciar</button>
-      <button class="small primary" id="startBtn">▶︎ Empezar</button>
+      <button class="small ghost" id="toggleVoiceBtn" title="Read aloud (if available on your iPad)">🔊 Voice: OFF</button>
+      <button class="small" id="resetBtn">↻ Reset</button>
+      <button class="small primary" id="startBtn">▶︎ Start</button>
     </div>
   </div>
   <div class="footer">
     <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-      <div class="progress" aria-label="progreso"><div class="bar" id="bar"></div></div>
-      <span id="progressText">Progreso: 0/8</span>
+      <div class="progress" aria-label="progress"><div class="bar" id="bar"></div></div>
+      <span id="progressText">Progress: 0/8</span>
     </div>
-    <div id="statusText">Tip: toque una palabra para resaltarla y (opcional) escucharla.</div>
+    <div id="statusText">Tip: tap a word to highlight it and (optional) hear it.</div>
   </div>
 </header>
 
 <main>
   <div class="grid">
 
-    <!-- MATEMÁTICA -->
-    <section class="card" aria-label="Matemática">
+    <!-- MATH -->
+    <section class="card" aria-label="Math">
       <div class="hd">
         <div>
-          <h2>🧮 Matemática (12 minutos)</h2>
-          <div class="sub">Objetivo: entender que sumar es <b>juntar</b> y practicar 4 ejercicios.</div>
+          <h2>🧮 Math (12 minutes)</h2>
+          <div class="sub">Goal: understand addition as <b>putting together</b> + practice 4 problems.</div>
         </div>
-        <span class="badge" id="mathBadge">En progreso</span>
+        <span class="badge" id="mathBadge">In progress</span>
       </div>
       <div class="bd">
 
         <!-- Step M1 -->
         <div class="step" id="m1">
           <div class="step-title">
-            <strong>1) Contar y juntar (con monedas)</strong>
-            <span class="badge warn" id="m1Badge">pendiente</span>
+            <strong>1) Count & put together (coins)</strong>
+            <span class="badge warn" id="m1Badge">pending</span>
           </div>
-          <div class="mini">Toque monedas para “encenderlas”. Primero cuenta las monedas encendidas. Luego agrega más.</div>
+          <div class="mini">Tap coins to “turn them on.” First count the ON coins. Then add more.</div>
 
           <div class="row">
-            <button class="small" id="coinsSet6">Poner 6</button>
+            <button class="small" id="coinsSet6">Set 6</button>
             <button class="small" id="coinsAdd2">+2</button>
-            <button class="small" id="coinsClear">Limpiar</button>
+            <button class="small" id="coinsClear">Clear</button>
           </div>
 
-          <div class="coins" id="coinsArea" aria-label="monedas"></div>
+          <div class="coins" id="coinsArea" aria-label="coins"></div>
 
           <div class="two" style="margin-top:10px;">
             <div>
-              <label class="mini" for="countOn">¿Cuántas monedas encendidas hay?</label>
-              <input inputmode="numeric" type="number" id="countOn" placeholder="Escribe un número" />
+              <label class="mini" for="countOn">How many coins are ON?</label>
+              <input inputmode="numeric" type="number" id="countOn" placeholder="Type a number" />
             </div>
             <div>
-              <label class="mini" for="countTotal">Después de agregar, ¿cuántas hay en total?</label>
-              <input inputmode="numeric" type="number" id="countTotal" placeholder="Escribe un número" />
+              <label class="mini" for="countTotal">After adding, how many total?</label>
+              <input inputmode="numeric" type="number" id="countTotal" placeholder="Type a number" />
             </div>
           </div>
 
           <div class="row">
-            <button class="good" id="checkM1">✅ Revisar</button>
+            <button class="good" id="checkM1">✅ Check</button>
           </div>
-          <div class="msg" id="m1Msg">Meta: contar bien y entender “antes” y “después”.</div>
+          <div class="msg" id="m1Msg">Goal: count accurately “before” and “after.”</div>
         </div>
 
         <!-- Step M2 -->
         <div class="step" id="m2">
           <div class="step-title">
-            <strong>2) Sumar con dibujos (visual)</strong>
-            <span class="badge warn" id="m2Badge">pendiente</span>
+            <strong>2) Add with pictures (visual)</strong>
+            <span class="badge warn" id="m2Badge">pending</span>
           </div>
 
-          <div class="mini">Mira: 3 + 2. Imagina que juntas todo. Luego escribe el resultado.</div>
+          <div class="mini">Look: 3 + 2. Imagine putting them together. Then type the answer.</div>
           <div class="equation">
             <div class="box">🟡🟡🟡</div>
             <div class="big">+</div>
             <div class="box">🟡🟡</div>
             <div class="big">=</div>
             <div style="min-width:140px">
-              <input inputmode="numeric" type="number" id="m2Ans" placeholder="¿Cuánto da?" />
+              <input inputmode="numeric" type="number" id="m2Ans" placeholder="What is it?" />
             </div>
           </div>
 
           <div class="row">
-            <button class="good" id="checkM2">✅ Revisar</button>
-            <button class="small" id="hintM2">💡 Pista</button>
+            <button class="good" id="checkM2">✅ Check</button>
+            <button class="small" id="hintM2">💡 Hint</button>
           </div>
-          <div class="msg" id="m2Msg">Tip: si dudas, cuenta: 1,2,3… y sigue 4,5…</div>
+          <div class="msg" id="m2Msg">Tip: if unsure, count: 1,2,3… then 4,5…</div>
         </div>
 
         <!-- Step M3 -->
         <div class="step" id="m3">
           <div class="step-title">
-            <strong>3) 4 ejercicios rápidos (sin estrés)</strong>
-            <span class="badge warn" id="m3Badge">pendiente</span>
+            <strong>3) 4 quick problems (no stress)</strong>
+            <span class="badge warn" id="m3Badge">pending</span>
           </div>
-          <div class="mini">Resuelve 4 sumas. Si te equivocas, intenta otra vez contando con calma.</div>
+          <div class="mini">Solve 4 additions. If you miss one, try again calmly.</div>
 
           <div class="two">
             <div>
               <label class="mini">a) 4 + 1 =</label>
-              <input inputmode="numeric" type="number" id="q1" placeholder="Respuesta" />
+              <input inputmode="numeric" type="number" id="q1" placeholder="Answer" />
             </div>
             <div>
               <label class="mini">b) 2 + 5 =</label>
-              <input inputmode="numeric" type="number" id="q2" placeholder="Respuesta" />
+              <input inputmode="numeric" type="number" id="q2" placeholder="Answer" />
             </div>
             <div>
               <label class="mini">c) 6 + 3 =</label>
-              <input inputmode="numeric" type="number" id="q3" placeholder="Respuesta" />
+              <input inputmode="numeric" type="number" id="q3" placeholder="Answer" />
             </div>
             <div>
               <label class="mini">d) 7 + 2 =</label>
-              <input inputmode="numeric" type="number" id="q4" placeholder="Respuesta" />
+              <input inputmode="numeric" type="number" id="q4" placeholder="Answer" />
             </div>
           </div>
 
           <div class="row">
-            <button class="good" id="checkM3">✅ Revisar</button>
+            <button class="good" id="checkM3">✅ Check</button>
             <button class="small" id="autoFillM3">🧪 Demo</button>
           </div>
-          <div class="msg" id="m3Msg">Meta: 3 o 4 correctas. Si no, no pasa nada: repetimos mañana.</div>
+          <div class="msg" id="m3Msg">Goal: 3 or 4 correct. If not, it’s okay—tomorrow we practice again.</div>
         </div>
 
       </div>
     </section>
 
-    <!-- LECTURA -->
-    <section class="card" aria-label="Lectura">
+    <!-- READING -->
+    <section class="card" aria-label="Reading">
       <div class="hd">
         <div>
-          <h2>📖 Lectura (11 minutos)</h2>
-          <div class="sub">Objetivo: leer 2 frases, resaltar palabras y responder 2 preguntas.</div>
+          <h2>📖 Reading (11 minutes)</h2>
+          <div class="sub">Goal: read 2 sentences, highlight words, and answer 2 questions.</div>
         </div>
-        <span class="badge" id="readBadge">En progreso</span>
+        <span class="badge" id="readBadge">In progress</span>
       </div>
       <div class="bd">
 
         <!-- Step R1 -->
         <div class="step" id="r1">
           <div class="step-title">
-            <strong>4) Juego de sonidos (inicio)</strong>
-            <span class="badge warn" id="r1Badge">pendiente</span>
+            <strong>4) Sound game (first sound)</strong>
+            <span class="badge warn" id="r1Badge">pending</span>
           </div>
-          <div class="mini">¿Con qué sonido empieza? Toca la letra correcta.</div>
+          <div class="mini">What sound does the word start with? Tap the correct letter.</div>
 
           <div class="step" style="margin:0;border-style:dashed;background:rgba(0,0,0,.10)">
             <div class="step-title">
-              <strong id="soundWord">Palabra: “mesa”</strong>
+              <strong id="soundWord">Word: “map”</strong>
               <span class="badge" id="soundRound">1/3</span>
             </div>
             <div class="row" id="soundChoices"></div>
-            <div class="msg" id="r1Msg">Tip: di la palabra lento: me-sa…</div>
+            <div class="msg" id="r1Msg">Tip: say it slowly.</div>
           </div>
         </div>
 
         <!-- Step R2 -->
         <div class="step" id="r2">
           <div class="step-title">
-            <strong>5) Leer frases cortas</strong>
-            <span class="badge warn" id="r2Badge">pendiente</span>
+            <strong>5) Read short sentences</strong>
+            <span class="badge warn" id="r2Badge">pending</span>
           </div>
 
-          <div class="mini">Toca una palabra para resaltarla. (Opcional: botón 🔊 para escuchar.)</div>
+          <div class="mini">Tap a word to highlight it. (Optional: turn on 🔊 to hear it.)</div>
 
-          <div class="textbox" id="readingBox" aria-label="texto de lectura"></div>
+          <div class="textbox" id="readingBox" aria-label="reading text"></div>
           <div class="row">
-            <button class="good" id="markR2">✅ Ya leí</button>
-            <button class="small" id="speakAll">🔊 Leer todo</button>
+            <button class="good" id="markR2">✅ I read it</button>
+            <button class="small" id="speakAll">🔊 Read all</button>
           </div>
-          <div class="hint">Texto de hoy: frases cortas con palabras fáciles.</div>
-          <div class="msg" id="r2Msg">Meta: leer despacio y claro, sin correr.</div>
+          <div class="hint">Today’s text: short sentences with easy words.</div>
+          <div class="msg" id="r2Msg">Goal: read slowly and clearly, without rushing.</div>
         </div>
 
         <!-- Step R3 -->
         <div class="step" id="r3">
           <div class="step-title">
-            <strong>6) Comprensión (2 preguntas)</strong>
-            <span class="badge warn" id="r3Badge">pendiente</span>
+            <strong>6) Comprehension (2 questions)</strong>
+            <span class="badge warn" id="r3Badge">pending</span>
           </div>
 
           <div class="two">
             <div>
-              <label class="mini" for="whoAns">¿Quién aparece en el texto?</label>
-              <input type="text" id="whoAns" placeholder="Ej: Ana" autocapitalize="words" />
+              <label class="mini" for="whoAns">Who is in the text?</label>
+              <input type="text" id="whoAns" placeholder="e.g., Ana" autocapitalize="words" />
             </div>
             <div>
-              <label class="mini" for="whatAns">¿Qué hace el gato?</label>
-              <input type="text" id="whatAns" placeholder="Ej: salta" autocapitalize="sentences" />
+              <label class="mini" for="whatAns">What does the cat do?</label>
+              <input type="text" id="whatAns" placeholder="e.g., jumps" autocapitalize="sentences" />
             </div>
           </div>
 
           <div class="row">
-            <button class="good" id="checkR3">✅ Revisar</button>
+            <button class="good" id="checkR3">✅ Check</button>
           </div>
-          <div class="msg" id="r3Msg">Tip: puedes responder con una palabra.</div>
+          <div class="msg" id="r3Msg">Tip: one word answers are fine.</div>
         </div>
 
         <!-- Step R4 -->
         <div class="step" id="r4">
           <div class="step-title">
-            <strong>7) Escritura corta (copia)</strong>
-            <span class="badge warn" id="r4Badge">pendiente</span>
+            <strong>7) Short writing (copy)</strong>
+            <span class="badge warn" id="r4Badge">pending</span>
           </div>
 
-          <div class="mini">Copia una frase. No importa si no queda perfecta.</div>
+          <div class="mini">Copy one sentence. It doesn’t have to be perfect.</div>
           <div class="msg" style="font-size:16px;color:var(--text);border-color:rgba(106,166,255,.35);background:rgba(106,166,255,.10)">
-            Frase para copiar: <b>El gato salta.</b>
+            Sentence to copy: <b>The cat jumps.</b>
           </div>
 
-          <label class="mini" for="copyAns">Escríbela aquí:</label>
-          <input type="text" id="copyAns" placeholder="El gato salta." autocapitalize="sentences" />
+          <label class="mini" for="copyAns">Type it here:</label>
+          <input type="text" id="copyAns" placeholder="The cat jumps." autocapitalize="sentences" />
 
           <div class="row">
-            <button class="good" id="markR4">✅ Listo</button>
+            <button class="good" id="markR4">✅ Done</button>
           </div>
-          <div class="msg" id="r4Msg">Meta: escribir con calma y letras claras.</div>
+          <div class="msg" id="r4Msg">Goal: write calmly and clearly.</div>
         </div>
 
       </div>
@@ -601,58 +601,57 @@
 
   </div>
 
-  <!-- RESUMEN -->
-  <section class="card" aria-label="Resumen final">
+  <!-- SUMMARY -->
+  <section class="card" aria-label="Daily summary">
     <div class="hd">
       <div>
-        <h2>⭐ Cierre (2 minutos)</h2>
-        <div class="sub">Revisamos progreso y celebramos lo logrado.</div>
+        <h2>⭐ Closing (2 minutes)</h2>
+        <div class="sub">We review progress and celebrate the effort.</div>
       </div>
-      <span class="badge" id="finalBadge">Listo cuando tú</span>
+      <span class="badge" id="finalBadge">Ready when you are</span>
     </div>
     <div class="bd">
       <div class="step" id="finalStep">
         <div class="step-title">
-          <strong>8) Resumen del día</strong>
-          <span class="badge warn" id="finalStepBadge">pendiente</span>
+          <strong>8) Today’s summary</strong>
+          <span class="badge warn" id="finalStepBadge">pending</span>
         </div>
 
         <div class="kpi">
           <div class="k">
-            <div class="label">Tiempo</div>
+            <div class="label">Time</div>
             <div class="val" id="kTime">00:00</div>
           </div>
           <div class="k">
-            <div class="label">Matemática</div>
+            <div class="label">Math</div>
             <div class="val" id="kMath">—</div>
           </div>
           <div class="k">
-            <div class="label">Lectura</div>
+            <div class="label">Reading</div>
             <div class="val" id="kRead">—</div>
           </div>
           <div class="k">
-            <div class="label">Progreso</div>
+            <div class="label">Progress</div>
             <div class="val" id="kProg">0/8</div>
           </div>
         </div>
 
-        <div class="msg" id="finalMsg">Cuando termines, toca “Generar resumen”.</div>
+        <div class="msg" id="finalMsg">When you’re finished, tap “Generate summary.”</div>
 
         <div class="row">
-          <button class="primary" id="genSummary">🧾 Generar resumen</button>
-          <button class="good" id="celebrate">🎉 Celebrar</button>
+          <button class="primary" id="genSummary">🧾 Generate summary</button>
+          <button class="good" id="celebrate">🎉 Celebrate</button>
         </div>
       </div>
 
       <div class="msg" style="margin-top:12px">
-        Consejo: si hoy se cansó, está bien. Lo importante es <b>constancia</b>: poquito cada día.
+        Tip: if they get tired today, that’s okay. The key is <b>consistency</b>: a little every day.
       </div>
     </div>
   </section>
 </main>
 
 <script>
-  // ===== Utilities =====
   const $ = (id) => document.getElementById(id);
 
   const state = {
@@ -660,18 +659,14 @@
     voice: false,
     seconds: 0,
     timer: null,
-    // coins
     coinsOn: 0,
     coinsAfter: 0,
-    // progress
     completed: new Set(),
-    // reading
-    readingText: "Ana ama a su gato. El gato salta.",
-    // sound game
+    readingText: "Ana loves her cat. The cat jumps.",
     soundRounds: [
-      { word: "mesa", correct: "m", choices: ["m","s","p"] },
-      { word: "sol",  correct: "s", choices: ["s","m","t"] },
-      { word: "casa", correct: "c", choices: ["c","l","n"] },
+      { word: "map",  correct: "m", choices: ["m","s","t"] },
+      { word: "sun",  correct: "s", choices: ["s","m","p"] },
+      { word: "cat",  correct: "c", choices: ["c","l","n"] },
     ],
     soundIndex: 0,
   };
@@ -682,7 +677,7 @@
     try{
       window.speechSynthesis.cancel();
       const u = new SpeechSynthesisUtterance(text);
-      u.lang = "es-ES"; // iOS escogerá una voz disponible
+      u.lang = "en-US";
       u.rate = 0.95;
       u.pitch = 1.05;
       window.speechSynthesis.speak(u);
@@ -703,34 +698,31 @@
 
   function completeStep(key, badgeId){
     state.completed.add(key);
-    if(badgeId) setBadge($(badgeId), "ok", "✅ listo");
+    if(badgeId) setBadge($(badgeId), "ok", "✅ done");
     updateProgress();
   }
 
   function updateProgress(){
     const total = 8;
     const done = state.completed.size;
-    $("progressText").textContent = `Progreso: ${done}/${total}`;
+    $("progressText").textContent = `Progress: ${done}/${total}`;
     $("bar").style.width = `${(done/total)*100}%`;
 
-    // math/read overall badges
     const mathDone = ["m1","m2","m3"].filter(k=>state.completed.has(k)).length;
     const readDone = ["r1","r2","r3","r4"].filter(k=>state.completed.has(k)).length;
 
-    setBadge($("mathBadge"), mathDone===3 ? "ok" : "", mathDone===3 ? "✅ Matemática lista" : "En progreso");
-    setBadge($("readBadge"), readDone===4 ? "ok" : "", readDone===4 ? "✅ Lectura lista" : "En progreso");
+    setBadge($("mathBadge"), mathDone===3 ? "ok" : "", mathDone===3 ? "✅ Math done" : "In progress");
+    setBadge($("readBadge"), readDone===4 ? "ok" : "", readDone===4 ? "✅ Reading done" : "In progress");
 
     $("kProg").textContent = `${done}/${total}`;
     $("kTime").textContent = fmtTime(state.seconds);
 
-    // final badge
     if(done===total){
-      setBadge($("finalBadge"), "ok", "✅ Día completado");
-      setBadge($("finalStepBadge"), "ok", "✅ listo");
+      setBadge($("finalBadge"), "ok", "✅ Day complete");
+      setBadge($("finalStepBadge"), "ok", "✅ done");
     }
   }
 
-  // ===== Timer =====
   function startTimer(){
     if(state.timer) return;
     state.timer = setInterval(()=>{
@@ -745,7 +737,7 @@
     state.timer = null;
   }
 
-  // ===== Coins =====
+  // Coins
   function renderCoins(total=0){
     const area = $("coinsArea");
     area.innerHTML = "";
@@ -794,10 +786,10 @@
     }
   }
 
-  // ===== Sound game =====
+  // Sound game
   function renderSoundRound(){
     const round = state.soundRounds[state.soundIndex];
-    $("soundWord").textContent = `Palabra: “${round.word}”`;
+    $("soundWord").textContent = `Word: “${round.word}”`;
     $("soundRound").textContent = `${state.soundIndex+1}/3`;
     const choices = $("soundChoices");
     choices.innerHTML = "";
@@ -807,35 +799,35 @@
       b.textContent = ch.toUpperCase();
       b.addEventListener("click", ()=>{
         if(ch===round.correct){
-          setBadge($("r1Badge"), "ok", "✅ listo");
+          setBadge($("r1Badge"), "ok", "✅ done");
           $("r1Msg").className = "msg ok";
-          $("r1Msg").textContent = `¡Bien! “${round.word}” empieza con ${ch.toUpperCase()}.`;
-          speak(`Bien. ${round.word}. Empieza con ${ch}.`);
+          $("r1Msg").textContent = `Great! “${round.word}” starts with ${ch.toUpperCase()}.`;
+          speak(`Great. ${round.word}. Starts with ${ch}.`);
           state.soundIndex++;
           if(state.soundIndex < state.soundRounds.length){
             setTimeout(()=>{
               $("r1Msg").className = "msg";
-              $("r1Msg").textContent = "Siguiente palabra…";
+              $("r1Msg").textContent = "Next word…";
               renderSoundRound();
               $("r1Msg").className = "msg";
-              $("r1Msg").textContent = "Tip: di la palabra lento.";
+              $("r1Msg").textContent = "Tip: say it slowly.";
             }, 600);
           }else{
             completeStep("r1", "r1Badge");
             $("r1Msg").className = "msg ok";
-            $("r1Msg").textContent = "¡Listo! Terminaste el juego de sonidos.";
+            $("r1Msg").textContent = "Done! You finished the sound game.";
           }
         }else{
           $("r1Msg").className = "msg bad";
-          $("r1Msg").textContent = "Casi. Intenta otra vez: di la palabra lento.";
-          speak("Intenta otra vez.");
+          $("r1Msg").textContent = "Almost. Try again—say the word slowly.";
+          speak("Try again.");
         }
       });
       choices.appendChild(b);
     });
   }
 
-  // ===== Reading box =====
+  // Reading box
   function renderReading(){
     const box = $("readingBox");
     box.innerHTML = "";
@@ -847,7 +839,6 @@
       span.addEventListener("click", ()=>{
         [...box.querySelectorAll(".word")].forEach(x=>x.classList.remove("active"));
         span.classList.add("active");
-        // clean punctuation for speech
         const clean = w.replace(/[.,;:!?]/g,"");
         speak(clean);
       });
@@ -855,29 +846,26 @@
     });
   }
 
-  // ===== Checks =====
+  // Checks
   function checkM1(){
-    // Expectation: if they pressed set6 then add2, typical is 6 then 8.
-    // But we will validate based on actual coinsOn at the moment plus remembering "after" meaning 8 if they used +2 after 6.
-    // For simplicity: if coinsOn is 6 and they used +2, we expect 8 in total. We track "coinsAfter" as 8 when they hit +2.
     const v1 = Number($("countOn").value);
     const v2 = Number($("countTotal").value);
 
-    const expectedOn = state.coinsAfter ? (state.coinsAfter - 2) : state.coinsOn; // if used +2, before = total-2
+    const expectedOn = state.coinsAfter ? (state.coinsAfter - 2) : state.coinsOn;
     const expectedTotal = state.coinsAfter || state.coinsOn;
 
-    let ok1 = (v1 === expectedOn);
-    let ok2 = (v2 === expectedTotal);
+    const ok1 = (v1 === expectedOn);
+    const ok2 = (v2 === expectedTotal);
 
     if(ok1 && ok2){
       $("m1Msg").className = "msg ok";
-      $("m1Msg").textContent = "¡Perfecto! Contaste bien antes y después. ✅";
-      speak("Perfecto. Contaste bien.");
+      $("m1Msg").textContent = "Perfect! You counted correctly before and after. ✅";
+      speak("Perfect. You counted correctly.");
       completeStep("m1", "m1Badge");
     }else{
       $("m1Msg").className = "msg bad";
-      $("m1Msg").textContent = "Casi. Cuenta despacio las monedas encendidas. Luego agrega y vuelve a contar.";
-      speak("Casi. Cuenta despacio.");
+      $("m1Msg").textContent = "Almost. Count the ON coins slowly. Then add and count again.";
+      speak("Almost. Count slowly.");
     }
   }
 
@@ -885,13 +873,13 @@
     const v = Number($("m2Ans").value);
     if(v===5){
       $("m2Msg").className = "msg ok";
-      $("m2Msg").textContent = "¡Bien! 3 + 2 = 5. ✅";
-      speak("Bien. Tres más dos es cinco.");
+      $("m2Msg").textContent = "Nice! 3 + 2 = 5. ✅";
+      speak("Nice. Three plus two is five.");
       completeStep("m2", "m2Badge");
     }else{
       $("m2Msg").className = "msg bad";
-      $("m2Msg").textContent = "Intenta otra vez: cuenta 3… y sigue 4,5…";
-      speak("Intenta otra vez.");
+      $("m2Msg").textContent = "Try again: count 3… then 4,5…";
+      speak("Try again.");
     }
   }
 
@@ -904,20 +892,20 @@
 
     if(score>=3){
       $("m3Msg").className = "msg ok";
-      $("m3Msg").textContent = `¡Muy bien! Correctas: ${score}/4. ✅`;
-      speak("Muy bien.");
+      $("m3Msg").textContent = `Great job! Correct: ${score}/4. ✅`;
+      speak("Great job.");
       completeStep("m3", "m3Badge");
     }else{
       $("m3Msg").className = "msg bad";
-      $("m3Msg").textContent = `Salieron ${score}/4. Está bien. Vuelve a contar con calma y prueba de nuevo.`;
-      speak("Está bien. Probemos otra vez.");
+      $("m3Msg").textContent = `You got ${score}/4. That's okay. Count calmly and try again.`;
+      speak("That's okay. Try again.");
     }
   }
 
   function markR2(){
     $("r2Msg").className = "msg ok";
-    $("r2Msg").textContent = "✅ Marcado como leído. ¡Buen trabajo!";
-    speak("Buen trabajo leyendo.");
+    $("r2Msg").textContent = "✅ Marked as read. Nice work!";
+    speak("Nice reading.");
     completeStep("r2", "r2Badge");
   }
 
@@ -925,19 +913,18 @@
     const who = ($("whoAns").value || "").toLowerCase().trim();
     const what = ($("whatAns").value || "").toLowerCase().trim();
 
-    // Expected: Ana and salta (allow variations)
     const whoOk = who.includes("ana");
-    const whatOk = what.includes("salta") || what.includes("salto") || what.includes("saltar");
+    const whatOk = what.includes("jump");
 
     if(whoOk && whatOk){
       $("r3Msg").className = "msg ok";
-      $("r3Msg").textContent = "¡Excelente! Entendiste lo que leíste. ✅";
-      speak("Excelente. Entendiste.");
+      $("r3Msg").textContent = "Excellent! You understood what you read. ✅";
+      speak("Excellent. You understood.");
       completeStep("r3", "r3Badge");
     }else{
       $("r3Msg").className = "msg bad";
-      $("r3Msg").textContent = "Revisa el texto y prueba otra vez. (Pista: Ana y el gato.)";
-      speak("Revisa el texto.");
+      $("r3Msg").textContent = "Check the text and try again. (Hint: Ana and the cat.)";
+      speak("Check the text.");
     }
   }
 
@@ -945,13 +932,13 @@
     const t = ($("copyAns").value || "").trim();
     if(t.length < 6){
       $("r4Msg").className = "msg bad";
-      $("r4Msg").textContent = "Escribe la frase (o una parte) y toca ✅ Listo.";
-      speak("Escribe un poquito más.");
+      $("r4Msg").textContent = "Type the sentence (or part of it), then tap ✅ Done.";
+      speak("Write a bit more.");
       return;
     }
     $("r4Msg").className = "msg ok";
-    $("r4Msg").textContent = "✅ ¡Listo! Excelente esfuerzo escribiendo.";
-    speak("Excelente esfuerzo.");
+    $("r4Msg").textContent = "✅ Done! Great effort writing.";
+    speak("Great effort.");
     completeStep("r4", "r4Badge");
   }
 
@@ -964,26 +951,23 @@
     $("kMath").textContent = `${mathDone}/3`;
     $("kRead").textContent = `${readDone}/4`;
 
-    let msg = `Hoy completaste ${done}/${total}. `;
-    if(mathDone===3) msg += "Matemática ✅. ";
-    else msg += "Matemática: seguimos mañana. ";
-    if(readDone===4) msg += "Lectura ✅. ";
-    else msg += "Lectura: vamos paso a paso. ";
+    let msg = `Today you completed ${done}/${total}. `;
+    msg += (mathDone===3) ? "Math ✅. " : "Math: we’ll keep practicing. ";
+    msg += (readDone===4) ? "Reading ✅. " : "Reading: step by step. ";
+    msg += "Final question: What felt easiest today?";
 
-    msg += "Pregunta final: ¿Qué fue lo más fácil hoy?";
     $("finalMsg").className = "msg ok";
     $("finalMsg").textContent = msg;
 
-    completeStep("final", "finalStepBadge"); // counts as step 8 when summary generated
-    speak("Resumen listo. Buen trabajo hoy.");
+    completeStep("final", "finalStepBadge");
+    speak("Summary ready. Great work today.");
   }
 
   function celebrate(){
-    $("statusText").textContent = "🎉 ¡Buen trabajo! Mañana hacemos otro poquito.";
-    speak("Buen trabajo. Mañana seguimos.");
+    $("statusText").textContent = "🎉 Great job! Tomorrow we do a little more.";
+    speak("Great job. See you tomorrow.");
   }
 
-  // ===== Wire UI =====
   function resetAll(){
     stopTimer();
     state.started = false;
@@ -991,48 +975,45 @@
     $("timerChip").textContent = "⏱️ 00:00";
     state.completed.clear();
     updateProgress();
-    $("statusText").textContent = "Tip: toque una palabra para resaltarla y (opcional) escucharla.";
+    $("statusText").textContent = "Tip: tap a word to highlight it and (optional) hear it.";
 
-    // reset badges & messages
     ["m1Badge","m2Badge","m3Badge","r1Badge","r2Badge","r3Badge","r4Badge","finalStepBadge"].forEach(id=>{
-      setBadge($(id), "warn", "pendiente");
+      setBadge($(id), "warn", "pending");
     });
-    $("mathBadge").textContent = "En progreso";
-    $("readBadge").textContent = "En progreso";
-    $("finalBadge").textContent = "Listo cuando tú";
+    $("mathBadge").textContent = "In progress";
+    $("readBadge").textContent = "In progress";
+    $("finalBadge").textContent = "Ready when you are";
 
-    $("m1Msg").className = "msg"; $("m1Msg").textContent = "Meta: contar bien y entender “antes” y “después”.";
-    $("m2Msg").className = "msg"; $("m2Msg").textContent = "Tip: si dudas, cuenta: 1,2,3… y sigue 4,5…";
-    $("m3Msg").className = "msg"; $("m3Msg").textContent = "Meta: 3 o 4 correctas. Si no, no pasa nada: repetimos mañana.";
-    $("r1Msg").className = "msg"; $("r1Msg").textContent = "Tip: di la palabra lento: me-sa…";
-    $("r2Msg").className = "msg"; $("r2Msg").textContent = "Meta: leer despacio y claro, sin correr.";
-    $("r3Msg").className = "msg"; $("r3Msg").textContent = "Tip: puedes responder con una palabra.";
-    $("r4Msg").className = "msg"; $("r4Msg").textContent = "Meta: escribir con calma y letras claras.";
-    $("finalMsg").className = "msg"; $("finalMsg").textContent = "Cuando termines, toca “Generar resumen”.";
+    $("m1Msg").className = "msg"; $("m1Msg").textContent = "Goal: count accurately “before” and “after.”";
+    $("m2Msg").className = "msg"; $("m2Msg").textContent = "Tip: if unsure, count: 1,2,3… then 4,5…";
+    $("m3Msg").className = "msg"; $("m3Msg").textContent = "Goal: 3 or 4 correct. If not, it’s okay—tomorrow we practice again.";
+    $("r1Msg").className = "msg"; $("r1Msg").textContent = "Tip: say it slowly.";
+    $("r2Msg").className = "msg"; $("r2Msg").textContent = "Goal: read slowly and clearly, without rushing.";
+    $("r3Msg").className = "msg"; $("r3Msg").textContent = "Tip: one word answers are fine.";
+    $("r4Msg").className = "msg"; $("r4Msg").textContent = "Goal: write calmly and clearly.";
+    $("finalMsg").className = "msg"; $("finalMsg").textContent = "When you’re finished, tap “Generate summary.”";
 
-    // inputs
     ["countOn","countTotal","m2Ans","q1","q2","q3","q4","whoAns","whatAns","copyAns"].forEach(id=>{
       $(id).value = "";
     });
 
-    // coins default
     state.coinsOn = 0;
     state.coinsAfter = 0;
     renderCoins(10);
     setCoinsOn(0);
 
-    // sound
     state.soundIndex = 0;
     renderSoundRound();
+
+    renderReading();
   }
 
   $("startBtn").addEventListener("click", ()=>{
     if(!state.started){
       state.started = true;
       startTimer();
-      $("statusText").textContent = "✅ Empezamos. Primero: monedas (Matemática).";
-      speak("Empezamos. Primero monedas.");
-      // set initial coins to 6 to make it easier
+      $("statusText").textContent = "✅ Starting! First: coins (Math).";
+      speak("Starting. First coins.");
       setCoinsOn(6);
       state.coinsAfter = 0;
     }
@@ -1042,63 +1023,56 @@
 
   $("toggleVoiceBtn").addEventListener("click", ()=>{
     state.voice = !state.voice;
-    $("toggleVoiceBtn").textContent = state.voice ? "🔊 Voz: ON" : "🔊 Voz: OFF";
+    $("toggleVoiceBtn").textContent = state.voice ? "🔊 Voice: ON" : "🔊 Voice: OFF";
     $("statusText").textContent = state.voice
-      ? "Voz activada. (Si el iPad lo permite, leerá palabras y mensajes.)"
-      : "Voz desactivada.";
-    if(state.voice) speak("Voz activada.");
+      ? "Voice on. (If supported, it will read words and messages.)"
+      : "Voice off.";
+    if(state.voice) speak("Voice on.");
   });
 
-  // Coins controls
   $("coinsSet6").addEventListener("click", ()=>{
     setCoinsOn(6);
     state.coinsAfter = 0;
-    $("statusText").textContent = "Cuenta las 6 monedas encendidas y escribe el número.";
-    speak("Cuenta las monedas.");
+    $("statusText").textContent = "Count the 6 ON coins and type the number.";
+    speak("Count the coins.");
   });
   $("coinsAdd2").addEventListener("click", ()=>{
-    // ensure there are at least 8 coins visible
     addCoins(2);
-    state.coinsAfter = state.coinsOn; // total after
-    $("statusText").textContent = "Ahora cuenta el total después de agregar 2.";
-    speak("Ahora cuenta el total.");
+    state.coinsAfter = state.coinsOn;
+    $("statusText").textContent = "Now count the total after adding 2.";
+    speak("Now count the total.");
   });
   $("coinsClear").addEventListener("click", ()=>{
     setCoinsOn(0);
     state.coinsAfter = 0;
-    $("statusText").textContent = "Ok. Empecemos de nuevo con monedas.";
+    $("statusText").textContent = "Okay. Let’s start again with coins.";
   });
 
-  // Checks
   $("checkM1").addEventListener("click", checkM1);
   $("checkM2").addEventListener("click", checkM2);
   $("hintM2").addEventListener("click", ()=>{
     $("m2Msg").className = "msg";
-    $("m2Msg").textContent = "Pista: cuenta 3… (1,2,3) y luego suma 2 más: 4,5.";
-    speak("Pista. Cuatro, cinco.");
+    $("m2Msg").textContent = "Hint: count 3… (1,2,3) then add 2 more: 4,5.";
+    speak("Hint. Four. Five.");
   });
   $("checkM3").addEventListener("click", checkM3);
   $("autoFillM3").addEventListener("click", ()=>{
     $("q1").value = 5; $("q2").value = 7; $("q3").value = 9; $("q4").value = 9;
   });
 
-  // Reading
   $("markR2").addEventListener("click", markR2);
   $("speakAll").addEventListener("click", ()=> speak(state.readingText));
-  $("checkR3").addEventListener("click", checkRR3 = checkR3);
+  $("checkR3").addEventListener("click", checkR3);
   $("markR4").addEventListener("click", markR4);
 
-  // Summary
   $("genSummary").addEventListener("click", genSummary);
   $("celebrate").addEventListener("click", celebrate);
 
-  // Initialize content
   renderCoins(10);
   renderReading();
   renderSoundRound();
   resetAll();
 
-  // Improve iOS keyboard behavior: dismiss on Enter
   document.addEventListener("keydown", (e)=>{
     if(e.key === "Enter"){
       const el = document.activeElement;
@@ -1108,3 +1082,4 @@
 </script>
 </body>
 </html>
+
