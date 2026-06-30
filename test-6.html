@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Spider-Man Hero Academy Test</title>
+  <style>
+    :root {
+      --red: #e11d2e;
+      --blue: #1746a2;
+      --dark: #111827;
+      --light: #f8fafc;
+      --yellow: #facc15;
+      --green: #22c55e;
+      --gray: #e5e7eb;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(225,29,46,.25), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(23,70,162,.30), transparent 35%),
+        linear-gradient(135deg, #0f172a, #1e293b);
+      color: var(--dark);
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      background: white;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 25px 70px rgba(0,0,0,.35);
+    }
+
+    header {
+      background:
+        linear-gradient(135deg, rgba(225,29,46,.95), rgba(23,70,162,.95)),
+        repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,.08) 10px, rgba(255,255,255,.08) 12px);
+      color: white;
+      padding: 36px 24px;
+      text-align: center;
+      position: relative;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: clamp(30px, 5vw, 56px);
+      letter-spacing: 1px;
+      text-shadow: 3px 3px 0 rgba(0,0,0,.25);
+    }
+
+    header p {
+      font-size: 19px;
+      margin: 12px auto 0;
+      max-width: 780px;
+      line-height: 1.5;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--yellow);
+      color: #111827;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-weight: 800;
+      margin-bottom: 14px;
+      box-shadow: 0 4px 0 rgba(0,0,0,.25);
+    }
+
+    .content {
+      padding: 24px;
+    }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .stat {
+      background: #f1f5f9;
+      border: 2px solid #dbeafe;
+      border-radius: 16px;
+      padding: 14px;
+      text-align: center;
+      font-weight: 800;
+    }
+
+    .stat span {
+      display: block;
+      font-size: 28px;
+      color: var(--blue);
+      margin-top: 4px;
+    }
+
+    .progress-wrap {
+      background: #e5e7eb;
+      border-radius: 999px;
+      height: 18px;
+      overflow: hidden;
+      margin: 15px 0 28px;
+    }
+
+    .progress-bar {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--red), var(--blue));
+      transition: width .35s ease;
+    }
+
+    .mission {
+      margin: 32px 0;
+      border: 3px solid #111827;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 8px 8px 0 #111827;
+    }
+
+    .mission-title {
+      background: var(--dark);
+      color: white;
+      padding: 16px 18px;
+      font-size: 22px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .mission-title span {
+      background: var(--yellow);
+      color: #111827;
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    .story {
+      background: #fff7ed;
+      padding: 22px;
+      font-size: 18px;
+      line-height: 1.65;
+      border-bottom: 3px solid #111827;
+    }
+
+    .comic-note {
+      background: white;
+      border: 2px dashed var(--red);
+      padding: 12px;
+      border-radius: 14px;
+      margin-top: 14px;
+      font-weight: 700;
+    }
+
+    .question {
+      margin: 18px;
+      padding: 18px;
+      border-radius: 16px;
+      background: #f8fafc;
+      border: 2px solid #e5e7eb;
+      transition: .2s ease;
+    }
+
+    .question p {
+      margin-top: 0;
+      font-weight: 900;
+      font-size: 18px;
+    }
+
+    label {
+      display: block;
+      padding: 10px 12px;
+      margin: 8px 0;
+      border-radius: 12px;
+      background: white;
+      border: 2px solid #e5e7eb;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    label:hover {
+      border-color: var(--blue);
+      background: #eff6ff;
+    }
+
+    input[type="radio"] {
+      margin-right: 8px;
+    }
+
+    .correct {
+      background: #ecfdf5;
+      border-color: var(--green);
+    }
+
+    .incorrect {
+      background: #fef2f2;
+      border-color: var(--red);
+    }
+
+    .math-card {
+      background: #eef2ff;
+      border-left: 8px solid var(--blue);
+      padding: 14px;
+      border-radius: 14px;
+      font-size: 20px;
+      font-weight: 900;
+      margin: 10px 0;
+    }
+
+    .height-box {
+      font-family: monospace;
+      background: #111827;
+      color: #facc15;
+      padding: 14px;
+      border-radius: 14px;
+      display: inline-block;
+      line-height: 1.35;
+      margin: 10px 0;
+      white-space: pre;
+      font-size: 17px;
+    }
+
+    .button-row {
+      text-align: center;
+      padding: 22px;
+    }
+
+    button {
+      background: linear-gradient(135deg, var(--red), var(--blue));
+      color: white;
+      border: none;
+      padding: 16px 28px;
+      border-radius: 999px;
+      font-size: 20px;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 8px 0 #111827;
+      transition: transform .1s ease, box-shadow .1s ease;
+    }
+
+    button:hover {
+      transform: translateY(2px);
+      box-shadow: 0 6px 0 #111827;
+    }
+
+    button:active {
+      transform: translateY(6px);
+      box-shadow: 0 2px 0 #111827;
+    }
+
+    .result {
+      display: none;
+      margin: 28px 0 10px;
+      padding: 24px;
+      border-radius: 20px;
+      background: #ecfeff;
+      border: 4px solid var(--blue);
+      box-shadow: 8px 8px 0 #111827;
+    }
+
+    .result h2 {
+      font-size: 32px;
+      color: var(--red);
+      margin-top: 0;
+    }
+
+    .score-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin: 18px 0;
+    }
+
+    .score-box {
+      background: white;
+      border: 2px solid #dbeafe;
+      border-radius: 16px;
+      padding: 14px;
+      text-align: center;
+      font-weight: 900;
+    }
+
+    .score-box strong {
+      display: block;
+      font-size: 26px;
+      color: var(--blue);
+      margin-top: 6px;
+    }
+
+    .rank {
+      background: #111827;
+      color: white;
+      padding: 16px;
+      border-radius: 16px;
+      font-size: 22px;
+      font-weight: 900;
+      margin-top: 16px;
+      text-align: center;
+    }
+
+    .review {
+      background: white;
+      border-radius: 16px;
+      padding: 16px;
+      margin-top: 16px;
+      line-height: 1.6;
+    }
+
+    .footer-note {
+      text-align: center;
+      font-size: 13px;
+      color: #64748b;
+      margin-top: 25px;
+    }
+
+    @media (max-width: 750px) {
+      .dashboard, .score-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .mission-title {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .content {
+        padding: 16px;
+      }
+
+      .mission {
+        box-shadow: 4px 4px 0 #111827;
+      }
+    }
+
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+      .container {
+        box-shadow: none;
+      }
+      button, .progress-wrap {
+        display: none;
+      }
+      .mission {
+        box-shadow: none;
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="badge">🕷 HERO ACADEMY</div>
+      <h1>Spider-Man Reading & Math Mission</h1>
+      <p>
+        Welcome, hero! Read each mission carefully, solve the challenges, and help Spider-Man protect the city.
+      </p>
+    </header>
+
+    <div class="content">
+      <div class="dashboard">
+        <div class="stat">Reading Questions <span>15</span></div>
+        <div class="stat">Math Questions <span>15</span></div>
+        <div class="stat">Total Questions <span>30</span></div>
+      </div>
+
+      <div class="progress-wrap">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+
+      <form id="quizForm">
+
+        <section class="mission">
+          <div class="mission-title">Mission 1: The Lost Backpack <span>Reading</span></div>
+          <div class="story">
+            Spider-Man was swinging through the city when he saw a red backpack sitting alone on a park bench.
+            He looked around, but nobody was nearby.
+            Inside the backpack, he found a lunchbox, a library book, and a student ID that said <strong>Emma</strong>.
+            At the same time, Spider-Man heard police sirens. A small robbery was happening a few blocks away.
+            Spider-Man had to make a quick decision. He gave the backpack to a nearby police officer and rushed away to help.
+            Later that afternoon, Emma came to the police station. When the officer returned the backpack, Emma smiled and said,
+            “Thank you! I thought I had lost it forever.”
+            <div class="comic-note">Hero Clue: Good heroes are brave, but they are also responsible.</div>
+          </div>
+
+          <div class="question" id="q1box">
+            <p>1. What did Spider-Man find?</p>
+            <label><input type="radio" name="q1" value="a"> A bicycle</label>
+            <label><input type="radio" name="q1" value="b"> A red backpack</label>
+            <label><input type="radio" name="q1" value="c"> A skateboard</label>
+          </div>
+
+          <div class="question" id="q2box">
+            <p>2. How did Spider-Man know the backpack belonged to Emma?</p>
+            <label><input type="radio" name="q2" value="a"> He saw her student ID.</label>
+            <label><input type="radio" name="q2" value="b"> He guessed.</label>
+            <label><input type="radio" name="q2" value="c"> A dog told him.</label>
+          </div>
+
+          <div class="question" id="q3box">
+            <p>3. Why did Spider-Man give the backpack to the police officer?</p>
+            <label><input type="radio" name="q3" value="a"> So the owner could get it back safely.</label>
+            <label><input type="radio" name="q3" value="b"> So he could keep it later.</label>
+            <label><input type="radio" name="q3" value="c"> Because he did not like backpacks.</label>
+          </div>
+
+          <div class="question" id="q4box">
+            <p>4. What problem happened at the same time?</p>
+            <label><input type="radio" name="q4" value="a"> It started snowing.</label>
+            <label><input type="radio" name="q4" value="b"> A robbery was happening nearby.</label>
+            <label><input type="radio" name="q4" value="c"> Spider-Man lost his shoe.</label>
+          </div>
+
+          <div class="question" id="q5box">
+            <p>5. Which word best describes Spider-Man in this story?</p>
+            <label><input type="radio" name="q5" value="a"> Honest</label>
+            <label><input type="radio" name="q5" value="b"> Careless</label>
+            <label><input type="radio" name="q5" value="c"> Lazy</label>
+          </div>
+
+          <div class="question" id="q6box">
+            <p>6. What might have happened if Spider-Man ignored the backpack?</p>
+            <label><input type="radio" name="q6" value="a"> Emma might not get it back.</label>
+            <label><input type="radio" name="q6" value="b"> It would turn into a balloon.</label>
+            <label><input type="radio" name="q6" value="c"> The backpack would walk home.</label>
+          </div>
+
+          <div class="question" id="q7box">
+            <p>7. What is the best lesson from Mission 1?</p>
+            <label><input type="radio" name="q7" value="a"> Keep things that you find.</label>
+            <label><input type="radio" name="q7" value="b"> Helping others is the right thing to do.</label>
+            <label><input type="radio" name="q7" value="c"> Never go to a park.</label>
+          </div>
+        </section>
+
+        <section class="mission">
+          <div class="mission-title">Mission 2: The School Garden <span>Reading</span></div>
+          <div class="story">
+            One morning, Spider-Man visited a school garden. The students had planted flowers and vegetables.
+            Each day, they gave the plants a little water and made sure they had sunlight.
+            A student named Ben wanted to help even more. He poured five buckets of water onto one tiny plant.
+            Soon, the soil became too wet. Spider-Man smiled and said,
+            “Plants need water, sunlight, and care. But too much of one thing can hurt them.”
+            Ben nodded. The next day, he used only a small cup of water. A week later, the little plant had new green leaves.
+            <div class="comic-note">Hero Clue: Helping is great, but smart helping means understanding what is needed.</div>
+          </div>
+
+          <div class="question" id="q8box">
+            <p>8. Where did Mission 2 happen?</p>
+            <label><input type="radio" name="q8" value="a"> At a school garden</label>
+            <label><input type="radio" name="q8" value="b"> On the moon</label>
+            <label><input type="radio" name="q8" value="c"> In a toy store</label>
+          </div>
+
+          <div class="question" id="q9box">
+            <p>9. What did Ben do?</p>
+            <label><input type="radio" name="q9" value="a"> He gave one plant too much water.</label>
+            <label><input type="radio" name="q9" value="b"> He stepped on the flowers.</label>
+            <label><input type="radio" name="q9" value="c"> He took the plant home.</label>
+          </div>
+
+          <div class="question" id="q10box">
+            <p>10. Why did the soil become too wet?</p>
+            <label><input type="radio" name="q10" value="a"> It rained candy.</label>
+            <label><input type="radio" name="q10" value="b"> Ben poured five buckets of water.</label>
+            <label><input type="radio" name="q10" value="c"> The sun was too hot.</label>
+          </div>
+
+          <div class="question" id="q11box">
+            <p>11. Was Ben trying to help?</p>
+            <label><input type="radio" name="q11" value="a"> Yes, but he needed to learn how.</label>
+            <label><input type="radio" name="q11" value="b"> No, he wanted to hurt the plant.</label>
+            <label><input type="radio" name="q11" value="c"> No, he was asleep.</label>
+          </div>
+
+          <div class="question" id="q12box">
+            <p>12. What do plants need, according to the story?</p>
+            <label><input type="radio" name="q12" value="a"> Water, sunlight, and care</label>
+            <label><input type="radio" name="q12" value="b"> Shoes, toys, and backpacks</label>
+            <label><input type="radio" name="q12" value="c"> Pizza and comic books</label>
+          </div>
+
+          <div class="question" id="q13box">
+            <p>13. What did Ben do the next day?</p>
+            <label><input type="radio" name="q13" value="a"> He used a small cup of water.</label>
+            <label><input type="radio" name="q13" value="b"> He poured ten buckets of water.</label>
+            <label><input type="radio" name="q13" value="c"> He stopped caring about the plant.</label>
+          </div>
+
+          <div class="question" id="q14box">
+            <p>14. What probably helped the plant grow new leaves?</p>
+            <label><input type="radio" name="q14" value="a"> Better care and the right amount of water</label>
+            <label><input type="radio" name="q14" value="b"> Too much water every day</label>
+            <label><input type="radio" name="q14" value="c"> No sunlight</label>
+          </div>
+
+          <div class="question" id="q15box">
+            <p>15. What is the best lesson from Mission 2?</p>
+            <label><input type="radio" name="q15" value="a"> More is always better.</label>
+            <label><input type="radio" name="q15" value="b"> Good helpers listen and learn.</label>
+            <label><input type="radio" name="q15" value="c"> Plants do not need water.</label>
+          </div>
+        </section>
+
+        <section class="mission">
+          <div class="mission-title">Mission 3: Web Math Challenges <span>Math</span></div>
+
+          <div class="question" id="q16box">
+            <p>16. Spider-Man rescued 8 people. Then he rescued 7 more. How many people did he rescue altogether?</p>
+            <div class="math-card">8 + 7 = ?</div>
+            <label><input type="radio" name="q16" value="a"> 14</label>
+            <label><input type="radio" name="q16" value="b"> 15</label>
+            <label><input type="radio" name="q16" value="c"> 16</label>
+          </div>
+
+          <div class="question" id="q17box">
+            <p>17. Spider-Man collected 9 web cartridges and then found 6 more. How many does he have?</p>
+            <div class="math-card">9 + 6 = ?</div>
+            <label><input type="radio" name="q17" value="a"> 13</label>
+            <label><input type="radio" name="q17" value="b"> 14</label>
+            <label><input type="radio" name="q17" value="c"> 15</label>
+          </div>
+
+          <div class="question" id="q18box">
+            <p>18. Spider-Man had 18 web cartridges. He used 7. How many are left?</p>
+            <div class="math-card">18 - 7 = ?</div>
+            <label><input type="radio" name="q18" value="a"> 9</label>
+            <label><input type="radio" name="q18" value="b"> 10</label>
+            <label><input type="radio" name="q18" value="c"> 11</label>
+          </div>
+
+          <div class="question" id="q19box">
+            <p>19. Spider-Man caught 15 robots. Three rolled away. How many robots are still caught?</p>
+            <div class="math-card">15 - 3 = ?</div>
+            <label><input type="radio" name="q19" value="a"> 11</label>
+            <label><input type="radio" name="q19" value="b"> 12</label>
+            <label><input type="radio" name="q19" value="c"> 13</label>
+          </div>
+
+          <div class="question" id="q20box">
+            <p>20. Spider-Man saved 4 buses. Each bus had 3 children. How many children did he save?</p>
+            <div class="math-card">4 × 3 = ?</div>
+            <label><input type="radio" name="q20" value="a"> 7</label>
+            <label><input type="radio" name="q20" value="b"> 12</label>
+            <label><input type="radio" name="q20" value="c"> 14</label>
+          </div>
+
+          <div class="question" id="q21box">
+            <p>21. Spider-Man shot 5 webs. Each web caught 2 robots. How many robots were caught?</p>
+            <div class="math-card">5 × 2 = ?</div>
+            <label><input type="radio" name="q21" value="a"> 7</label>
+            <label><input type="radio" name="q21" value="b"> 10</label>
+            <label><input type="radio" name="q21" value="c"> 12</label>
+          </div>
+
+          <div class="question" id="q22box">
+            <p>22. Spider-Man has 12 web cartridges. He puts them equally into 3 pockets. How many go in each pocket?</p>
+            <div class="math-card">12 ÷ 3 = ?</div>
+            <label><input type="radio" name="q22" value="a"> 3</label>
+            <label><input type="radio" name="q22" value="b"> 4</label>
+            <label><input type="radio" name="q22" value="c"> 5</label>
+          </div>
+
+          <div class="question" id="q23box">
+            <p>23. Spider-Man has 16 energy bars. He shares them equally with 4 heroes. How many bars does each hero get?</p>
+            <div class="math-card">16 ÷ 4 = ?</div>
+            <label><input type="radio" name="q23" value="a"> 2</label>
+            <label><input type="radio" name="q23" value="b"> 3</label>
+            <label><input type="radio" name="q23" value="c"> 4</label>
+          </div>
+
+          <div class="question" id="q24box">
+            <p>24. Choose the correct sign.</p>
+            <div class="math-card">12 ___ 9</div>
+            <label><input type="radio" name="q24" value="a"> &gt;</label>
+            <label><input type="radio" name="q24" value="b"> &lt;</label>
+            <label><input type="radio" name="q24" value="c"> =</label>
+          </div>
+
+          <div class="question" id="q25box">
+            <p>25. Choose the correct sign.</p>
+            <div class="math-card">7 ___ 7</div>
+            <label><input type="radio" name="q25" value="a"> &gt;</label>
+            <label><input type="radio" name="q25" value="b"> &lt;</label>
+            <label><input type="radio" name="q25" value="c"> =</label>
+          </div>
+
+          <div class="question" id="q26box">
+            <p>26. Choose the correct sign.</p>
+            <div class="math-card">6 ___ 15</div>
+            <label><input type="radio" name="q26" value="a"> &gt;</label>
+            <label><input type="radio" name="q26" value="b"> &lt;</label>
+            <label><input type="radio" name="q26" value="c"> =</label>
+          </div>
+
+          <div class="question" id="q27box">
+            <p>27. Which number is greatest?</p>
+            <label><input type="radio" name="q27" value="a"> 14</label>
+            <label><input type="radio" name="q27" value="b"> 19</label>
+            <label><input type="radio" name="q27" value="c"> 17</label>
+          </div>
+
+          <div class="question" id="q28box">
+            <p>28. Which number is smallest?</p>
+            <label><input type="radio" name="q28" value="a"> 11</label>
+            <label><input type="radio" name="q28" value="b"> 8</label>
+            <label><input type="radio" name="q28" value="c"> 13</label>
+          </div>
+
+          <div class="question" id="q29box">
+            <p>29. Look at the heights. Who is the tallest?</p>
+            <div class="height-box">Peter: ████████
+Miles: ██████
+Gwen:  █████</div>
+            <label><input type="radio" name="q29" value="a"> Peter</label>
+            <label><input type="radio" name="q29" value="b"> Miles</label>
+            <label><input type="radio" name="q29" value="c"> Gwen</label>
+          </div>
+
+          <div class="question" id="q30box">
+            <p>30. Spider-Man's web reaches 9 feet. Miles' web reaches 7 feet. Which statement is true?</p>
+            <label><input type="radio" name="q30" value="a"> Spider-Man's web is longer.</label>
+            <label><input type="radio" name="q30" value="b"> Miles' web is longer.</label>
+            <label><input type="radio" name="q30" value="c"> Both webs are the same length.</label>
+          </div>
+        </section>
+
+        <div class="button-row">
+          <button type="button" onclick="gradeQuiz()">🕷 Finish Mission</button>
+        </div>
+      </form>
+
+      <div id="result" class="result"></div>
+
+      <div class="footer-note">
+        Educational fan-style quiz for classroom/home practice. Spider-Man is used as a themed learning prompt.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const answers = {
+      q1: "b", q2: "a", q3: "a", q4: "b", q5: "a",
+      q6: "a", q7: "b", q8: "a", q9: "a", q10: "b",
+      q11: "a", q12: "a", q13: "a", q14: "a", q15: "b",
+      q16: "b", q17: "c", q18: "c", q19: "b", q20: "b",
+      q21: "b", q22: "b", q23: "c", q24: "a", q25: "c",
+      q26: "b", q27: "b", q28: "b", q29: "a", q30: "a"
+    };
+
+    const readingQuestions = [
+      "q1","q2","q3","q4","q5","q6","q7",
+      "q8","q9","q10","q11","q12","q13","q14","q15"
+    ];
+
+    const mathQuestions = [
+      "q16","q17","q18","q19","q20","q21","q22","q23",
+      "q24","q25","q26","q27","q28","q29","q30"
+    ];
+
+    const answerText = {
+      a: "A",
+      b: "B",
+      c: "C"
+    };
+
+    function updateProgress() {
+      let answered = 0;
+      for (let q in answers) {
+        if (document.querySelector(`input[name="${q}"]:checked`)) answered++;
+      }
+      const percent = (answered / 30) * 100;
+      document.getElementById("progressBar").style.width = percent + "%";
+    }
+
+    document.querySelectorAll("input[type='radio']").forEach(input => {
+      input.addEventListener("change", updateProgress);
+    });
+
+    function getRank(percent) {
+      if (percent >= 90) return "🟢 Friendly Neighborhood Hero";
+      if (percent >= 80) return "🔵 Amazing Hero";
+      if (percent >= 70) return "🟡 Hero in Training";
+      if (percent >= 60) return "🟠 Young Hero";
+      return "🔴 Keep Practicing, Hero!";
+    }
+
+    function getMessage(percent) {
+      if (percent >= 90) return "Excellent mission! Strong reading, thinking, and math skills.";
+      if (percent >= 80) return "Great job! A few challenges need review, but the hero skills are strong.";
+      if (percent >= 70) return "Good work! Keep practicing to make the skills even stronger.";
+      if (percent >= 60) return "Nice effort! Review the missed questions and try again.";
+      return "Keep practicing. Every hero gets stronger with training.";
+    }
+
+    function gradeQuiz() {
+      let totalScore = 0;
+      let readingScore = 0;
+      let mathScore = 0;
+      let review = "";
+
+      for (let q in answers) {
+        const selected = document.querySelector(`input[name="${q}"]:checked`);
+        const box = document.getElementById(`${q}box`);
+
+        box.classList.remove("correct", "incorrect");
+
+        if (selected && selected.value === answers[q]) {
+          totalScore++;
+          box.classList.add("correct");
+
+          if (readingQuestions.includes(q)) readingScore++;
+          if (mathQuestions.includes(q)) mathScore++;
+        } else {
+          box.classList.add("incorrect");
+          review += `Question ${q.replace("q", "")}: correct answer is ${answerText[answers[q]]}<br>`;
+        }
+      }
+
+      const percent = Math.round((totalScore / 30) * 100);
+      const resultBox = document.getElementById("result");
+
+      resultBox.style.display = "block";
+      resultBox.innerHTML = `
+        <h2>🎉 Mission Complete!</h2>
+        <p><strong>${getMessage(percent)}</strong></p>
+
+        <div class="score-grid">
+          <div class="score-box">Reading<strong>${readingScore}/15</strong></div>
+          <div class="score-box">Math<strong>${mathScore}/15</strong></div>
+          <div class="score-box">Total<strong>${totalScore}/30</strong></div>
+          <div class="score-box">Score<strong>${percent}%</strong></div>
+        </div>
+
+        <div class="rank">${getRank(percent)}</div>
+
+        <div class="review">
+          <strong>Questions to Review:</strong><br>
+          ${review || "No missed questions. Amazing work!"}
+        </div>
+      `;
+
+      resultBox.scrollIntoView({ behavior: "smooth" });
+    }
+  </script>
+</body>
+</html>
