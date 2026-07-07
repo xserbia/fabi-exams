@@ -1,1 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Spider-Fab Second Grade Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #e63946, #1d3557);
+      margin: 0;
+      padding: 20px;
+      color: #222;
+    }
 
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: #fff;
+      padding: 25px;
+      border-radius: 18px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #1d3557;
+    }
+
+    .story {
+      background: #f1faee;
+      padding: 18px;
+      border-left: 6px solid #e63946;
+      border-radius: 10px;
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
+
+    .question {
+      background: #f8f9fa;
+      margin: 18px 0;
+      padding: 15px;
+      border-radius: 12px;
+      border: 1px solid #ddd;
+    }
+
+    .question p {
+      font-weight: bold;
+    }
+
+    label {
+      display: block;
+      margin: 8px 0;
+      cursor: pointer;
+    }
+
+    button {
+      display: block;
+      margin: 30px auto;
+      background: #e63946;
+      color: white;
+      border: none;
+      padding: 15px 35px;
+      font-size: 18px;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #b71c1c;
+    }
+
+    #result {
+      display: none;
+      text-align: center;
+      padding: 25px;
+      border-radius: 15px;
+      margin-top: 25px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .correct {
+      color: green;
+    }
+
+    .incorrect {
+      color: red;
+    }
+
+    .section-title {
+      background: #1d3557;
+      color: white;
+      padding: 12px;
+      border-radius: 10px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>🕷️ Spider-Fab Second Grade Test 🕷️</h1>
+    <h2>Reading + Quantitative Skills</h2>
+
+    <div class="story">
+      <h2>Story: Spider-Man and Fabian Save the City</h2>
+      <p>
+        Fabian was a regular second-grade boy who loved science, reading books, and helping others.
+        One afternoon, while walking home from school, he met Spider-Man.
+      </p>
+      <p>
+        "Hi, Fabian," said Spider-Man. "I need a partner today."
+      </p>
+      <p>
+        Fabian smiled. "Really? Me?"
+      </p>
+      <p>
+        "Yes! Being a hero is not only about being strong. It is about making good choices."
+      </p>
+      <p>
+        Spider-Man gave Fabian a special red and blue suit. When Fabian put it on, he became Spider-Fab.
+      </p>
+      <p>
+        Their first mission was to rescue a little puppy stuck in a tree. Spider-Man climbed the tree while Fabian calmed the scared puppy.
+      </p>
+      <p>
+        Next, they helped an old woman carry heavy grocery bags across the street.
+        After that, they stopped two robbers by using webs to trap them without hurting anyone.
+      </p>
+      <p>
+        Later, they saw smoke coming from a building. The firefighters were already helping inside,
+        so Spider-Man and Fabian directed people safely away from the building.
+      </p>
+      <p>
+        When the day was over, Spider-Man smiled and said, "A real hero helps people,
+        stays calm, works as a team, and always does the right thing."
+      </p>
+      <p>
+        Fabian smiled. "I can't wait for our next adventure."
+      </p>
+    </div>
+
+    <form id="quizForm">
+
+      <div class="section-title">Reading Questions</div>
+
+      <div class="question">
+        <p>1. Who is Spider-Man's new partner?</p>
+        <label><input type="radio" name="q1" value="A"> Peter</label>
+        <label><input type="radio" name="q1" value="B"> Fabian</label>
+        <label><input type="radio" name="q1" value="C"> Ben</label>
+      </div>
+
+      <div class="question">
+        <p>2. What does Fabian like?</p>
+        <label><input type="radio" name="q2" value="A"> Sleeping</label>
+        <label><input type="radio" name="q2" value="B"> Science and reading</label>
+        <label><input type="radio" name="q2" value="C"> Running away</label>
+      </div>
+
+      <div class="question">
+        <p>3. Why did Spider-Man choose Fabian?</p>
+        <label><input type="radio" name="q3" value="A"> He made good choices</label>
+        <label><input type="radio" name="q3" value="B"> He could fly</label>
+        <label><input type="radio" name="q3" value="C"> He was the tallest</label>
+      </div>
+
+      <div class="question">
+        <p>4. What was their first mission?</p>
+        <label><input type="radio" name="q4" value="A"> Rescue a puppy</label>
+        <label><input type="radio" name="q4" value="B"> Find treasure</label>
+        <label><input type="radio" name="q4" value="C"> Stop a train</label>
+      </div>
+
+      <div class="question">
+        <p>5. How did Fabian help the puppy?</p>
+        <label><input type="radio" name="q5" value="A"> He calmed it</label>
+        <label><input type="radio" name="q5" value="B"> He scared it</label>
+        <label><input type="radio" name="q5" value="C"> He ignored it</label>
+      </div>
+
+      <div class="question">
+        <p>6. Who helped the old woman?</p>
+        <label><input type="radio" name="q6" value="A"> Fabian and Spider-Man</label>
+        <label><input type="radio" name="q6" value="B"> The robbers</label>
+        <label><input type="radio" name="q6" value="C"> Nobody</label>
+      </div>
+
+      <div class="question">
+        <p>7. How did they stop the robbers?</p>
+        <label><input type="radio" name="q7" value="A"> With webs</label>
+        <label><input type="radio" name="q7" value="B"> By yelling</label>
+        <label><input type="radio" name="q7" value="C"> By hiding</label>
+      </div>
+
+      <div class="question">
+        <p>8. What came from the building?</p>
+        <label><input type="radio" name="q8" value="A"> Smoke</label>
+        <label><input type="radio" name="q8" value="B"> Water</label>
+        <label><input type="radio" name="q8" value="C"> Music</label>
+      </div>
+
+      <div class="question">
+        <p>9. Who was helping inside the building?</p>
+        <label><input type="radio" name="q9" value="A"> Firefighters</label>
+        <label><input type="radio" name="q9" value="B"> Teachers</label>
+        <label><input type="radio" name="q9" value="C"> Doctors</label>
+      </div>
+
+      <div class="question">
+        <p>10. What is the most important lesson?</p>
+        <label><input type="radio" name="q10" value="A"> Heroes help people</label>
+        <label><input type="radio" name="q10" value="B"> Heroes never read</label>
+        <label><input type="radio" name="q10" value="C"> Heroes always fight</label>
+      </div>
+
+      <div class="question">
+        <p>11. Which word best describes Fabian?</p>
+        <label><input type="radio" name="q11" value="A"> Kind</label>
+        <label><input type="radio" name="q11" value="B"> Mean</label>
+        <label><input type="radio" name="q11" value="C"> Lazy</label>
+      </div>
+
+      <div class="question">
+        <p>12. What happened first?</p>
+        <label><input type="radio" name="q12" value="A"> They rescued the puppy</label>
+        <label><input type="radio" name="q12" value="B"> They stopped robbers</label>
+        <label><input type="radio" name="q12" value="C"> They saw smoke</label>
+      </div>
+
+      <div class="question">
+        <p>13. Why should Fabian stay calm?</p>
+        <label><input type="radio" name="q13" value="A"> To help others better</label>
+        <label><input type="radio" name="q13" value="B"> To go to sleep</label>
+        <label><input type="radio" name="q13" value="C"> To scare people</label>
+      </div>
+
+      <div class="question">
+        <p>14. What does teamwork mean in the story?</p>
+        <label><input type="radio" name="q14" value="A"> Helping together</label>
+        <label><input type="radio" name="q14" value="B"> Working alone</label>
+        <label><input type="radio" name="q14" value="C"> Giving up</label>
+      </div>
+
+      <div class="question">
+        <p>15. What will Fabian probably do next?</p>
+        <label><input type="radio" name="q15" value="A"> Help others again</label>
+        <label><input type="radio" name="q15" value="B"> Stop being kind</label>
+        <label><input type="radio" name="q15" value="C"> Become a robber</label>
+      </div>
+
+      <div class="section-title">Quantitative Questions</div>
+
+      <div class="question">
+        <p>16. Spider-Man caught 8 webs in the morning and 7 in the afternoon. How many webs?</p>
+        <label><input type="radio" name="q16" value="A"> 14</label>
+        <label><input type="radio" name="q16" value="B"> 15</label>
+        <label><input type="radio" name="q16" value="C"> 16</label>
+      </div>
+
+      <div class="question">
+        <p>17. Fabian had 15 web balls. He used 6. How many are left?</p>
+        <label><input type="radio" name="q17" value="A"> 9</label>
+        <label><input type="radio" name="q17" value="B"> 10</label>
+        <label><input type="radio" name="q17" value="C"> 11</label>
+      </div>
+
+      <div class="question">
+        <p>18. Spider-Man rescued 4 people each hour for 3 hours. How many people?</p>
+        <label><input type="radio" name="q18" value="A"> 7</label>
+        <label><input type="radio" name="q18" value="B"> 12</label>
+        <label><input type="radio" name="q18" value="C"> 14</label>
+      </div>
+
+      <div class="question">
+        <p>19. Fabian shares 18 stickers equally with 3 friends. How many does each friend get?</p>
+        <label><input type="radio" name="q19" value="A"> 5</label>
+        <label><input type="radio" name="q19" value="B"> 6</label>
+        <label><input type="radio" name="q19" value="C"> 7</label>
+      </div>
+
+      <div class="question">
+        <p>20. Choose the correct symbol: 14 ___ 19</p>
+        <label><input type="radio" name="q20" value="A"> &gt;</label>
+        <label><input type="radio" name="q20" value="B"> &lt;</label>
+        <label><input type="radio" name="q20" value="C"> =</label>
+      </div>
+
+      <div class="question">
+        <p>21. Choose the correct symbol: 25 ___ 18</p>
+        <label><input type="radio" name="q21" value="A"> &gt;</label>
+        <label><input type="radio" name="q21" value="B"> &lt;</label>
+        <label><input type="radio" name="q21" value="C"> =</label>
+      </div>
+
+      <div class="question">
+        <p>22. Spider-Man jumped 120 cm. Fabian jumped 105 cm. Who jumped higher?</p>
+        <label><input type="radio" name="q22" value="A"> Spider-Man</label>
+        <label><input type="radio" name="q22" value="B"> Fabian</label>
+        <label><input type="radio" name="q22" value="C"> Same</label>
+      </div>
+
+      <div class="question">
+        <p>23. A ladder is 2 meters tall. A chair is 1 meter tall. Which is taller?</p>
+        <label><input type="radio" name="q23" value="A"> Ladder</label>
+        <label><input type="radio" name="q23" value="B"> Chair</label>
+        <label><input type="radio" name="q23" value="C"> Same</label>
+      </div>
+
+      <div class="question">
+        <p>24. 12 + 9 =</p>
+        <label><input type="radio" name="q24" value="A"> 19</label>
+        <label><input type="radio" name="q24" value="B"> 21</label>
+        <label><input type="radio" name="q24" value="C"> 22</label>
+      </div>
+
+      <div class="question">
+        <p>25. 20 - 8 =</p>
+        <label><input type="radio" name="q25" value="A"> 10</label>
+        <label><input type="radio" name="q25" value="B"> 12</label>
+        <label><input type="radio" name="q25" value="C"> 13</label>
+      </div>
+
+      <div class="question">
+        <p>26. 5 × 4 =</p>
+        <label><input type="radio" name="q26" value="A"> 18</label>
+        <label><input type="radio" name="q26" value="B"> 20</label>
+        <label><input type="radio" name="q26" value="C"> 21</label>
+      </div>
+
+      <div class="question">
+        <p>27. 16 ÷ 4 =</p>
+        <label><input type="radio" name="q27" value="A"> 3</label>
+        <label><input type="radio" name="q27" value="B"> 4</label>
+        <label><input type="radio" name="q27" value="C"> 5</label>
+      </div>
+
+      <div class="question">
+        <p>28. Spider-Man has 6 web shooters. Fabian has 9. How many together?</p>
+        <label><input type="radio" name="q28" value="A"> 13</label>
+        <label><input type="radio" name="q28" value="B"> 15</label>
+        <label><input type="radio" name="q28" value="C"> 16</label>
+      </div>
+
+      <div class="question">
+        <p>29. Fabian collected 10 spider symbols on Monday and 12 on Tuesday. How many altogether?</p>
+        <label><input type="radio" name="q29" value="A"> 20</label>
+        <label><input type="radio" name="q29" value="B"> 22</label>
+        <label><input type="radio" name="q29" value="C"> 23</label>
+      </div>
+
+      <div class="question">
+        <p>30. Spider-Man needs 24 web cartridges. Each box has 6. How many boxes does he need?</p>
+        <label><input type="radio" name="q30" value="A"> 3</label>
+        <label><input type="radio" name="q30" value="B"> 4</label>
+        <label><input type="radio" name="q30" value="C"> 5</label>
+      </div>
+
+      <button type="button" onclick="checkAnswers()">Finish Test</button>
+    </form>
+
+    <div id="result"></div>
+  </div>
+
+  <script>
+    const answers = {
+      q1: "B",
+      q2: "B",
+      q3: "A",
+      q4: "A",
+      q5: "A",
+      q6: "A",
+      q7: "A",
+      q8: "A",
+      q9: "A",
+      q10: "A",
+      q11: "A",
+      q12: "A",
+      q13: "A",
+      q14: "A",
+      q15: "A",
+      q16: "B",
+      q17: "A",
+      q18: "B",
+      q19: "B",
+      q20: "B",
+      q21: "A",
+      q22: "A",
+      q23: "A",
+      q24: "B",
+      q25: "B",
+      q26: "B",
+      q27: "B",
+      q28: "B",
+      q29: "B",
+      q30: "B"
+    };
+
+    function checkAnswers() {
+      let score = 0;
+      let total = Object.keys(answers).length;
+      let unanswered = 0;
+
+      for (let question in answers) {
+        const selected = document.querySelector(`input[name="${question}"]:checked`);
+        const questionBox = document.querySelector(`input[name="${question}"]`).closest(".question");
+
+        questionBox.style.border = "1px solid #ddd";
+
+        if (!selected) {
+          unanswered++;
+          questionBox.style.border = "3px solid orange";
+        } else if (selected.value === answers[question]) {
+          score++;
+          questionBox.style.border = "3px solid green";
+        } else {
+          questionBox.style.border = "3px solid red";
+        }
+      }
+
+      let percentage = Math.round((score / total) * 100);
+      let message = "";
+
+      if (percentage >= 90) {
+        message = "Amazing work! Fabian is ready for a superhero second grade adventure!";
+      } else if (percentage >= 75) {
+        message = "Great job! Fabian has strong skills and only needs a little practice.";
+      } else if (percentage >= 60) {
+        message = "Good effort! Fabian should keep practicing reading and math.";
+      } else {
+        message = "Keep practicing! Every superhero gets stronger with training.";
+      }
+
+      const resultBox = document.getElementById("result");
+      resultBox.style.display = "block";
+      resultBox.style.background = percentage >= 75 ? "#d8f3dc" : "#fff3cd";
+
+      resultBox.innerHTML = `
+        🕷️ Final Result 🕷️<br><br>
+        Score: ${score} out of ${total}<br>
+        Percentage: ${percentage}%<br><br>
+        ${message}<br><br>
+        ${unanswered > 0 ? "Orange boxes show unanswered questions." : ""}
+      `;
+
+      resultBox.scrollIntoView({ behavior: "smooth" });
+    }
+  </script>
+</body>
+</html>
