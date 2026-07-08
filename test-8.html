@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fabi Spider-Man Avengers Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #b30000, #0b1f4d);
+      margin: 0;
+      padding: 20px;
+      color: #222;
+    }
+
+    .container {
+      max-width: 950px;
+      margin: auto;
+      background: #fff;
+      padding: 25px;
+      border-radius: 18px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #0b1f4d;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 18px;
+      color: #555;
+      margin-bottom: 25px;
+    }
+
+    .story {
+      background: #eef4ff;
+      padding: 20px;
+      border-left: 7px solid #b30000;
+      border-radius: 12px;
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
+
+    .section-title {
+      background: #0b1f4d;
+      color: white;
+      padding: 14px;
+      border-radius: 12px;
+      margin-top: 30px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .question {
+      background: #f8f9fa;
+      margin: 18px 0;
+      padding: 16px;
+      border-radius: 12px;
+      border: 2px solid #ddd;
+    }
+
+    .question p {
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    label {
+      display: block;
+      margin: 9px 0;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    button {
+      display: block;
+      margin: 35px auto;
+      background: #b30000;
+      color: white;
+      border: none;
+      padding: 16px 38px;
+      font-size: 20px;
+      border-radius: 14px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #7a0000;
+    }
+
+    #result {
+      display: none;
+      text-align: center;
+      padding: 28px;
+      border-radius: 18px;
+      margin-top: 30px;
+      font-size: 20px;
+      font-weight: bold;
+      border: 4px solid #0b1f4d;
+    }
+
+    .small-note {
+      font-size: 14px;
+      color: #555;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .badge {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <h1>🕷️ Fabi Spider-Man: Avengers Challenge 🛡️</h1>
+    <div class="subtitle">Second Grade Reading + Quantitative Test</div>
+
+    <div class="story">
+      <h2>The Story</h2>
+
+      <p>
+        Fabi was Spider-Man’s young partner. Peter Parker had been training him for almost one year.
+        Every day after school, Fabi practiced swinging, reading clues, solving problems, and helping people.
+      </p>
+
+      <p>
+        One afternoon, Peter received a message from Tony Stark.
+      </p>
+
+      <p>
+        “Bring Fabi to Avengers Tower tomorrow,” Tony wrote. “I want to see if he is ready.”
+      </p>
+
+      <p>
+        Fabi was excited. “Does this mean I can become an Avenger?”
+      </p>
+
+      <p>
+        Peter smiled. “Maybe. But being an Avenger is not only about powers. It is about courage,
+        honesty, kindness, teamwork, and making smart choices.”
+      </p>
+
+      <p>
+        The next morning, Peter and Fabi arrived at Avengers Tower. Captain America opened the door.
+        Tony Stark was waiting inside with fifteen special challenges.
+      </p>
+
+      <p>
+        First, Tony showed Fabi four backpacks: red, blue, green, and yellow.
+        “The emergency kit is inside the blue backpack,” Tony said. Fabi picked the blue backpack.
+      </p>
+
+      <p>
+        Next, a little boy dropped all his books. At the same time, Tony’s robot asked Fabi to keep testing.
+        Fabi stopped and helped the boy pick up the books.
+      </p>
+
+      <p>
+        Then Peter threw three practice drones into the air. Fabi caught two, but one flew away.
+      </p>
+
+      <p>
+        Captain America asked, “Can one hero save everyone?”
+        Fabi answered, “Sometimes, but a team can do much more.”
+      </p>
+
+      <p>
+        Later, Tony dropped one of his tools. Nobody saw it except Fabi.
+        Fabi picked it up and gave it back to Tony.
+      </p>
+
+      <p>
+        At the end of the day, Tony said, “You did well, Fabi. But you still have one last test:
+        never stop learning.”
+      </p>
+
+      <p>
+        Peter smiled proudly. Fabi looked at the Avengers and said, “I’ll keep practicing.”
+      </p>
+    </div>
+
+    <form id="quizForm">
+
+      <div class="section-title">📖 Reading Questions</div>
+
+      <div class="question">
+        <p>1. Who was training Fabi?</p>
+        <label><input type="radio" name="q1" value="A"> Tony Stark</label>
+        <label><input type="radio" name="q1" value="B"> Peter Parker</label>
+        <label><input type="radio" name="q1" value="C"> Captain America</label>
+      </div>
+
+      <div class="question">
+        <p>2. Where did Tony ask Peter to bring Fabi?</p>
+        <label><input type="radio" name="q2" value="A"> Avengers Tower</label>
+        <label><input type="radio" name="q2" value="B"> Fabi’s school</label>
+        <label><input type="radio" name="q2" value="C"> The park</label>
+      </div>
+
+      <div class="question">
+        <p>3. What did Fabi want to become?</p>
+        <label><input type="radio" name="q3" value="A"> A teacher</label>
+        <label><input type="radio" name="q3" value="B"> An Avenger</label>
+        <label><input type="radio" name="q3" value="C"> A robot</label>
+      </div>
+
+      <div class="question">
+        <p>4. What did Peter say being an Avenger is about?</p>
+        <label><input type="radio" name="q4" value="A"> Only having powers</label>
+        <label><input type="radio" name="q4" value="B"> Courage, honesty, kindness, teamwork, and smart choices</label>
+        <label><input type="radio" name="q4" value="C"> Flying faster than everyone</label>
+      </div>
+
+      <div class="question">
+        <p>5. Who opened the door at Avengers Tower?</p>
+        <label><input type="radio" name="q5" value="A"> Captain America</label>
+        <label><input type="radio" name="q5" value="B"> The little boy</label>
+        <label><input type="radio" name="q5" value="C"> A teacher</label>
+      </div>
+
+      <div class="question">
+        <p>6. What color backpack had the emergency kit?</p>
+        <label><input type="radio" name="q6" value="A"> Red</label>
+        <label><input type="radio" name="q6" value="B"> Blue</label>
+        <label><input type="radio" name="q6" value="C"> Yellow</label>
+      </div>
+
+      <div class="question">
+        <p>7. What did Fabi do when the little boy dropped his books?</p>
+        <label><input type="radio" name="q7" value="A"> He helped him</label>
+        <label><input type="radio" name="q7" value="B"> He ran away</label>
+        <label><input type="radio" name="q7" value="C"> He laughed</label>
+      </div>
+
+      <div class="question">
+        <p>8. How many drones did Fabi catch?</p>
+        <label><input type="radio" name="q8" value="A"> One</label>
+        <label><input type="radio" name="q8" value="B"> Two</label>
+        <label><input type="radio" name="q8" value="C"> Three</label>
+      </div>
+
+      <div class="question">
+        <p>9. What did one drone do?</p>
+        <label><input type="radio" name="q9" value="A"> It flew away</label>
+        <label><input type="radio" name="q9" value="B"> It turned into a backpack</label>
+        <label><input type="radio" name="q9" value="C"> It went to sleep</label>
+      </div>
+
+      <div class="question">
+        <p>10. What did Fabi say about teamwork?</p>
+        <label><input type="radio" name="q10" value="A"> A team can do much more</label>
+        <label><input type="radio" name="q10" value="B"> Teams are not important</label>
+        <label><input type="radio" name="q10" value="C"> Heroes should always work alone</label>
+      </div>
+
+      <div class="question">
+        <p>11. What did Fabi do with Tony’s tool?</p>
+        <label><input type="radio" name="q11" value="A"> He kept it</label>
+        <label><input type="radio" name="q11" value="B"> He returned it</label>
+        <label><input type="radio" name="q11" value="C"> He hid it</label>
+      </div>
+
+      <div class="question">
+        <p>12. Which word best describes Fabi?</p>
+        <label><input type="radio" name="q12" value="A"> Honest</label>
+        <label><input type="radio" name="q12" value="B"> Selfish</label>
+        <label><input type="radio" name="q12" value="C"> Lazy</label>
+      </div>
+
+      <div class="question">
+        <p>13. Why did Tony test Fabi?</p>
+        <label><input type="radio" name="q13" value="A"> To see if he was ready</label>
+        <label><input type="radio" name="q13" value="B"> To make him quit school</label>
+        <label><input type="radio" name="q13" value="C"> To scare him</label>
+      </div>
+
+      <div class="question">
+        <p>14. What was Fabi’s last test?</p>
+        <label><input type="radio" name="q14" value="A"> Never stop learning</label>
+        <label><input type="radio" name="q14" value="B"> Never help anyone</label>
+        <label><input type="radio" name="q14" value="C"> Never read books</label>
+      </div>
+
+      <div class="question">
+        <p>15. What is the main lesson of the story?</p>
+        <label><input type="radio" name="q15" value="A"> Real heroes keep learning and help others</label>
+        <label><input type="radio" name="q15" value="B"> Real heroes only care about power</label>
+        <label><input type="radio" name="q15" value="C"> Real heroes never make choices</label>
+      </div>
+
+      <div class="section-title">🔢 Quantitative Questions</div>
+
+      <div class="question">
+        <p>16. Tony has 8 Iron Man helmets. He builds 7 more. How many helmets does he have?</p>
+        <label><input type="radio" name="q16" value="A"> 14</label>
+        <label><input type="radio" name="q16" value="B"> 15</label>
+        <label><input type="radio" name="q16" value="C"> 16</label>
+      </div>
+
+      <div class="question">
+        <p>17. Fabi has 15 web balls. He uses 6. How many are left?</p>
+        <label><input type="radio" name="q17" value="A"> 8</label>
+        <label><input type="radio" name="q17" value="B"> 9</label>
+        <label><input type="radio" name="q17" value="C"> 10</label>
+      </div>
+
+      <div class="question">
+        <p>18. Peter throws 3 drones. Fabi catches 2. How many drones fly away?</p>
+        <label><input type="radio" name="q18" value="A"> 1</label>
+        <label><input type="radio" name="q18" value="B"> 2</label>
+        <label><input type="radio" name="q18" value="C"> 3</label>
+      </div>
+
+      <div class="question">
+        <p>19. Captain America has 24 shields. He puts them equally into 6 boxes. How many shields are in each box?</p>
+        <label><input type="radio" name="q19" value="A"> 3</label>
+        <label><input type="radio" name="q19" value="B"> 4</label>
+        <label><input type="radio" name="q19" value="C"> 6</label>
+      </div>
+
+      <div class="question">
+        <p>20. Black Widow trains for 4 days. Each day she completes 6 missions. How many missions total?</p>
+        <label><input type="radio" name="q20" value="A"> 20</label>
+        <label><input type="radio" name="q20" value="B"> 24</label>
+        <label><input type="radio" name="q20" value="C"> 28</label>
+      </div>
+
+      <div class="question">
+        <p>21. Thor has 18 practice hammers. He removes 9. How many are left?</p>
+        <label><input type="radio" name="q21" value="A"> 7</label>
+        <label><input type="radio" name="q21" value="B"> 8</label>
+        <label><input type="radio" name="q21" value="C"> 9</label>
+      </div>
+
+      <div class="question">
+        <p>22. Choose the correct symbol: 18 ___ 21</p>
+        <label><input type="radio" name="q22" value="A"> &gt;</label>
+        <label><input type="radio" name="q22" value="B"> &lt;</label>
+        <label><input type="radio" name="q22" value="C"> =</label>
+      </div>
+
+      <div class="question">
+        <p>23. Choose the correct symbol: 45 ___ 45</p>
+        <label><input type="radio" name="q23" value="A"> &gt;</label>
+        <label><input type="radio" name="q23" value="B"> &lt;</label>
+        <label><input type="radio" name="q23" value="C"> =</label>
+      </div>
+
+      <div class="question">
+        <p>24. Choose the correct symbol: 33 ___ 27</p>
+        <label><input type="radio" name="q24" value="A"> &gt;</label>
+        <label><input type="radio" name="q24" value="B"> &lt;</label>
+        <label><input type="radio" name="q24" value="C"> =</label>
+      </div>
+
+      <div class="question">
+        <p>25. Which is longer?</p>
+        <label><input type="radio" name="q25" value="A"> 2 meters</label>
+        <label><input type="radio" name="q25" value="B"> 150 centimeters</label>
+        <label><input type="radio" name="q25" value="C"> They are the same</label>
+      </div>
+
+      <div class="question">
+        <p>26. Iron Man flies 125 meters. Fabi swings 95 meters. Who went farther?</p>
+        <label><input type="radio" name="q26" value="A"> Iron Man</label>
+        <label><input type="radio" name="q26" value="B"> Fabi</label>
+        <label><input type="radio" name="q26" value="C"> Same distance</label>
+      </div>
+
+      <div class="question">
+        <p>27. Tony has 20 batteries. Each suit needs 4 batteries. How many suits can he power?</p>
+        <label><input type="radio" name="q27" value="A"> 4</label>
+        <label><input type="radio" name="q27" value="B"> 5</label>
+        <label><input type="radio" name="q27" value="C"> 6</label>
+      </div>
+
+      <div class="question">
+        <p>28. Fabi collects 10 spider badges on Monday and 12 on Tuesday. How many badges total?</p>
+        <label><input type="radio" name="q28" value="A"> 20</label>
+        <label><input type="radio" name="q28" value="B"> 21</label>
+        <label><input type="radio" name="q28" value="C"> 22</label>
+      </div>
+
+      <div class="question">
+        <p>29. Peter has 30 web cartridges. He gives Fabi 10. How many does Peter have left?</p>
+        <label><input type="radio" name="q29" value="A"> 20</label>
+        <label><input type="radio" name="q29" value="B"> 25</label>
+        <label><input type="radio" name="q29" value="C"> 40</label>
+      </div>
+
+      <div class="question">
+        <p>30. There are 5 Avengers teams. Each team has 3 heroes. How many heroes total?</p>
+        <label><input type="radio" name="q30" value="A"> 8</label>
+        <label><input type="radio" name="q30" value="B"> 12</label>
+        <label><input type="radio" name="q30" value="C"> 15</label>
+      </div>
+
+      <button type="button" onclick="checkAnswers()">Finish Avengers Test</button>
+    </form>
+
+    <div id="result"></div>
+    <div class="small-note">Green = correct · Red = incorrect · Orange = unanswered</div>
+
+  </div>
+
+  <script>
+    const answers = {
+      q1: "B",
+      q2: "A",
+      q3: "B",
+      q4: "B",
+      q5: "A",
+      q6: "B",
+      q7: "A",
+      q8: "B",
+      q9: "A",
+      q10: "A",
+      q11: "B",
+      q12: "A",
+      q13: "A",
+      q14: "A",
+      q15: "A",
+      q16: "B",
+      q17: "B",
+      q18: "A",
+      q19: "B",
+      q20: "B",
+      q21: "C",
+      q22: "B",
+      q23: "C",
+      q24: "A",
+      q25: "A",
+      q26: "A",
+      q27: "B",
+      q28: "C",
+      q29: "A",
+      q30: "C"
+    };
+
+    function checkAnswers() {
+      let score = 0;
+      let total = Object.keys(answers).length;
+      let unanswered = 0;
+
+      for (let question in answers) {
+        const selected = document.querySelector(`input[name="${question}"]:checked`);
+        const questionBox = document.querySelector(`input[name="${question}"]`).closest(".question");
+
+        questionBox.style.border = "2px solid #ddd";
+
+        if (!selected) {
+          unanswered++;
+          questionBox.style.border = "4px solid orange";
+        } else if (selected.value === answers[question]) {
+          score++;
+          questionBox.style.border = "4px solid green";
+        } else {
+          questionBox.style.border = "4px solid red";
+        }
+      }
+
+      const percentage = Math.round((score / total) * 100);
+
+      let rank = "";
+      let message = "";
+      let bg = "";
+
+      if (score >= 27) {
+        rank = "🟩 AVENGER APPROVED";
+        message = "Tony Stark says: Welcome to the Avengers, Fabi! Peter Parker is proud of you.";
+        bg = "#d8f3dc";
+      } else if (score >= 22) {
+        rank = "🟦 SPIDER-HERO";
+        message = "Tony Stark is impressed. You are almost ready. Keep training!";
+        bg = "#dbeafe";
+      } else if (score >= 15) {
+        rank = "🟨 JUNIOR HERO";
+        message = "Good job! You have strong skills, but you need more practice.";
+        bg = "#fff3cd";
+      } else {
+        rank = "🟥 CADET IN TRAINING";
+        message = "Keep practicing. Every Avenger starts somewhere.";
+        bg = "#f8d7da";
+      }
+
+      const resultBox = document.getElementById("result");
+      resultBox.style.display = "block";
+      resultBox.style.background = bg;
+
+      resultBox.innerHTML = `
+        <div class="badge">🏆 Final Avengers Result 🏆</div>
+        Score: ${score} out of ${total}<br>
+        Percentage: ${percentage}%<br><br>
+        ${rank}<br><br>
+        ${message}<br><br>
+        ${unanswered > 0 ? "You left " + unanswered + " question(s) unanswered." : "All questions answered!"}
+      `;
+
+      resultBox.scrollIntoView({ behavior: "smooth" });
+    }
+  </script>
+
+</body>
+</html>
