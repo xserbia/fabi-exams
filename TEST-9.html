@@ -1,0 +1,956 @@
+html = r'''<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fabian's Back to the Future Roller Coaster Challenge</title>
+  <style>
+    :root {
+      --blue: #103c73;
+      --dark-blue: #071d38;
+      --orange: #ff7a00;
+      --yellow: #ffd84d;
+      --green: #2f9e44;
+      --red: #d63333;
+      --light: #f4f8fc;
+      --white: #ffffff;
+      --gray: #667085;
+      --border: #d9e2ec;
+      --shadow: 0 12px 32px rgba(7, 29, 56, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--dark-blue);
+      background:
+        radial-gradient(circle at top right, rgba(255, 216, 77, 0.25), transparent 30%),
+        linear-gradient(180deg, #e9f4ff 0%, #f8fbff 40%, #eef5fb 100%);
+      line-height: 1.55;
+    }
+
+    .hero {
+      background:
+        linear-gradient(rgba(7, 29, 56, 0.88), rgba(16, 60, 115, 0.9)),
+        repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 18px,
+          rgba(255,255,255,0.04) 18px,
+          rgba(255,255,255,0.04) 36px
+        );
+      color: var(--white);
+      padding: 42px 20px 34px;
+      text-align: center;
+      border-bottom: 6px solid var(--orange);
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--dark-blue);
+      font-weight: 800;
+      border-radius: 999px;
+      padding: 7px 14px;
+      margin-bottom: 12px;
+      letter-spacing: 0.4px;
+    }
+
+    .hero h1 {
+      margin: 0 auto 10px;
+      max-width: 900px;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.08;
+    }
+
+    .hero p {
+      margin: 0 auto;
+      max-width: 760px;
+      font-size: 1.08rem;
+      color: #e9f4ff;
+    }
+
+    .container {
+      width: min(1040px, calc(100% - 28px));
+      margin: 24px auto 60px;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      padding: 24px;
+      margin-bottom: 22px;
+    }
+
+    .student-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    label.field-label {
+      display: block;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    input[type="text"],
+    input[type="date"] {
+      width: 100%;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 1rem;
+      color: var(--dark-blue);
+      background: #fbfdff;
+    }
+
+    .instructions {
+      border-left: 6px solid var(--orange);
+    }
+
+    .instructions h2,
+    .story h2,
+    .section-heading h2 {
+      margin-top: 0;
+    }
+
+    .progress-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(244, 248, 252, 0.95);
+      backdrop-filter: blur(8px);
+      padding: 10px 0;
+      margin-bottom: 14px;
+    }
+
+    .progress-bar {
+      height: 14px;
+      background: #dbe7f3;
+      border-radius: 999px;
+      overflow: hidden;
+      border: 1px solid #c9d8e7;
+    }
+
+    .progress-fill {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--orange), var(--yellow));
+      transition: width 0.25s ease;
+    }
+
+    .progress-text {
+      text-align: right;
+      margin-top: 5px;
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: var(--blue);
+    }
+
+    .story {
+      background: linear-gradient(180deg, #ffffff, #f7fbff);
+    }
+
+    .story p {
+      font-size: 1.06rem;
+    }
+
+    .fact-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .fact {
+      background: #eef6ff;
+      border: 2px solid #d5e8fb;
+      border-radius: 14px;
+      padding: 14px;
+      text-align: center;
+      font-weight: 800;
+    }
+
+    .fact span {
+      display: block;
+      color: var(--orange);
+      font-size: 1.35rem;
+    }
+
+    .section-heading {
+      background: var(--dark-blue);
+      color: white;
+      border-radius: 18px;
+      padding: 20px;
+      margin: 30px 0 18px;
+      border-left: 8px solid var(--yellow);
+    }
+
+    .section-heading p {
+      margin-bottom: 0;
+      color: #e9f4ff;
+    }
+
+    .question {
+      background: var(--white);
+      border: 2px solid var(--border);
+      border-radius: 18px;
+      padding: 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 6px 18px rgba(7, 29, 56, 0.07);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .question:hover {
+      transform: translateY(-1px);
+      border-color: #a9c8e5;
+    }
+
+    .question.correct {
+      border-color: var(--green);
+      background: #f1fbf3;
+    }
+
+    .question.incorrect {
+      border-color: var(--red);
+      background: #fff5f5;
+    }
+
+    .question.unanswered {
+      border-color: var(--orange);
+      background: #fffaf1;
+    }
+
+    .question-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      color: white;
+      background: var(--blue);
+      font-weight: 900;
+      margin-right: 8px;
+    }
+
+    .question-text {
+      display: inline;
+      font-size: 1.08rem;
+      font-weight: 800;
+    }
+
+    .options {
+      display: grid;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .option {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 11px 13px;
+      cursor: pointer;
+      background: #fcfdff;
+      transition: 0.2s;
+    }
+
+    .option:hover {
+      border-color: #8db8df;
+      background: #f3f9ff;
+    }
+
+    .option input {
+      margin-top: 4px;
+      transform: scale(1.15);
+      accent-color: var(--blue);
+    }
+
+    .feedback {
+      display: none;
+      margin-top: 14px;
+      padding: 11px 13px;
+      border-radius: 10px;
+      font-weight: 700;
+    }
+
+    .correct .feedback,
+    .incorrect .feedback,
+    .unanswered .feedback {
+      display: block;
+    }
+
+    .correct .feedback {
+      color: #176b2c;
+      background: #daf4df;
+    }
+
+    .incorrect .feedback {
+      color: #9e2020;
+      background: #ffe0e0;
+    }
+
+    .unanswered .feedback {
+      color: #8a5200;
+      background: #ffedc9;
+    }
+
+    .submit-area {
+      text-align: center;
+      padding: 28px 0 8px;
+    }
+
+    button {
+      appearance: none;
+      border: none;
+      border-radius: 14px;
+      padding: 14px 22px;
+      font-size: 1rem;
+      font-weight: 900;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    #submitBtn {
+      background: linear-gradient(90deg, var(--orange), #ff9d2e);
+      color: white;
+      box-shadow: 0 8px 20px rgba(255, 122, 0, 0.28);
+      min-width: 250px;
+    }
+
+    #submitBtn:hover {
+      transform: translateY(-2px);
+    }
+
+    #resetBtn {
+      background: #e8eef5;
+      color: var(--dark-blue);
+      margin-left: 8px;
+    }
+
+    #result {
+      display: none;
+      scroll-margin-top: 80px;
+    }
+
+    .result-card {
+      text-align: center;
+      border: 4px solid var(--yellow);
+      background:
+        radial-gradient(circle at top, rgba(255,216,77,0.25), transparent 32%),
+        white;
+    }
+
+    .score-circle {
+      width: 170px;
+      height: 170px;
+      margin: 18px auto;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: conic-gradient(var(--green) 0deg, #dfe8ef 0deg);
+      position: relative;
+    }
+
+    .score-circle::before {
+      content: "";
+      position: absolute;
+      width: 132px;
+      height: 132px;
+      border-radius: 50%;
+      background: white;
+    }
+
+    .score-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .score-content strong {
+      display: block;
+      font-size: 2.2rem;
+      color: var(--dark-blue);
+    }
+
+    .score-content span {
+      font-weight: 800;
+      color: var(--gray);
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .result-box {
+      background: #f4f8fc;
+      border: 2px solid #d9e5f0;
+      border-radius: 14px;
+      padding: 16px;
+    }
+
+    .result-box strong {
+      display: block;
+      font-size: 1.45rem;
+      color: var(--blue);
+    }
+
+    .message {
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin: 16px auto;
+      max-width: 700px;
+    }
+
+    .review-note {
+      margin-top: 18px;
+      padding: 14px;
+      background: #eef6ff;
+      border-radius: 12px;
+      color: var(--blue);
+      font-weight: 700;
+    }
+
+    .footer {
+      text-align: center;
+      color: var(--gray);
+      padding: 30px 10px 12px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 760px) {
+      .student-row,
+      .fact-grid,
+      .result-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        padding: 18px;
+      }
+
+      #resetBtn {
+        display: block;
+        margin: 10px auto 0;
+      }
+    }
+
+    @media print {
+      .progress-wrap,
+      .submit-area,
+      #resetBtn {
+        display: none !important;
+      }
+
+      body {
+        background: white;
+      }
+
+      .card,
+      .question {
+        box-shadow: none;
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="hero">
+    <div class="hero-badge">THIRD GRADE CHALLENGE</div>
+    <h1>Fabian's Back to the Future Roller Coaster</h1>
+    <p>Reading Comprehension & Quantitative Engineering Exam</p>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <div class="student-row">
+        <div>
+          <label class="field-label" for="studentName">Student Name</label>
+          <input id="studentName" type="text" placeholder="Enter your name" />
+        </div>
+        <div>
+          <label class="field-label" for="examDate">Date</label>
+          <input id="examDate" type="date" />
+        </div>
+      </div>
+    </section>
+
+    <section class="card instructions">
+      <h2>Instructions</h2>
+      <p>Read the story carefully. Then answer all 30 questions. Choose one answer for each question. When you finish, press <strong>Finish Exam</strong> to see your score, section results, and corrections.</p>
+    </section>
+
+    <div class="progress-wrap">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <div class="progress-text" id="progressText">0 of 30 answered</div>
+    </div>
+
+    <section class="card story">
+      <h2>Fabian and the Time Machine Coaster</h2>
+
+      <p>Fabian loved engineering. He enjoyed drawing plans, measuring objects, solving problems, and building machines. One morning, he received a special letter from Hill Valley Theme Park.</p>
+
+      <p>The park wanted Fabian to build a <strong>Back to the Future roller coaster</strong>. The ride needed to be fast, exciting, and most importantly, safe. Fabian accepted the challenge and began drawing the track.</p>
+
+      <p>The coaster would start inside a laboratory beside a silver time machine. The train would climb a tall hill, race through Hill Valley, pass a giant clock tower, travel near dinosaurs, fly through a future city, and return to the station.</p>
+
+      <p>The tallest hill would be <strong>90 feet high</strong>. The first drop would be <strong>75 feet</strong>. The full track would be <strong>3,600 feet long</strong>, and the ride would last <strong>3 minutes</strong>.</p>
+
+      <p>Fabian used different geometric shapes in his design. The warning signs were triangles. The station windows were rectangles. The clocks were circles. The control panels were squares.</p>
+
+      <p>Each train had <strong>8 cars</strong>, and each car held <strong>4 passengers</strong>. The park planned to prepare <strong>15 trains</strong> for opening day.</p>
+
+      <p>During a test, one part of the track shook more than expected. Fabian immediately stopped the test. He did not want anyone to ride until the problem was fixed.</p>
+
+      <p>Fabian and his team checked every bolt, rail, and support beam. They discovered that one support beam was only 18 feet long, but it needed to be 20 feet long. It was 2 feet too short.</p>
+
+      <p>The team replaced the support beam and tested the coaster again. This time, the ride was smooth and safe. The park manager congratulated Fabian and said, “A great engineer does not simply finish quickly. A great engineer checks the work and puts safety first.”</p>
+
+      <p>On opening day, visitors filled the park. When the coaster reached 88 miles per hour, lights flashed around the train. The passengers shouted, “We are traveling through time!”</p>
+
+      <p>At the end of the day, Fabian smiled. Careful planning, math, patience, and teamwork had turned his idea into a safe and exciting ride.</p>
+
+      <div class="fact-grid">
+        <div class="fact"><span>90 ft</span>Tallest Hill</div>
+        <div class="fact"><span>3,600 ft</span>Track Length</div>
+        <div class="fact"><span>3 min</span>Ride Time</div>
+        <div class="fact"><span>88 mph</span>Time Speed</div>
+      </div>
+    </section>
+
+    <form id="examForm">
+      <div class="section-heading">
+        <h2>Part 1: Reading Comprehension</h2>
+        <p>Questions 1–15 test details, sequence, vocabulary, inference, and the main idea.</p>
+      </div>
+
+      <div id="readingQuestions"></div>
+
+      <div class="section-heading">
+        <h2>Part 2: Quantitative Engineering Challenge</h2>
+        <p>Questions 16–30 test measurement, geometry, addition, subtraction, multiplication, and division.</p>
+      </div>
+
+      <div id="mathQuestions"></div>
+
+      <div class="submit-area">
+        <button type="button" id="submitBtn">Finish Exam</button>
+        <button type="button" id="resetBtn">Start Again</button>
+      </div>
+    </form>
+
+    <section id="result" class="card result-card">
+      <h2 id="resultTitle">Mission Result</h2>
+
+      <div class="score-circle" id="scoreCircle">
+        <div class="score-content">
+          <strong id="scorePercent">0%</strong>
+          <span id="scoreFraction">0 / 30</span>
+        </div>
+      </div>
+
+      <p class="message" id="resultMessage"></p>
+
+      <div class="result-grid">
+        <div class="result-box">
+          <span>Reading</span>
+          <strong id="readingScore">0 / 15</strong>
+        </div>
+        <div class="result-box">
+          <span>Quantitative</span>
+          <strong id="mathScore">0 / 15</strong>
+        </div>
+        <div class="result-box">
+          <span>Questions Answered</span>
+          <strong id="answeredScore">0 / 30</strong>
+        </div>
+      </div>
+
+      <div class="review-note" id="reviewNote"></div>
+    </section>
+
+    <footer class="footer">
+      Fabian Engineering Academy · Third Grade Reading & Math Challenge
+    </footer>
+  </main>
+
+  <script>
+    const readingQuestions = [
+      {
+        q: "Why did Hill Valley Theme Park contact Fabian?",
+        options: ["To repair a bus", "To build a roller coaster", "To sell tickets", "To paint the park"],
+        answer: 1,
+        explanation: "The park contacted Fabian because it wanted him to build a Back to the Future roller coaster."
+      },
+      {
+        q: "What was the most important requirement for the ride?",
+        options: ["It had to be purple", "It had to be cheap", "It had to be safe", "It had to be the shortest ride"],
+        answer: 2,
+        explanation: "The story says the ride needed to be fast and exciting, but most importantly, safe."
+      },
+      {
+        q: "Where did the coaster begin?",
+        options: ["Inside a laboratory", "Beside a lake", "Inside a school", "Under a bridge"],
+        answer: 0,
+        explanation: "The coaster began inside a laboratory beside a silver time machine."
+      },
+      {
+        q: "Which place did the riders pass during the adventure?",
+        options: ["A farm only", "A giant clock tower", "A baseball stadium", "A hospital"],
+        answer: 1,
+        explanation: "The track passed a giant clock tower as part of the time-travel adventure."
+      },
+      {
+        q: "What happened during the first test?",
+        options: ["The train disappeared", "A part of the track shook", "The station flooded", "The lights became too bright"],
+        answer: 1,
+        explanation: "One part of the track shook more than expected during testing."
+      },
+      {
+        q: "What did Fabian do when he noticed the problem?",
+        options: ["He ignored it", "He opened the ride", "He stopped the test", "He went home"],
+        answer: 2,
+        explanation: "Fabian immediately stopped the test because safety came first."
+      },
+      {
+        q: "What problem did the team discover?",
+        options: ["A support beam was too short", "A wheel was missing", "The train had too many seats", "The track was too colorful"],
+        answer: 0,
+        explanation: "The team found a support beam that was 18 feet long instead of 20 feet."
+      },
+      {
+        q: "How did the team solve the problem?",
+        options: ["They removed the hill", "They replaced the support beam", "They made the train slower forever", "They closed the park"],
+        answer: 1,
+        explanation: "They replaced the short support beam and tested the coaster again."
+      },
+      {
+        q: "Which word best describes Fabian?",
+        options: ["Careless", "Responsible", "Lazy", "Impatient"],
+        answer: 1,
+        explanation: "Fabian was responsible because he stopped the test and carefully checked the ride."
+      },
+      {
+        q: "What happened after the support beam was replaced?",
+        options: ["The ride became smooth and safe", "The train lost all its cars", "The park canceled the ride", "The track became shorter"],
+        answer: 0,
+        explanation: "After the repair, the team tested again and the ride was smooth and safe."
+      },
+      {
+        q: "Which event happened first?",
+        options: ["Visitors rode the coaster", "Fabian received a letter", "The beam was replaced", "The park manager congratulated Fabian"],
+        answer: 1,
+        explanation: "Fabian first received the letter asking him to build the coaster."
+      },
+      {
+        q: "Which event happened last?",
+        options: ["Fabian drew the track", "The team found the short beam", "Visitors enjoyed the ride on opening day", "Fabian stopped the first test"],
+        answer: 2,
+        explanation: "Opening day and the visitors' ride happened after the design, testing, and repairs."
+      },
+      {
+        q: "What can the reader infer about Fabian?",
+        options: ["He cares more about speed than people", "He understands that testing prevents accidents", "He dislikes working with a team", "He does not use math"],
+        answer: 1,
+        explanation: "Fabian stopped the ride and inspected it, showing that he knows testing helps prevent accidents."
+      },
+      {
+        q: "What does the word “congratulated” mean in the story?",
+        options: ["Praised someone for doing well", "Asked someone to leave", "Warned someone about danger", "Taught someone to count"],
+        answer: 0,
+        explanation: "The manager praised Fabian because he solved the problem and made the ride safe."
+      },
+      {
+        q: "What is the main idea of the story?",
+        options: ["Fast rides never need testing", "Careful planning, math, and teamwork can create a safe project", "Theme parks should only have one ride", "Engineers should always work alone"],
+        answer: 1,
+        explanation: "The story shows how planning, math, patience, and teamwork helped Fabian build a safe coaster."
+      }
+    ];
+
+    const mathQuestions = [
+      {
+        q: "The tallest hill is 90 feet high. The first drop is 75 feet. How much taller is the hill than the drop?",
+        options: ["10 feet", "15 feet", "20 feet", "25 feet"],
+        answer: 1,
+        explanation: "90 − 75 = 15 feet."
+      },
+      {
+        q: "Each train has 8 cars. Each car holds 4 passengers. How many passengers fit in one train?",
+        options: ["12", "24", "32", "36"],
+        answer: 2,
+        explanation: "8 × 4 = 32 passengers."
+      },
+      {
+        q: "The park has 15 trains, and each train holds 32 passengers. How many passenger spaces are there altogether?",
+        options: ["320", "450", "480", "520"],
+        answer: 2,
+        explanation: "15 × 32 = 480 passenger spaces."
+      },
+      {
+        q: "The track is 3,600 feet long. Workers completed 1,400 feet. How many feet remain?",
+        options: ["2,000", "2,100", "2,200", "2,300"],
+        answer: 2,
+        explanation: "3,600 − 1,400 = 2,200 feet."
+      },
+      {
+        q: "A support beam should be 20 feet long, but it measures 18 feet. How many feet too short is it?",
+        options: ["1 foot", "2 feet", "3 feet", "4 feet"],
+        answer: 1,
+        explanation: "20 − 18 = 2 feet."
+      },
+      {
+        q: "Which shape has exactly 3 sides and 3 corners?",
+        options: ["Circle", "Rectangle", "Triangle", "Square"],
+        answer: 2,
+        explanation: "A triangle has 3 sides and 3 corners."
+      },
+      {
+        q: "Which shape has 4 equal sides and 4 right angles?",
+        options: ["Triangle", "Square", "Circle", "Oval"],
+        answer: 1,
+        explanation: "A square has 4 equal sides and 4 right angles."
+      },
+      {
+        q: "A rectangular control panel is 7 inches long and 3 inches wide. What is its perimeter?",
+        options: ["10 inches", "20 inches", "21 inches", "24 inches"],
+        answer: 1,
+        explanation: "Perimeter = 7 + 3 + 7 + 3 = 20 inches."
+      },
+      {
+        q: "Fabian has 96 bolts. He uses 8 bolts on each support. How many supports can he complete?",
+        options: ["10", "11", "12", "13"],
+        answer: 2,
+        explanation: "96 ÷ 8 = 12 supports."
+      },
+      {
+        q: "The ride lasts 3 minutes. How many seconds is that?",
+        options: ["120 seconds", "150 seconds", "180 seconds", "300 seconds"],
+        answer: 2,
+        explanation: "Each minute has 60 seconds. 3 × 60 = 180 seconds."
+      },
+      {
+        q: "One rail is 48 inches long. How many feet long is it?",
+        options: ["2 feet", "3 feet", "4 feet", "6 feet"],
+        answer: 2,
+        explanation: "There are 12 inches in 1 foot. 48 ÷ 12 = 4 feet."
+      },
+      {
+        q: "Fabian buys 7 boxes of screws. Each box contains 9 screws. How many screws does he buy?",
+        options: ["56", "63", "72", "79"],
+        answer: 1,
+        explanation: "7 × 9 = 63 screws."
+      },
+      {
+        q: "The team installed 250 track pieces on Monday and 180 on Tuesday. How many pieces did they install in all?",
+        options: ["410", "420", "430", "440"],
+        answer: 2,
+        explanation: "250 + 180 = 430 pieces."
+      },
+      {
+        q: "There are 84 cables divided equally among 7 teams. How many cables does each team receive?",
+        options: ["10", "11", "12", "14"],
+        answer: 2,
+        explanation: "84 ÷ 7 = 12 cables per team."
+      },
+      {
+        q: "Three rails measure 5 feet, 8 feet, and 6 feet. What is their total length?",
+        options: ["17 feet", "18 feet", "19 feet", "20 feet"],
+        answer: 2,
+        explanation: "5 + 8 + 6 = 19 feet."
+      }
+    ];
+
+    function renderQuestions(questions, containerId, startNumber) {
+      const container = document.getElementById(containerId);
+
+      questions.forEach((item, index) => {
+        const number = startNumber + index;
+        const question = document.createElement("section");
+        question.className = "question";
+        question.dataset.answer = item.answer;
+        question.dataset.explanation = item.explanation;
+        question.dataset.section = startNumber === 1 ? "reading" : "math";
+
+        const optionsHtml = item.options.map((option, optionIndex) => `
+          <label class="option">
+            <input type="radio" name="q${number}" value="${optionIndex}">
+            <span><strong>${String.fromCharCode(65 + optionIndex)}.</strong> ${option}</span>
+          </label>
+        `).join("");
+
+        question.innerHTML = `
+          <div>
+            <span class="question-number">${number}</span>
+            <p class="question-text">${item.q}</p>
+          </div>
+          <div class="options">${optionsHtml}</div>
+          <div class="feedback"></div>
+        `;
+
+        container.appendChild(question);
+      });
+    }
+
+    renderQuestions(readingQuestions, "readingQuestions", 1);
+    renderQuestions(mathQuestions, "mathQuestions", 16);
+
+    const allQuestions = [...document.querySelectorAll(".question")];
+    const progressFill = document.getElementById("progressFill");
+    const progressText = document.getElementById("progressText");
+
+    function updateProgress() {
+      const answered = allQuestions.filter(question =>
+        question.querySelector("input:checked")
+      ).length;
+
+      const percent = (answered / allQuestions.length) * 100;
+      progressFill.style.width = `${percent}%`;
+      progressText.textContent = `${answered} of ${allQuestions.length} answered`;
+    }
+
+    document.getElementById("examForm").addEventListener("change", updateProgress);
+
+    document.getElementById("submitBtn").addEventListener("click", () => {
+      let totalCorrect = 0;
+      let readingCorrect = 0;
+      let mathCorrect = 0;
+      let answered = 0;
+      let firstUnanswered = null;
+
+      allQuestions.forEach(question => {
+        question.classList.remove("correct", "incorrect", "unanswered");
+
+        const selected = question.querySelector("input:checked");
+        const correctAnswer = Number(question.dataset.answer);
+        const feedback = question.querySelector(".feedback");
+
+        if (!selected) {
+          question.classList.add("unanswered");
+          feedback.textContent = "Not answered. Choose an option and try again.";
+          if (!firstUnanswered) firstUnanswered = question;
+          return;
+        }
+
+        answered++;
+        const selectedAnswer = Number(selected.value);
+
+        if (selectedAnswer === correctAnswer) {
+          totalCorrect++;
+          if (question.dataset.section === "reading") readingCorrect++;
+          if (question.dataset.section === "math") mathCorrect++;
+          question.classList.add("correct");
+          feedback.textContent = `Correct! ${question.dataset.explanation}`;
+        } else {
+          question.classList.add("incorrect");
+          feedback.textContent = `Not quite. ${question.dataset.explanation}`;
+        }
+      });
+
+      const total = allQuestions.length;
+      const percentage = Math.round((totalCorrect / total) * 100);
+
+      document.getElementById("scorePercent").textContent = `${percentage}%`;
+      document.getElementById("scoreFraction").textContent = `${totalCorrect} / ${total}`;
+      document.getElementById("readingScore").textContent = `${readingCorrect} / 15`;
+      document.getElementById("mathScore").textContent = `${mathCorrect} / 15`;
+      document.getElementById("answeredScore").textContent = `${answered} / ${total}`;
+
+      const scoreCircle = document.getElementById("scoreCircle");
+      const degrees = percentage * 3.6;
+      let circleColor = "#d63333";
+
+      if (percentage >= 80) circleColor = "#2f9e44";
+      else if (percentage >= 60) circleColor = "#ff9d00";
+
+      scoreCircle.style.background =
+        `conic-gradient(${circleColor} ${degrees}deg, #dfe8ef ${degrees}deg)`;
+
+      let title = "Keep Training, Engineer!";
+      let message = "Review the explanations and try the mission again. Every great engineer improves through practice.";
+
+      if (percentage === 100) {
+        title = "Perfect Time-Travel Mission!";
+        message = "Amazing work! You earned a perfect score and proved that you are ready to help Fabian build the coaster.";
+      } else if (percentage >= 90) {
+        title = "Outstanding Engineer!";
+        message = "Excellent reading and math work. You are ready for a major roller coaster mission.";
+      } else if (percentage >= 80) {
+        title = "Mission Accomplished!";
+        message = "Great job! You understood the story and solved most of the engineering challenges.";
+      } else if (percentage >= 70) {
+        title = "Good Engineering Work!";
+        message = "You are making strong progress. Review the questions marked in red to strengthen your skills.";
+      } else if (percentage >= 60) {
+        title = "Almost Ready for Opening Day!";
+        message = "You have a good start. Review the corrections, especially in the section with the lower score.";
+      }
+
+      document.getElementById("resultTitle").textContent = title;
+      document.getElementById("resultMessage").textContent = message;
+
+      const reviewNote = document.getElementById("reviewNote");
+      if (answered < total) {
+        reviewNote.textContent = `You left ${total - answered} question(s) unanswered. Complete them and press Finish Exam again for your full score.`;
+      } else if (readingCorrect < mathCorrect) {
+        reviewNote.textContent = "Focus your review on reading comprehension, sequence, vocabulary, and main idea.";
+      } else if (mathCorrect < readingCorrect) {
+        reviewNote.textContent = "Focus your review on measurement, geometry, multiplication, and division.";
+      } else {
+        reviewNote.textContent = "Your reading and quantitative scores are balanced. Review every missed question before trying again.";
+      }
+
+      const result = document.getElementById("result");
+      result.style.display = "block";
+      result.scrollIntoView({ behavior: "smooth", block: "start" });
+
+      if (firstUnanswered && answered === 0) {
+        setTimeout(() => {
+          firstUnanswered.scrollIntoView({ behavior: "smooth", block: "center" });
+        }, 900);
+      }
+    });
+
+    document.getElementById("resetBtn").addEventListener("click", () => {
+      document.getElementById("examForm").reset();
+
+      allQuestions.forEach(question => {
+        question.classList.remove("correct", "incorrect", "unanswered");
+        question.querySelector(".feedback").textContent = "";
+      });
+
+      document.getElementById("result").style.display = "none";
+      updateProgress();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    document.getElementById("examDate").valueAsDate = new Date();
+  </script>
+</body>
+</html>
+'''
+
+path = "/mnt/data/fabian_back_to_the_future_third_grade_exam.html"
+with open(path, "w", encoding="utf-8") as f:
+    f.write(html)
+
+print(path)
