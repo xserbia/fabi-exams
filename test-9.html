@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fabian and the Alien Impostors</title>
+  <style>
+    :root {
+      --bg: #07111f;
+      --panel: #101f33;
+      --panel-2: #172a43;
+      --green: #69f0ae;
+      --blue: #40c4ff;
+      --yellow: #ffd54f;
+      --red: #ff6b6b;
+      --white: #f7fbff;
+      --muted: #b8c7d9;
+      --border: #29415f;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(64,196,255,.12), transparent 30%),
+        radial-gradient(circle at 90% 20%, rgba(105,240,174,.10), transparent 30%),
+        linear-gradient(180deg, #050b14, var(--bg));
+      color: var(--white);
+      line-height: 1.6;
+    }
+
+    .container {
+      width: min(1000px, 92%);
+      margin: 0 auto;
+      padding: 30px 0 60px;
+    }
+
+    header {
+      text-align: center;
+      padding: 38px 20px;
+      background: linear-gradient(135deg, #0b1626, #152b46);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      box-shadow: 0 18px 45px rgba(0,0,0,.35);
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: var(--green);
+      letter-spacing: 1px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin: 0;
+    }
+
+    .badge-row {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .badge {
+      background: #0a1829;
+      color: var(--yellow);
+      border: 1px solid #375477;
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: .9rem;
+    }
+
+    .card {
+      background: rgba(16,31,51,.96);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 24px;
+      margin-bottom: 22px;
+      box-shadow: 0 12px 30px rgba(0,0,0,.22);
+    }
+
+    .story-title,
+    .section-title {
+      color: var(--blue);
+      margin-top: 0;
+    }
+
+    .story {
+      font-size: 1.06rem;
+      color: #eef6ff;
+    }
+
+    .story p {
+      margin: 0 0 16px;
+    }
+
+    .instructions {
+      border-left: 5px solid var(--yellow);
+    }
+
+    .progress-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(5,11,20,.94);
+      backdrop-filter: blur(8px);
+      padding: 12px 0;
+      margin-bottom: 10px;
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      margin-bottom: 6px;
+      font-size: .92rem;
+    }
+
+    .progress {
+      height: 12px;
+      background: #0e1a2a;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--blue), var(--green));
+      transition: width .25s ease;
+    }
+
+    .question {
+      background: var(--panel-2);
+      border: 1px solid #34506f;
+      border-radius: 15px;
+      padding: 18px;
+      margin: 16px 0;
+    }
+
+    .question.correct {
+      border-color: var(--green);
+      box-shadow: 0 0 0 2px rgba(105,240,174,.12);
+    }
+
+    .question.incorrect {
+      border-color: var(--red);
+      box-shadow: 0 0 0 2px rgba(255,107,107,.12);
+    }
+
+    .question h3 {
+      margin: 0 0 12px;
+      font-size: 1.05rem;
+      color: var(--white);
+    }
+
+    .option {
+      display: block;
+      background: #0f2035;
+      border: 1px solid #2e4968;
+      padding: 11px 13px;
+      margin: 8px 0;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: .2s ease;
+    }
+
+    .option:hover {
+      transform: translateX(3px);
+      border-color: var(--blue);
+      background: #132944;
+    }
+
+    .option input {
+      margin-right: 9px;
+      transform: scale(1.15);
+    }
+
+    .feedback {
+      margin-top: 10px;
+      font-weight: 700;
+      display: none;
+    }
+
+    .feedback.show {
+      display: block;
+    }
+
+    .feedback.good {
+      color: var(--green);
+    }
+
+    .feedback.bad {
+      color: var(--red);
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    button {
+      border: none;
+      border-radius: 12px;
+      padding: 14px 22px;
+      font-size: 1rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: .2s ease;
+    }
+
+    #submitBtn {
+      background: linear-gradient(135deg, var(--green), #20c997);
+      color: #07111f;
+    }
+
+    #resetBtn {
+      background: #223a58;
+      color: var(--white);
+      border: 1px solid #3e5e80;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+    }
+
+    #result {
+      display: none;
+      text-align: center;
+      margin-top: 28px;
+      padding: 28px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #10233b, #17304e);
+      border: 1px solid #3b5b7e;
+    }
+
+    #result.show {
+      display: block;
+    }
+
+    .score {
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--yellow);
+      margin: 8px 0;
+    }
+
+    .result-message {
+      font-size: 1.2rem;
+      color: var(--green);
+      font-weight: 800;
+    }
+
+    .breakdown {
+      margin-top: 16px;
+      color: var(--muted);
+    }
+
+    .warning {
+      color: var(--yellow);
+      font-weight: 700;
+      text-align: center;
+      margin-top: 12px;
+      display: none;
+    }
+
+    footer {
+      text-align: center;
+      color: #8093aa;
+      margin-top: 24px;
+      font-size: .9rem;
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        padding: 18px;
+      }
+
+      .question {
+        padding: 15px;
+      }
+
+      .score {
+        font-size: 2.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Fabian and the Alien Impostors</h1>
+      <p class="subtitle">Reading Comprehension, Critical Thinking, and Math Mission</p>
+      <div class="badge-row">
+        <span class="badge">30 Questions</span>
+        <span class="badge">Multiple Choice</span>
+        <span class="badge">Mission Score</span>
+      </div>
+    </header>
+
+    <section class="card instructions">
+      <h2 class="section-title">Mission Instructions</h2>
+      <p>Read the story carefully. Then answer all 30 questions. Choose only one answer for each question. When you are finished, press <strong>Complete Mission</strong> to see your final score.</p>
+    </section>
+
+    <section class="card">
+      <h2 class="story-title">The Story</h2>
+      <div class="story">
+        <p>Fabian was home alone on a rainy Saturday afternoon. His parents had gone to the grocery store and told him they would return before dinner. Fabian finished his homework, fed his dog, Rocket, and began building a model spaceship.</p>
+
+        <p>At 5:15 p.m., Fabian heard a car stop outside. A moment later, the front door opened. His mother and father walked inside, but something seemed strange. They moved slowly and looked around the house as if they had never seen it before.</p>
+
+        <p>“Hello, young human,” said the person who looked like Fabian’s father.</p>
+
+        <p>Fabian raised an eyebrow. His father always called him “Champ.” Then the person who looked like his mother called Rocket “the small furry animal.” Fabian knew that his mother always called the dog by his name.</p>
+
+        <p>Fabian decided to test them. “What kind of cake did I have on my last birthday?” he asked.</p>
+
+        <p>The two visitors looked at each other. “Green vegetable cake,” they answered.</p>
+
+        <p>Fabian knew they were wrong. He had eaten chocolate cake with strawberries. He quietly walked upstairs and hid behind the hallway wall. From there, he watched the visitors enter the living room.</p>
+
+        <p>Suddenly, they removed their human masks. Underneath were two tall purple aliens with silver eyes and three fingers on each hand. One alien opened a small communication device and said, “The house is secure. Prepare the spaceship.”</p>
+
+        <p>Fabian stayed calm. During a school science fair, he had met Agent J from the Men in Black. Agent J had secretly given him an emergency number in case he ever saw something unusual.</p>
+
+        <p>Fabian went into his bedroom, locked the door, and called the number. He explained the clues: the strange greeting, the dog’s wrong name, the incorrect birthday cake, and the hidden masks.</p>
+
+        <p>Ten minutes later, a black car stopped in front of the house. Agent J and Agent K stepped out wearing black suits and dark sunglasses. They entered through the back door so the aliens would not see them.</p>
+
+        <p>Agent K gave Fabian a small silver device called a Portal Blaster. “This device will not hurt them,” she explained. “It will open a portal and send them back to their own planet.”</p>
+
+        <p>The agents made a plan. Agent J would distract the aliens. Agent K would protect the front door. Fabian would stand near the hallway and activate the Portal Blaster only when both aliens were close together.</p>
+
+        <p>Agent J walked into the living room and said, “Excuse me. Is this the meeting for visitors from another planet?”</p>
+
+        <p>The aliens jumped up and chased him toward the hallway. Fabian waited until both aliens were standing inside the blue target circle on the floor. Then he pressed the button.</p>
+
+        <p>FLASH!</p>
+
+        <p>A bright blue portal opened. The aliens were pulled safely into it and sent back to their planet. The portal closed, and the house became quiet again.</p>
+
+        <p>At 5:45 p.m., Fabian’s real parents arrived. Their car had gotten a flat tire, which had delayed them. They were surprised to see two Men in Black agents in the kitchen.</p>
+
+        <p>Agent J smiled at Fabian. “You noticed the clues, stayed calm, and followed the plan. Those are the skills of a great agent.”</p>
+
+        <p>Before leaving, Agent K handed Fabian a black card with a silver letter M. “Keep practicing,” she said. “We may need your help again.”</p>
+      </div>
+    </section>
+
+    <div class="progress-wrap">
+      <div class="progress-label">
+        <span>Mission Progress</span>
+        <span id="progressText">0 of 30 answered</span>
+      </div>
+      <div class="progress">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+    </div>
+
+    <form id="quizForm">
+      <section class="card">
+        <h2 class="section-title">Part 1: Reading Comprehension</h2>
+        <div id="readingQuestions"></div>
+      </section>
+
+      <section class="card">
+        <h2 class="section-title">Part 2: Critical Thinking</h2>
+        <div id="criticalQuestions"></div>
+      </section>
+
+      <section class="card">
+        <h2 class="section-title">Part 3: Quantitative Skills</h2>
+        <div id="mathQuestions"></div>
+      </section>
+
+      <p class="warning" id="warning">Please answer all 30 questions before completing the mission.</p>
+
+      <div class="actions">
+        <button type="button" id="submitBtn">Complete Mission</button>
+        <button type="button" id="resetBtn">Reset Test</button>
+      </div>
+    </form>
+
+    <section id="result">
+      <h2>Mission Results</h2>
+      <div class="score" id="scoreText">0 / 30</div>
+      <div class="result-message" id="resultMessage"></div>
+      <div class="breakdown" id="breakdown"></div>
+    </section>
+
+    <footer>
+      Fabian's Men in Black Training Mission
+    </footer>
+  </div>
+
+  <script>
+    const questions = [
+      {
+        section: "reading",
+        text: "1. Why was Fabian home alone?",
+        options: [
+          "His parents went to the grocery store.",
+          "His parents were at school.",
+          "He was hiding from Agent J.",
+          "He missed the bus."
+        ],
+        answer: 0
+      },
+      {
+        section: "reading",
+        text: "2. What was Fabian doing before the visitors arrived?",
+        options: [
+          "Cooking dinner",
+          "Building a model spaceship",
+          "Playing outside",
+          "Washing the car"
+        ],
+        answer: 1
+      },
+      {
+        section: "reading",
+        text: "3. What did the fake father call Fabian?",
+        options: [
+          "Champ",
+          "Agent Fabian",
+          "Young human",
+          "Rocket"
+        ],
+        answer: 2
+      },
+      {
+        section: "reading",
+        text: "4. What did the fake mother call Rocket?",
+        options: [
+          "The small furry animal",
+          "The brave dog",
+          "The alien detector",
+          "The family pet"
+        ],
+        answer: 0
+      },
+      {
+        section: "reading",
+        text: "5. What kind of cake did Fabian really have on his birthday?",
+        options: [
+          "Vanilla cake",
+          "Green vegetable cake",
+          "Chocolate cake with strawberries",
+          "Lemon cake"
+        ],
+        answer: 2
+      },
+      {
+        section: "reading",
+        text: "6. What did the visitors look like under their masks?",
+        options: [
+          "Tall purple aliens with silver eyes",
+          "Small green robots",
+          "Blue animals with wings",
+          "Human police officers"
+        ],
+        answer: 0
+      },
+      {
+        section: "reading",
+        text: "7. Who had given Fabian the emergency number?",
+        options: [
+          "Agent K",
+          "His father",
+          "His teacher",
+          "Agent J"
+        ],
+        answer: 3
+      },
+      {
+        section: "reading",
+        text: "8. How did the agents enter the house?",
+        options: [
+          "Through a window",
+          "Through the back door",
+          "Through the roof",
+          "Through the garage"
+        ],
+        answer: 1
+      },
+      {
+        section: "reading",
+        text: "9. What did the Portal Blaster do?",
+        options: [
+          "It froze the aliens.",
+          "It made the house disappear.",
+          "It sent the aliens back to their planet.",
+          "It turned the aliens into dogs."
+        ],
+        answer: 2
+      },
+      {
+        section: "reading",
+        text: "10. Why were Fabian's real parents late?",
+        options: [
+          "They forgot the time.",
+          "Their car got a flat tire.",
+          "They went to a movie.",
+          "They met the aliens."
+        ],
+        answer: 1
+      },
+
+      {
+        section: "critical",
+        text: "11. Which clue first made Fabian suspicious?",
+        options: [
+          "The visitors brought groceries.",
+          "The fake father called him “young human.”",
+          "Rocket barked loudly.",
+          "The lights turned off."
+        ],
+        answer: 1
+      },
+      {
+        section: "critical",
+        text: "12. Why did Fabian ask about his birthday cake?",
+        options: [
+          "He wanted dessert.",
+          "He wanted to test whether the visitors were really his parents.",
+          "He forgot what cake he had.",
+          "He wanted the aliens to cook."
+        ],
+        answer: 1
+      },
+      {
+        section: "critical",
+        text: "13. Which action best shows that Fabian was careful?",
+        options: [
+          "He ran directly at the aliens.",
+          "He shouted from the living room.",
+          "He hid and watched before making a decision.",
+          "He opened the front door."
+        ],
+        answer: 2
+      },
+      {
+        section: "critical",
+        text: "14. Why did Fabian explain all the clues to the Men in Black?",
+        options: [
+          "So they could understand why he believed the visitors were aliens.",
+          "So they could build a birthday cake.",
+          "So they could repair the car.",
+          "So they could find Rocket."
+        ],
+        answer: 0
+      },
+      {
+        section: "critical",
+        text: "15. Why did Agent J distract the aliens?",
+        options: [
+          "To make them laugh",
+          "To move them toward Fabian and the target circle",
+          "To teach them about Earth",
+          "To help them escape"
+        ],
+        answer: 1
+      },
+      {
+        section: "critical",
+        text: "16. Why did Fabian wait before pressing the button?",
+        options: [
+          "The blaster was broken.",
+          "He was afraid of the blue light.",
+          "Both aliens needed to be inside the target circle.",
+          "He forgot the plan."
+        ],
+        answer: 2
+      },
+      {
+        section: "critical",
+        text: "17. Which trait helped Fabian the most?",
+        options: [
+          "Being loud",
+          "Being calm and observant",
+          "Being faster than a car",
+          "Being able to fly"
+        ],
+        answer: 1
+      },
+      {
+        section: "critical",
+        text: "18. What lesson does the story teach?",
+        options: [
+          "Always believe everything you see.",
+          "Good decisions come from noticing clues and thinking carefully.",
+          "Never ask adults for help.",
+          "Aliens always tell the truth."
+        ],
+        answer: 1
+      },
+      {
+        section: "critical",
+        text: "19. What probably would have happened if Fabian had pressed the blaster too early?",
+        options: [
+          "One or both aliens might have escaped the portal.",
+          "His parents would arrive sooner.",
+          "The dog would become an agent.",
+          "The spaceship would become a cake."
+        ],
+        answer: 0
+      },
+      {
+        section: "critical",
+        text: "20. Which event happened first?",
+        options: [
+          "Fabian called the Men in Black.",
+          "The aliens removed their masks.",
+          "Fabian asked about his birthday cake.",
+          "Agent K gave Fabian the Portal Blaster."
+        ],
+        answer: 2
+      },
+
+      {
+        section: "math",
+        text: "21. Fabian had 8 spaceship pieces and found 7 more. How many pieces did he have in all?",
+        options: ["13", "14", "15", "16"],
+        answer: 2
+      },
+      {
+        section: "math",
+        text: "22. The Men in Black had 20 energy cells. They used 6. How many were left?",
+        options: ["12", "13", "14", "15"],
+        answer: 2
+      },
+      {
+        section: "math",
+        text: "23. Each alien had 3 fingers on each hand. Two aliens had 4 hands in all. How many fingers were there altogether?",
+        options: ["6", "9", "12", "15"],
+        answer: 2
+      },
+      {
+        section: "math",
+        text: "24. Agent J placed 24 tracking chips equally into 6 boxes. How many chips were in each box?",
+        options: ["3", "4", "5", "6"],
+        answer: 1
+      },
+      {
+        section: "math",
+        text: "25. Which symbol makes this statement true? 18 ___ 21",
+        options: [">", "<", "=", "+"],
+        answer: 1
+      },
+      {
+        section: "math",
+        text: "26. Which symbol makes this statement true? 36 ___ 6 × 6",
+        options: [">", "<", "=", "÷"],
+        answer: 2
+      },
+      {
+        section: "math",
+        text: "27. Fabian saw 5 blue lights. Each light flashed 4 times. How many flashes were there?",
+        options: ["9", "15", "20", "25"],
+        answer: 2
+      },
+      {
+        section: "math",
+        text: "28. The mission began at 5:15 p.m. and ended at 5:45 p.m. How many minutes passed?",
+        options: ["20 minutes", "25 minutes", "30 minutes", "45 minutes"],
+        answer: 2
+      },
+      {
+        section: "math",
+        text: "29. There were 32 alien footprints. The agents divided them into 4 equal groups. How many footprints were in each group?",
+        options: ["6", "7", "8", "9"],
+        answer: 2
+      },
+      {
+        section: "math",
+        text: "30. Which symbol makes this statement true? 45 - 15 ___ 5 × 6",
+        options: [">", "<", "=", "÷"],
+        answer: 2
+      }
+    ];
+
+    const sectionContainers = {
+      reading: document.getElementById("readingQuestions"),
+      critical: document.getElementById("criticalQuestions"),
+      math: document.getElementById("mathQuestions")
+    };
+
+    function renderQuestions() {
+      questions.forEach((q, index) => {
+        const wrapper = document.createElement("div");
+        wrapper.className = "question";
+        wrapper.id = `question-${index}`;
+
+        const title = document.createElement("h3");
+        title.textContent = q.text;
+        wrapper.appendChild(title);
+
+        q.options.forEach((option, optionIndex) => {
+          const label = document.createElement("label");
+          label.className = "option";
+
+          const input = document.createElement("input");
+          input.type = "radio";
+          input.name = `q${index}`;
+          input.value = optionIndex;
+          input.addEventListener("change", updateProgress);
+
+          label.appendChild(input);
+          label.appendChild(document.createTextNode(option));
+          wrapper.appendChild(label);
+        });
+
+        const feedback = document.createElement("div");
+        feedback.className = "feedback";
+        feedback.id = `feedback-${index}`;
+        wrapper.appendChild(feedback);
+
+        sectionContainers[q.section].appendChild(wrapper);
+      });
+    }
+
+    function updateProgress() {
+      let answered = 0;
+
+      questions.forEach((_, index) => {
+        if (document.querySelector(`input[name="q${index}"]:checked`)) {
+          answered++;
+        }
+      });
+
+      const percent = (answered / questions.length) * 100;
+      document.getElementById("progressBar").style.width = `${percent}%`;
+      document.getElementById("progressText").textContent = `${answered} of 30 answered`;
+    }
+
+    function calculateScore() {
+      let totalScore = 0;
+      let readingScore = 0;
+      let criticalScore = 0;
+      let mathScore = 0;
+      let answered = 0;
+
+      questions.forEach((q, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const questionBox = document.getElementById(`question-${index}`);
+        const feedback = document.getElementById(`feedback-${index}`);
+
+        questionBox.classList.remove("correct", "incorrect");
+        feedback.className = "feedback";
+
+        if (selected) {
+          answered++;
+          const selectedValue = Number(selected.value);
+
+          if (selectedValue === q.answer) {
+            totalScore++;
+            if (q.section === "reading") readingScore++;
+            if (q.section === "critical") criticalScore++;
+            if (q.section === "math") mathScore++;
+
+            questionBox.classList.add("correct");
+            feedback.textContent = "Correct!";
+            feedback.classList.add("show", "good");
+          } else {
+            questionBox.classList.add("incorrect");
+            feedback.textContent = `Incorrect. Correct answer: ${q.options[q.answer]}`;
+            feedback.classList.add("show", "bad");
+          }
+        }
+      });
+
+      if (answered < questions.length) {
+        const warning = document.getElementById("warning");
+        warning.style.display = "block";
+        warning.textContent = `You still need to answer ${questions.length - answered} question(s).`;
+        warning.scrollIntoView({ behavior: "smooth", block: "center" });
+        return;
+      }
+
+      document.getElementById("warning").style.display = "none";
+
+      const percentage = Math.round((totalScore / questions.length) * 100);
+      let message = "";
+
+      if (totalScore >= 27) {
+        message = "Outstanding! You are ready to join the Men in Black!";
+      } else if (totalScore >= 23) {
+        message = "Great job, Agent in Training!";
+      } else if (totalScore >= 18) {
+        message = "Good work! Keep practicing your detective skills.";
+      } else {
+        message = "Mission not completed yet. Review the clues and try again!";
+      }
+
+      document.getElementById("scoreText").textContent = `${totalScore} / 30 (${percentage}%)`;
+      document.getElementById("resultMessage").textContent = message;
+      document.getElementById("breakdown").innerHTML =
+        `Reading Comprehension: <strong>${readingScore}/10</strong><br>
+         Critical Thinking: <strong>${criticalScore}/10</strong><br>
+         Quantitative Skills: <strong>${mathScore}/10</strong>`;
+
+      const result = document.getElementById("result");
+      result.classList.add("show");
+      result.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+
+    function resetQuiz() {
+      document.getElementById("quizForm").reset();
+
+      document.querySelectorAll(".question").forEach(box => {
+        box.classList.remove("correct", "incorrect");
+      });
+
+      document.querySelectorAll(".feedback").forEach(feedback => {
+        feedback.className = "feedback";
+        feedback.textContent = "";
+      });
+
+      document.getElementById("result").classList.remove("show");
+      document.getElementById("warning").style.display = "none";
+      updateProgress();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    renderQuestions();
+
+    document.getElementById("submitBtn").addEventListener("click", calculateScore);
+    document.getElementById("resetBtn").addEventListener("click", resetQuiz);
+  </script>
+</body>
+</html>
