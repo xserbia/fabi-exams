@@ -1,38 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Fabi's Back to the Future Test</title>
 
   <style>
     :root {
-      --blue: #1756a9;
-      --dark-blue: #0b2f63;
+      --blue: #1457a6;
+      --dark-blue: #082f63;
       --orange: #f28c28;
       --yellow: #ffd447;
-      --green: #18864b;
-      --red: #c93636;
-      --light: #f4f8fc;
-      --white: #ffffff;
+      --green: #16834b;
+      --red: #c83b3b;
+      --light-blue: #eef6ff;
+      --light-gray: #f5f7fa;
+      --border: #d8e1ec;
       --text: #172033;
-      --muted: #64748b;
-      --border: #d8e2ef;
+      --white: #ffffff;
     }
 
     * {
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      min-height: 100vh;
       font-family: Arial, Helvetica, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top right, rgba(255, 212, 71, 0.35), transparent 25%),
-        linear-gradient(135deg, #092c60, #1767b7 55%, #f28c28);
+        radial-gradient(
+          circle at top right,
+          rgba(255, 212, 71, 0.35),
+          transparent 24%
+        ),
+        linear-gradient(
+          135deg,
+          var(--dark-blue),
+          var(--blue) 55%,
+          var(--orange)
+        );
     }
 
     button,
@@ -40,12 +52,9 @@
       font: inherit;
     }
 
-    .app-shell {
-      width: min(1050px, calc(100% - 28px));
+    .page-container {
+      width: min(1050px, calc(100% - 24px));
       margin: 22px auto;
-    }
-
-    .app-card {
       overflow: hidden;
       background: var(--white);
       border-radius: 24px;
@@ -53,462 +62,399 @@
     }
 
     .hero {
-      padding: 32px 24px;
-      text-align: center;
+      padding: 38px 24px;
       color: var(--white);
+      text-align: center;
       background:
-        linear-gradient(rgba(5, 31, 70, 0.75), rgba(5, 31, 70, 0.85)),
+        linear-gradient(
+          rgba(5, 30, 67, 0.8),
+          rgba(5, 30, 67, 0.9)
+        ),
         repeating-linear-gradient(
           90deg,
-          rgba(255, 255, 255, 0.04) 0,
-          rgba(255, 255, 255, 0.04) 2px,
+          rgba(255, 255, 255, 0.05) 0,
+          rgba(255, 255, 255, 0.05) 2px,
           transparent 2px,
-          transparent 24px
+          transparent 25px
         );
     }
 
     .hero-icon {
       margin-bottom: 8px;
-      font-size: 58px;
+      font-size: 62px;
     }
 
     .hero h1 {
       margin: 0;
       font-size: clamp(2rem, 5vw, 3.3rem);
-      line-height: 1.05;
     }
 
     .hero p {
-      max-width: 750px;
+      max-width: 760px;
       margin: 14px auto 0;
-      font-size: 1.1rem;
+      font-size: 1.08rem;
       line-height: 1.6;
     }
 
-    .main-content {
-      padding: 28px;
+    .content {
+      padding: 30px;
     }
 
-    .screen {
-      display: none;
-    }
-
-    .screen.active {
-      display: block;
-    }
-
-    .section-label {
-      display: inline-block;
-      margin-bottom: 12px;
-      padding: 7px 13px;
-      color: var(--white);
-      font-size: 0.88rem;
-      font-weight: 800;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      background: var(--blue);
-      border-radius: 999px;
-    }
-
-    .intro-grid {
+    .student-section {
       display: grid;
-      grid-template-columns: 1.25fr 0.75fr;
-      gap: 22px;
-      align-items: start;
+      grid-template-columns: 1fr 220px;
+      gap: 18px;
+      align-items: end;
+      margin-bottom: 28px;
+      padding: 22px;
+      background: var(--light-blue);
+      border: 1px solid #c9def4;
+      border-radius: 17px;
     }
 
-    .panel {
-      padding: 24px;
-      background: var(--light);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-    }
-
-    .panel h2,
-    .panel h3 {
-      margin-top: 0;
-    }
-
-    .story {
-      max-height: 510px;
-      overflow-y: auto;
-      padding-right: 12px;
-      font-size: 1.04rem;
-      line-height: 1.75;
-    }
-
-    .story p:first-child {
-      margin-top: 0;
-    }
-
-    .story-sound {
-      color: var(--orange);
-      font-size: 1.35rem;
-      font-weight: 900;
-      text-align: center;
-    }
-
-    .test-summary {
-      display: grid;
-      gap: 12px;
-      margin: 20px 0;
-    }
-
-    .summary-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 13px;
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 13px;
-    }
-
-    .summary-icon {
-      display: grid;
-      flex: 0 0 42px;
-      width: 42px;
-      height: 42px;
-      place-items: center;
-      font-size: 1.3rem;
-      background: #e7f0fb;
-      border-radius: 12px;
-    }
-
-    .name-label {
+    label {
       display: block;
       margin-bottom: 7px;
       font-weight: 800;
     }
 
-    .name-input {
+    input[type="text"] {
       width: 100%;
-      padding: 13px 14px;
+      min-height: 48px;
+      padding: 12px 14px;
       font-size: 1rem;
       border: 2px solid var(--border);
-      border-radius: 12px;
+      border-radius: 11px;
       outline: none;
     }
 
-    .name-input:focus {
+    input[type="text"]:focus {
       border-color: var(--blue);
-      box-shadow: 0 0 0 3px rgba(23, 86, 169, 0.13);
+      box-shadow: 0 0 0 3px rgba(20, 87, 166, 0.12);
     }
 
-    .primary-btn,
-    .secondary-btn {
-      min-height: 48px;
-      padding: 12px 22px;
-      font-weight: 800;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-    }
-
-    .primary-btn {
-      color: var(--white);
-      background: linear-gradient(135deg, var(--blue), var(--dark-blue));
-      box-shadow: 0 8px 18px rgba(23, 86, 169, 0.25);
-    }
-
-    .secondary-btn {
-      color: var(--dark-blue);
-      background: #e7f0fb;
-    }
-
-    .primary-btn:hover,
-    .secondary-btn:hover {
-      transform: translateY(-1px);
-    }
-
-    .primary-btn:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-      transform: none;
-    }
-
-    .full-width {
-      width: 100%;
-      margin-top: 18px;
-    }
-
-    .error-message {
-      min-height: 20px;
-      margin-top: 8px;
-      color: var(--red);
+    .test-details {
+      padding: 13px;
       font-weight: 700;
-    }
-
-    .test-header {
-      margin-bottom: 23px;
-    }
-
-    .test-meta {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 9px;
-      font-weight: 800;
-    }
-
-    .progress-track {
-      width: 100%;
-      height: 13px;
-      overflow: hidden;
-      background: #e3eaf2;
-      border-radius: 999px;
-    }
-
-    .progress-bar {
-      width: 0;
-      height: 100%;
-      background: linear-gradient(90deg, var(--orange), var(--yellow));
-      border-radius: 999px;
-      transition: width 0.25s ease;
-    }
-
-    .question-card {
-      padding: 27px;
+      line-height: 1.5;
+      text-align: center;
       background: var(--white);
-      border: 2px solid var(--border);
-      border-radius: 20px;
-      box-shadow: 0 12px 28px rgba(19, 47, 83, 0.08);
+      border-radius: 12px;
     }
 
-    .question-number {
-      color: var(--blue);
-      font-weight: 900;
-      text-transform: uppercase;
-    }
-
-    .question-text {
-      margin: 11px 0 23px;
-      font-size: clamp(1.25rem, 3vw, 1.65rem);
-      line-height: 1.42;
-    }
-
-    .answers {
-      display: grid;
-      gap: 12px;
-    }
-
-    .answer-option {
+    .section-title {
       display: flex;
       align-items: center;
-      gap: 13px;
-      width: 100%;
-      padding: 16px;
-      color: var(--text);
-      text-align: left;
-      background: var(--light);
-      border: 2px solid transparent;
-      border-radius: 14px;
-      cursor: pointer;
-      transition: 0.15s ease;
+      gap: 11px;
+      margin: 38px 0 18px;
+      padding-bottom: 10px;
+      color: var(--dark-blue);
+      border-bottom: 4px solid var(--orange);
     }
 
-    .answer-option:hover {
-      border-color: #9fc1e7;
-      transform: translateY(-1px);
+    .section-title h2 {
+      margin: 0;
+      font-size: 1.65rem;
     }
 
-    .answer-option.selected {
-      background: #e2efff;
-      border-color: var(--blue);
-      box-shadow: 0 0 0 3px rgba(23, 86, 169, 0.08);
-    }
-
-    .answer-letter {
+    .section-number {
       display: grid;
-      flex: 0 0 38px;
-      width: 38px;
-      height: 38px;
+      flex: 0 0 45px;
+      width: 45px;
+      height: 45px;
       place-items: center;
       color: var(--white);
+      font-size: 1.1rem;
       font-weight: 900;
       background: var(--blue);
       border-radius: 50%;
     }
 
-    .question-controls {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      margin-top: 22px;
+    .story-card {
+      padding: 26px;
+      font-size: 1.07rem;
+      line-height: 1.8;
+      background: #fffaf0;
+      border: 2px solid #f0d28c;
+      border-radius: 18px;
     }
 
-    .result-header {
+    .story-card h2 {
+      margin-top: 0;
+      color: var(--dark-blue);
       text-align: center;
     }
 
-    .result-icon {
-      font-size: 70px;
+    .sound {
+      margin: 18px 0;
+      color: var(--orange);
+      font-size: 1.5rem;
+      font-weight: 900;
+      text-align: center;
     }
 
-    .result-header h2 {
-      margin: 5px 0;
-      font-size: 2.2rem;
+    .instructions {
+      margin: 23px 0;
+      padding: 17px;
+      font-weight: 700;
+      line-height: 1.55;
+      background: #e9f6ef;
+      border-left: 6px solid var(--green);
+      border-radius: 10px;
     }
 
-    .score-circle {
+    .questions-grid {
       display: grid;
-      width: 170px;
-      height: 170px;
-      margin: 25px auto;
-      place-items: center;
-      background: linear-gradient(135deg, var(--yellow), var(--orange));
-      border: 10px solid #fff2bd;
-      border-radius: 50%;
-      box-shadow: 0 16px 32px rgba(242, 140, 40, 0.24);
+      gap: 18px;
     }
 
-    .score-circle strong {
-      display: block;
-      font-size: 2.6rem;
-      line-height: 1;
+    .question-card {
+      padding: 21px;
+      background: var(--white);
+      border: 2px solid var(--border);
+      border-radius: 15px;
+      transition: border-color 0.15s ease;
     }
 
-    .score-circle span {
+    .question-card:hover {
+      border-color: #9fbfe2;
+    }
+
+    .question-card.unanswered {
+      border-color: var(--red);
+      background: #fff8f8;
+    }
+
+    .question-card.correct {
+      border-color: var(--green);
+      background: #f2fff7;
+    }
+
+    .question-card.incorrect {
+      border-color: var(--red);
+      background: #fff6f6;
+    }
+
+    .question-text {
+      margin: 0 0 16px;
+      font-size: 1.08rem;
+      line-height: 1.5;
+    }
+
+    .question-number {
+      margin-right: 5px;
+      color: var(--blue);
+      font-weight: 900;
+    }
+
+    .answers {
+      display: grid;
+      gap: 9px;
+    }
+
+    .answer-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+      margin: 0;
+      padding: 12px 13px;
+      font-weight: 500;
+      line-height: 1.45;
+      background: var(--light-gray);
+      border: 2px solid transparent;
+      border-radius: 11px;
+      cursor: pointer;
+      transition: 0.15s ease;
+    }
+
+    .answer-label:hover {
+      background: #eaf3fd;
+      border-color: #b3cce8;
+    }
+
+    .answer-label:has(input:checked) {
+      background: #deedff;
+      border-color: var(--blue);
+    }
+
+    input[type="radio"] {
+      flex: 0 0 auto;
+      width: 19px;
+      height: 19px;
+      margin-top: 1px;
+      accent-color: var(--blue);
+    }
+
+    .feedback {
+      display: none;
+      margin-top: 13px;
+      padding: 11px;
+      font-weight: 700;
+      line-height: 1.45;
+      border-radius: 9px;
+    }
+
+    .feedback.show {
       display: block;
-      margin-top: 5px;
+    }
+
+    .feedback.correct-feedback {
+      color: #0f6237;
+      background: #dff7e9;
+    }
+
+    .feedback.incorrect-feedback {
+      color: #922b2b;
+      background: #ffe3e3;
+    }
+
+    .submit-area {
+      margin-top: 38px;
+      padding: 28px;
+      text-align: center;
+      background: var(--light-blue);
+      border-radius: 18px;
+    }
+
+    .submit-button,
+    .restart-button,
+    .print-button {
+      min-height: 50px;
+      padding: 13px 25px;
+      font-weight: 900;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+
+    .submit-button {
+      color: var(--white);
+      background: linear-gradient(
+        135deg,
+        var(--blue),
+        var(--dark-blue)
+      );
+      box-shadow: 0 10px 22px rgba(20, 87, 166, 0.25);
+    }
+
+    .restart-button {
+      color: var(--white);
+      background: var(--green);
+    }
+
+    .print-button {
+      color: var(--dark-blue);
+      background: #dfeafa;
+    }
+
+    .submit-button:hover,
+    .restart-button:hover,
+    .print-button:hover {
+      transform: translateY(-1px);
+    }
+
+    .error-message {
+      min-height: 24px;
+      margin-top: 12px;
+      color: var(--red);
       font-weight: 800;
     }
 
-    .category-results {
+    .results {
+      display: none;
+      margin-top: 32px;
+      padding: 28px;
+      text-align: center;
+      background: #fff9de;
+      border: 3px solid var(--yellow);
+      border-radius: 19px;
+    }
+
+    .results.show {
+      display: block;
+    }
+
+    .results h2 {
+      margin: 0 0 8px;
+      color: var(--dark-blue);
+      font-size: 2rem;
+    }
+
+    .final-score {
+      margin: 18px 0;
+      color: var(--blue);
+      font-size: 3rem;
+      font-weight: 900;
+    }
+
+    .result-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-      margin: 25px 0;
+      gap: 14px;
+      margin: 22px 0;
     }
 
-    .category-card {
+    .result-card {
       padding: 18px;
-      text-align: center;
-      background: var(--light);
+      background: var(--white);
       border: 1px solid var(--border);
-      border-radius: 15px;
+      border-radius: 13px;
     }
 
-    .category-card h3 {
-      margin: 0 0 8px;
+    .result-card h3 {
+      margin: 0 0 9px;
       font-size: 1rem;
     }
 
     .category-score {
       color: var(--blue);
-      font-size: 1.6rem;
+      font-size: 1.65rem;
       font-weight: 900;
     }
 
     .result-message {
-      padding: 18px;
-      text-align: center;
+      max-width: 760px;
+      margin: 18px auto;
       font-size: 1.08rem;
       font-weight: 700;
-      line-height: 1.55;
-      background: #fff7d5;
-      border-radius: 15px;
+      line-height: 1.6;
     }
 
     .result-actions {
       display: flex;
       justify-content: center;
       gap: 12px;
-      margin: 24px 0;
+      margin-top: 22px;
       flex-wrap: wrap;
     }
 
-    .review-container {
-      display: none;
-      margin-top: 28px;
-    }
-
-    .review-container.visible {
-      display: block;
-    }
-
-    .review-item {
-      margin-bottom: 14px;
-      padding: 17px;
-      border: 1px solid var(--border);
-      border-left: 6px solid var(--red);
-      border-radius: 13px;
-    }
-
-    .review-item.correct {
-      border-left-color: var(--green);
-    }
-
-    .review-item h4 {
-      margin: 0 0 10px;
-      line-height: 1.45;
-    }
-
-    .review-answer {
-      margin: 5px 0;
-      line-height: 1.45;
-    }
-
-    .correct-text {
-      color: var(--green);
-      font-weight: 800;
-    }
-
-    .incorrect-text {
-      color: var(--red);
-      font-weight: 800;
-    }
-
     .footer {
-      padding: 16px;
+      padding: 17px;
       color: #dbeafe;
       font-size: 0.88rem;
       text-align: center;
       background: var(--dark-blue);
     }
 
-    @media (max-width: 760px) {
-      .app-shell {
-        width: min(100% - 14px, 1050px);
-        margin: 7px auto;
+    @media (max-width: 700px) {
+      .page-container {
+        width: calc(100% - 12px);
+        margin: 6px auto;
+        border-radius: 16px;
       }
 
-      .app-card {
-        border-radius: 17px;
-      }
-
-      .hero {
-        padding: 25px 17px;
-      }
-
-      .main-content {
+      .content {
         padding: 17px;
       }
 
-      .intro-grid,
-      .category-results {
+      .student-section,
+      .result-grid {
         grid-template-columns: 1fr;
       }
 
-      .story {
-        max-height: none;
-      }
-
+      .story-card,
       .question-card {
-        padding: 19px;
-      }
-
-      .question-controls {
-        flex-direction: column-reverse;
-      }
-
-      .question-controls button {
-        width: 100%;
-      }
-
-      .test-meta {
-        font-size: 0.9rem;
+        padding: 18px;
       }
     }
 
@@ -517,352 +463,274 @@
         background: white;
       }
 
-      .app-shell {
+      .page-container {
         width: 100%;
         margin: 0;
-      }
-
-      .app-card {
         box-shadow: none;
       }
 
+      .submit-area,
       .result-actions,
       .footer {
         display: none;
       }
 
-      .review-container {
-        display: block !important;
+      .results {
+        display: block;
+      }
+
+      .question-card {
+        break-inside: avoid;
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="app-shell">
-    <div class="app-card">
 
-      <header class="hero">
-        <div class="hero-icon">⚡🚘</div>
-        <h1>Fabi's Back to the Future Test</h1>
+  <div class="page-container">
+
+    <header class="hero">
+      <div class="hero-icon">⚡🚘</div>
+
+      <h1>Fabi's Back to the Future Test</h1>
+
+      <p>
+        Second-Grade Reading Comprehension, Critical Thinking,
+        and Quantitative Analysis
+      </p>
+    </header>
+
+    <main class="content">
+
+      <section class="student-section">
+        <div>
+          <label for="studentName">Student's Name</label>
+
+          <input
+            id="studentName"
+            type="text"
+            maxlength="50"
+            placeholder="Enter your name"
+          >
+        </div>
+
+        <div class="test-details">
+          40 Questions<br>
+          Grade 2
+        </div>
+      </section>
+
+      <section class="story-card">
+        <h2>Fabi and the DeLorean</h2>
+
         <p>
-          A second-grade reading, critical-thinking, and quantitative adventure
-          with Fabi, Marty McFly, Doc Brown, and the DeLorean.
+          Fabi was alone in his house on Saturday morning. His parents
+          had gone to the grocery store. Fabi was reading a comic book
+          in the living room.
         </p>
-      </header>
 
-      <main class="main-content">
+        <p class="sound">VROOOOOM!</p>
 
-        <!-- INTRODUCTION SCREEN -->
-        <section id="introScreen" class="screen active">
-          <div class="intro-grid">
+        <p>
+          The sound of a car caught Fabi's attention. He looked through
+          the window and saw a shiny silver car in front of his house.
+          Its doors opened upward.
+        </p>
 
-            <article class="panel">
-              <span class="section-label">Read the story</span>
+        <p>
+          Marty McFly and Doc Brown stepped out of the car.
+        </p>
 
-              <h2>Fabi and the DeLorean</h2>
+        <p>
+          “Great Scott!” Doc shouted. “We found Fabi's house!”
+        </p>
 
-              <div class="story">
-                <p>
-                  Fabi was alone in his house on Saturday morning. His parents
-                  had gone to the grocery store. Fabi was reading a comic book
-                  in the living room.
-                </p>
+        <p>
+          Fabi ran outside. He could not believe his eyes.
+        </p>
 
-                <p class="story-sound">VROOOOOM!</p>
+        <p>
+          “Is that the DeLorean?” Fabi asked.
+        </p>
 
-                <p>
-                  The sound of a car caught Fabi's attention. He looked through
-                  the window and saw a shiny silver car in front of his house.
-                  The doors opened upward.
-                </p>
+        <p>
+          “Yes,” Marty answered. “It is a time machine.”
+        </p>
 
-                <p>
-                  Marty McFly and Doc Brown stepped out of the car.
-                </p>
+        <p>
+          Fabi told Marty and Doc about a boy named Jake. Jake often
+          bullied Fabi at school. Fabi wanted to travel to the past and
+          stop Jake from becoming a bully.
+        </p>
 
-                <p>
-                  “Great Scott!” Doc shouted. “We found Fabi's house!”
-                </p>
+        <p>
+          Doc warned Fabi that changing the past could be dangerous.
+          Instead, they decided to visit the past to learn more about
+          Jake.
+        </p>
 
-                <p>
-                  Fabi ran outside. He could not believe his eyes.
-                </p>
+        <p>
+          Fabi, Marty, and Doc climbed into the DeLorean. Doc set the
+          time circuits for five years in the past.
+        </p>
 
-                <p>
-                  “Is that the DeLorean?” Fabi asked.
-                </p>
+        <p>
+          The car moved faster and faster. When it reached 88 miles per
+          hour, bright blue lights surrounded it.
+        </p>
 
-                <p>
-                  “Yes,” Marty answered. “It is a time machine.”
-                </p>
+        <p class="sound">WHOOSH!</p>
 
-                <p>
-                  Fabi told Marty and Doc about a boy named Jake. Jake often
-                  bullied Fabi at school. Fabi wanted to travel to the past and
-                  stop Jake from becoming a bully.
-                </p>
+        <p>
+          They arrived five years earlier. They went to Jake's school
+          and watched him from far away.
+        </p>
 
-                <p>
-                  Doc warned Fabi that changing the past could be dangerous.
-                  Instead, they decided to visit the past to learn more about
-                  Jake.
-                </p>
+        <p>
+          Jake was smaller than the other children. Some older students
+          laughed at him and pushed him. Jake looked sad and lonely.
+        </p>
 
-                <p>
-                  Fabi, Marty, and Doc climbed into the DeLorean. Doc set the
-                  time circuits for five years in the past.
-                </p>
+        <p>
+          Fabi was surprised. He understood that Jake had learned the
+          wrong behavior from the children who bullied him.
+        </p>
 
-                <p>
-                  The car moved faster and faster. When it reached 88 miles per
-                  hour, bright blue lights surrounded it.
-                </p>
+        <p>
+          “We cannot erase Jake's past,” Doc said, “but we can choose
+          what to do in the present.”
+        </p>
 
-                <p class="story-sound">WHOOSH!</p>
+        <p>
+          They returned to Fabi's time.
+        </p>
 
-                <p>
-                  They arrived five years earlier. They went to Jake's school
-                  and watched him from far away.
-                </p>
+        <p>
+          On Monday, Fabi spoke kindly to Jake. He invited Jake to play
+          basketball during recess.
+        </p>
 
-                <p>
-                  Jake was smaller than the other children. Some older students
-                  laughed at him and pushed him. Jake looked sad and lonely.
-                </p>
+        <p>
+          Jake looked surprised. Then he smiled.
+        </p>
 
-                <p>
-                  Fabi was surprised. He understood that Jake had learned the
-                  wrong behavior from the children who bullied him.
-                </p>
+        <p>
+          “I am sorry for being mean,” Jake said.
+        </p>
 
-                <p>
-                  “We cannot erase Jake's past,” Doc said, “but we can choose
-                  what to do in the present.”
-                </p>
+        <p>
+          From that day forward, Jake stopped bullying Fabi and the
+          other students. Fabi learned that kindness can change the
+          future better than changing the past.
+        </p>
+      </section>
 
-                <p>
-                  They returned to Fabi's time.
-                </p>
+      <div class="instructions">
+        Read each question carefully. Select one answer for every
+        question. When you finish, press <strong>Submit Test</strong>.
+      </div>
 
-                <p>
-                  On Monday, Fabi spoke kindly to Jake. He invited Jake to play
-                  basketball during recess.
-                </p>
+      <form id="testForm">
 
-                <p>
-                  Jake looked surprised. Then he smiled.
-                </p>
-
-                <p>
-                  “I am sorry for being mean,” Jake said.
-                </p>
-
-                <p>
-                  From that day forward, Jake stopped bullying Fabi and the
-                  other students. Fabi learned that kindness can change the
-                  future better than changing the past.
-                </p>
-              </div>
-            </article>
-
-            <aside class="panel">
-              <span class="section-label">Test information</span>
-
-              <h2>40 Questions</h2>
-
-              <div class="test-summary">
-                <div class="summary-item">
-                  <span class="summary-icon">📖</span>
-                  <div>
-                    <strong>10 Reading Questions</strong><br />
-                    <small>Remember important story details.</small>
-                  </div>
-                </div>
-
-                <div class="summary-item">
-                  <span class="summary-icon">🧠</span>
-                  <div>
-                    <strong>10 Critical-Thinking Questions</strong><br />
-                    <small>Think about causes, choices, and lessons.</small>
-                  </div>
-                </div>
-
-                <div class="summary-item">
-                  <span class="summary-icon">➕</span>
-                  <div>
-                    <strong>20 Quantitative Questions</strong><br />
-                    <small>
-                      Addition, subtraction, multiplication, division,
-                      comparisons, and shapes.
-                    </small>
-                  </div>
-                </div>
-              </div>
-
-              <label class="name-label" for="studentName">
-                Student's name
-              </label>
-
-              <input
-                id="studentName"
-                class="name-input"
-                type="text"
-                maxlength="40"
-                placeholder="Enter your name"
-                autocomplete="off"
-              />
-
-              <div id="nameError" class="error-message"></div>
-
-              <button
-                id="startButton"
-                class="primary-btn full-width"
-                type="button"
-              >
-                Start the Adventure
-              </button>
-            </aside>
-
+        <section>
+          <div class="section-title">
+            <span class="section-number">1</span>
+            <h2>Reading Comprehension</h2>
           </div>
+
+          <div id="readingQuestions" class="questions-grid"></div>
         </section>
 
-        <!-- TEST SCREEN -->
-        <section id="testScreen" class="screen">
-
-          <div class="test-header">
-            <div class="test-meta">
-              <span id="categoryDisplay">Reading Comprehension</span>
-              <span id="progressText">Question 1 of 40</span>
-            </div>
-
-            <div
-              class="progress-track"
-              role="progressbar"
-              aria-label="Test progress"
-              aria-valuemin="0"
-              aria-valuemax="100"
-            >
-              <div id="progressBar" class="progress-bar"></div>
-            </div>
+        <section>
+          <div class="section-title">
+            <span class="section-number">2</span>
+            <h2>Critical Thinking</h2>
           </div>
 
-          <article class="question-card">
-            <div id="questionNumber" class="question-number">
-              Question 1
-            </div>
-
-            <h2 id="questionText" class="question-text"></h2>
-
-            <div id="answersContainer" class="answers"></div>
-          </article>
-
-          <div class="question-controls">
-            <button
-              id="previousButton"
-              class="secondary-btn"
-              type="button"
-            >
-              ← Previous
-            </button>
-
-            <button
-              id="nextButton"
-              class="primary-btn"
-              type="button"
-              disabled
-            >
-              Next Question →
-            </button>
-          </div>
+          <div id="criticalQuestions" class="questions-grid"></div>
         </section>
 
-        <!-- RESULTS SCREEN -->
-        <section id="resultScreen" class="screen">
-
-          <div class="result-header">
-            <div id="resultIcon" class="result-icon">🏆</div>
-            <h2 id="resultTitle">Adventure Complete!</h2>
-            <p id="studentResultName"></p>
+        <section>
+          <div class="section-title">
+            <span class="section-number">3</span>
+            <h2>Quantitative Analysis</h2>
           </div>
 
-          <div class="score-circle">
-            <div>
-              <strong id="finalPercentage">0%</strong>
-              <span id="finalScore">0 of 40</span>
-            </div>
-          </div>
-
-          <div class="category-results">
-            <div class="category-card">
-              <h3>📖 Reading</h3>
-              <div id="readingScore" class="category-score">0 / 10</div>
-            </div>
-
-            <div class="category-card">
-              <h3>🧠 Critical Thinking</h3>
-              <div id="criticalScore" class="category-score">0 / 10</div>
-            </div>
-
-            <div class="category-card">
-              <h3>➕ Quantitative</h3>
-              <div id="mathScore" class="category-score">0 / 20</div>
-            </div>
-          </div>
-
-          <div id="resultMessage" class="result-message"></div>
-
-          <div class="result-actions">
-            <button
-              id="reviewButton"
-              class="secondary-btn"
-              type="button"
-            >
-              Review Answers
-            </button>
-
-            <button
-              id="restartButton"
-              class="primary-btn"
-              type="button"
-            >
-              Take Test Again
-            </button>
-
-            <button
-              id="printButton"
-              class="secondary-btn"
-              type="button"
-            >
-              Print Results
-            </button>
-          </div>
-
-          <div id="reviewContainer" class="review-container">
-            <h2>Answer Review</h2>
-            <div id="reviewList"></div>
-          </div>
-
+          <div id="quantitativeQuestions" class="questions-grid"></div>
         </section>
 
-      </main>
+        <section class="submit-area">
+          <button class="submit-button" type="submit">
+            Submit Test
+          </button>
 
-      <footer class="footer">
-        Second-Grade Reading, Critical Thinking, and Quantitative Assessment
-      </footer>
+          <div id="errorMessage" class="error-message"></div>
+        </section>
 
-    </div>
+      </form>
+
+      <section id="results" class="results">
+        <h2 id="resultTitle">Test Complete!</h2>
+
+        <p id="studentResult"></p>
+
+        <div id="finalScore" class="final-score">0%</div>
+
+        <div class="result-grid">
+          <div class="result-card">
+            <h3>📖 Reading</h3>
+            <div id="readingScore" class="category-score">0 / 10</div>
+          </div>
+
+          <div class="result-card">
+            <h3>🧠 Critical Thinking</h3>
+            <div id="criticalScore" class="category-score">0 / 10</div>
+          </div>
+
+          <div class="result-card">
+            <h3>➕ Quantitative</h3>
+            <div id="quantitativeScore" class="category-score">
+              0 / 20
+            </div>
+          </div>
+        </div>
+
+        <p id="resultMessage" class="result-message"></p>
+
+        <div class="result-actions">
+          <button
+            id="restartButton"
+            class="restart-button"
+            type="button"
+          >
+            Take Test Again
+          </button>
+
+          <button
+            class="print-button"
+            type="button"
+            onclick="window.print()"
+          >
+            Print Results
+          </button>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      Fabi's Back to the Future Second-Grade Test
+    </footer>
+
   </div>
 
   <script>
     "use strict";
 
     const questions = [
-      // =========================================================
-      // READING COMPREHENSION — 10 QUESTIONS
-      // =========================================================
       {
-        category: "Reading Comprehension",
+        category: "reading",
         question: "Why was Fabi alone in his house?",
         answers: [
           "His parents went to the grocery store.",
@@ -873,7 +741,7 @@
         correct: 0
       },
       {
-        category: "Reading Comprehension",
+        category: "reading",
         question: "What was Fabi doing before he heard the car?",
         answers: [
           "Playing basketball",
@@ -884,7 +752,7 @@
         correct: 1
       },
       {
-        category: "Reading Comprehension",
+        category: "reading",
         question: "What caught Fabi's attention?",
         answers: [
           "The sound of a car",
@@ -895,7 +763,7 @@
         correct: 0
       },
       {
-        category: "Reading Comprehension",
+        category: "reading",
         question: "Who arrived at Fabi's house?",
         answers: [
           "Jake and his teacher",
@@ -906,7 +774,7 @@
         correct: 2
       },
       {
-        category: "Reading Comprehension",
+        category: "reading",
         question: "What was the name of the silver time machine?",
         answers: [
           "The Rocket",
@@ -917,10 +785,10 @@
         correct: 1
       },
       {
-        category: "Reading Comprehension",
+        category: "reading",
         question: "Why did Fabi want to visit the past?",
         answers: [
-          "To find buried treasure",
+          "To find treasure",
           "To meet his grandparents",
           "To stop Jake from becoming a bully",
           "To buy an old comic book"
@@ -928,7 +796,7 @@
         correct: 2
       },
       {
-        category: "Reading Comprehension",
+        category: "reading",
         question: "How many years into the past did they travel?",
         answers: [
           "Two years",
@@ -939,18 +807,19 @@
         correct: 1
       },
       {
-        category: "Reading Comprehension",
-        question: "What happened when the DeLorean reached 88 miles per hour?",
+        category: "reading",
+        question:
+          "What happened when the DeLorean reached 88 miles per hour?",
         answers: [
           "It stopped working.",
           "It changed into a boat.",
           "It traveled through time.",
-          "It returned to Fabi's garage."
+          "It returned to the garage."
         ],
         correct: 2
       },
       {
-        category: "Reading Comprehension",
+        category: "reading",
         question: "What did Fabi learn about young Jake?",
         answers: [
           "Jake had also been bullied.",
@@ -961,8 +830,8 @@
         correct: 0
       },
       {
-        category: "Reading Comprehension",
-        question: "What did Fabi invite Jake to do on Monday?",
+        category: "reading",
+        question: "What did Fabi invite Jake to do?",
         answers: [
           "Build a time machine",
           "Read a comic book",
@@ -972,12 +841,10 @@
         correct: 2
       },
 
-      // =========================================================
-      // CRITICAL THINKING — 10 QUESTIONS
-      // =========================================================
       {
-        category: "Critical Thinking",
-        question: "Why did Doc say that changing the past could be dangerous?",
+        category: "critical",
+        question:
+          "Why did Doc say that changing the past could be dangerous?",
         answers: [
           "It could cause unexpected problems.",
           "The DeLorean was too small.",
@@ -987,21 +854,23 @@
         correct: 0
       },
       {
-        category: "Critical Thinking",
-        question: "Why was Fabi surprised when he saw young Jake?",
+        category: "critical",
+        question:
+          "Why was Fabi surprised when he saw young Jake?",
         answers: [
           "Jake was driving the DeLorean.",
-          "Jake was being bullied by older children.",
+          "Jake was being bullied.",
           "Jake was playing basketball.",
           "Jake was helping a teacher."
         ],
         correct: 1
       },
       {
-        category: "Critical Thinking",
-        question: "What may have caused Jake to copy bullying behavior?",
+        category: "critical",
+        question:
+          "Why may Jake have copied bullying behavior?",
         answers: [
-          "He saw other children treat him badly.",
+          "Other children treated him badly.",
           "He wanted to become a scientist.",
           "He did not like basketball.",
           "He was afraid of the DeLorean."
@@ -1009,10 +878,11 @@
         correct: 0
       },
       {
-        category: "Critical Thinking",
-        question: "Why did Fabi choose to be kind to Jake?",
+        category: "critical",
+        question:
+          "Why did Fabi choose to be kind to Jake?",
         answers: [
-          "He wanted Jake to give him money.",
+          "He wanted Jake's money.",
           "He understood that Jake had been hurt.",
           "Doc ordered him to do it.",
           "He wanted to change schools."
@@ -1020,19 +890,21 @@
         correct: 1
       },
       {
-        category: "Critical Thinking",
-        question: "Which action helped solve the problem peacefully?",
+        category: "critical",
+        question:
+          "Which action helped solve the problem peacefully?",
         answers: [
           "Fabi challenged Jake to a fight.",
-          "Fabi ignored everyone at school.",
+          "Fabi ignored Jake.",
           "Fabi invited Jake to play.",
-          "Fabi traveled to another year."
+          "Fabi left the school."
         ],
         correct: 2
       },
       {
-        category: "Critical Thinking",
-        question: "How did Jake probably feel when Fabi invited him to play?",
+        category: "critical",
+        question:
+          "How did Jake probably feel when Fabi invited him to play?",
         answers: [
           "Welcomed",
           "Angry",
@@ -1042,8 +914,9 @@
         correct: 0
       },
       {
-        category: "Critical Thinking",
-        question: "Which word best describes Fabi at the end of the story?",
+        category: "critical",
+        question:
+          "Which word best describes Fabi at the end of the story?",
         answers: [
           "Kind",
           "Careless",
@@ -1053,10 +926,11 @@
         correct: 0
       },
       {
-        category: "Critical Thinking",
-        question: "What might have happened if Fabi had bullied Jake back?",
+        category: "critical",
+        question:
+          "What might happen if Fabi bullied Jake back?",
         answers: [
-          "The problem could have become worse.",
+          "The problem could become worse.",
           "Jake would become a scientist.",
           "The DeLorean would move faster.",
           "School would end early."
@@ -1064,18 +938,19 @@
         correct: 0
       },
       {
-        category: "Critical Thinking",
-        question: "What does Doc mean when he says they can choose what to do in the present?",
+        category: "critical",
+        question:
+          "What does Doc mean when he says they can choose what to do in the present?",
         answers: [
           "They can make better choices now.",
           "They can stop all clocks.",
-          "They can live inside the DeLorean.",
+          "They can live in the DeLorean.",
           "They can erase every memory."
         ],
         correct: 0
       },
       {
-        category: "Critical Thinking",
+        category: "critical",
         question: "What is the main lesson of the story?",
         answers: [
           "Fast cars solve every problem.",
@@ -1086,190 +961,122 @@
         correct: 1
       },
 
-      // =========================================================
-      // QUANTITATIVE — 20 QUESTIONS
-      // Addition, subtraction, one-digit multiplication/division,
-      // comparisons, and basic geometry.
-      // =========================================================
       {
-        category: "Quantitative Analysis",
-        question: "Doc has 35 batteries for the DeLorean. Marty brings 24 more. How many batteries do they have altogether?",
-        answers: [
-          "49",
-          "59",
-          "69",
-          "51"
-        ],
+        category: "quantitative",
+        question:
+          "Doc has 35 batteries. Marty brings 24 more. How many batteries do they have altogether?",
+        answers: ["49", "59", "69", "51"],
         correct: 1
       },
       {
-        category: "Quantitative Analysis",
-        question: "Fabi finds 28 gears in Doc's box and 15 more in the car. How many gears does he find altogether?",
-        answers: [
-          "33",
-          "42",
-          "43",
-          "53"
-        ],
+        category: "quantitative",
+        question:
+          "Fabi finds 28 gears and then finds 15 more. How many gears does he have?",
+        answers: ["33", "42", "43", "53"],
         correct: 2
       },
       {
-        category: "Quantitative Analysis",
-        question: "Marty counts 32 tools. Doc gives him 26 more tools. How many tools does Marty have now?",
-        answers: [
-          "48",
-          "56",
-          "58",
-          "68"
-        ],
+        category: "quantitative",
+        question:
+          "Marty has 32 tools. Doc gives him 26 more. How many tools does Marty have now?",
+        answers: ["48", "56", "58", "68"],
         correct: 2
       },
       {
-        category: "Quantitative Analysis",
-        question: "The DeLorean has 41 lights inside and 18 lights outside. How many lights are there altogether?",
-        answers: [
-          "49",
-          "57",
-          "59",
-          "69"
-        ],
+        category: "quantitative",
+        question:
+          "The DeLorean has 41 lights inside and 18 outside. How many lights are there altogether?",
+        answers: ["49", "57", "59", "69"],
         correct: 2
       },
       {
-        category: "Quantitative Analysis",
-        question: "The DeLorean has 76 energy cells. It uses 24 during the trip. How many energy cells are left?",
-        answers: [
-          "42",
-          "50",
-          "52",
-          "62"
-        ],
+        category: "quantitative",
+        question:
+          "The DeLorean has 76 energy cells. It uses 24. How many are left?",
+        answers: ["42", "50", "52", "62"],
         correct: 2
       },
       {
-        category: "Quantitative Analysis",
-        question: "Doc has 65 bolts. He uses 21 to repair the car. How many bolts are left?",
-        answers: [
-          "34",
-          "44",
-          "46",
-          "54"
-        ],
+        category: "quantitative",
+        question:
+          "Doc has 65 bolts. He uses 21. How many bolts are left?",
+        answers: ["34", "44", "46", "54"],
         correct: 1
       },
       {
-        category: "Quantitative Analysis",
-        question: "Fabi has 54 time-travel cards. He gives 13 cards to Marty. How many cards does Fabi have left?",
-        answers: [
-          "31",
-          "40",
-          "41",
-          "43"
-        ],
+        category: "quantitative",
+        question:
+          "Fabi has 54 cards. He gives 13 to Marty. How many cards are left?",
+        answers: ["31", "40", "41", "43"],
         correct: 2
       },
       {
-        category: "Quantitative Analysis",
-        question: "Doc prepared 80 parts for the DeLorean. He used 25 parts. How many parts are left?",
-        answers: [
-          "45",
-          "55",
-          "60",
-          "65"
-        ],
+        category: "quantitative",
+        question:
+          "Doc has 80 car parts. He uses 25. How many parts are left?",
+        answers: ["45", "55", "60", "65"],
         correct: 1
       },
       {
-        category: "Quantitative Analysis",
-        question: "Doc has 4 boxes with 5 clocks in each box. How many clocks are there altogether?",
-        answers: [
-          "9",
-          "15",
-          "20",
-          "25"
-        ],
+        category: "quantitative",
+        question:
+          "Doc has 4 boxes with 5 clocks in each box. How many clocks are there?",
+        answers: ["9", "15", "20", "25"],
         correct: 2
       },
       {
-        category: "Quantitative Analysis",
-        question: "The DeLorean has 3 rows of buttons with 6 buttons in each row. How many buttons are there?",
-        answers: [
-          "9",
-          "12",
-          "18",
-          "24"
-        ],
+        category: "quantitative",
+        question:
+          "The DeLorean has 3 rows with 6 buttons in each row. How many buttons are there?",
+        answers: ["9", "12", "18", "24"],
         correct: 2
       },
       {
-        category: "Quantitative Analysis",
-        question: "Doc gives each of the 4 travelers 2 safety lights. How many safety lights does he give altogether?",
-        answers: [
-          "6",
-          "8",
-          "10",
-          "12"
-        ],
+        category: "quantitative",
+        question:
+          "Doc gives 4 travelers 2 safety lights each. How many lights does he give?",
+        answers: ["6", "8", "10", "12"],
         correct: 1
       },
       {
-        category: "Quantitative Analysis",
-        question: "Fabi packs 5 bags with 3 snacks in each bag. How many snacks does he pack?",
-        answers: [
-          "8",
-          "10",
-          "15",
-          "20"
-        ],
+        category: "quantitative",
+        question:
+          "Fabi packs 5 bags with 3 snacks in each bag. How many snacks does he pack?",
+        answers: ["8", "10", "15", "20"],
         correct: 2
       },
       {
-        category: "Quantitative Analysis",
-        question: "Marty has 12 cookies. He shares them equally among 3 travelers. How many cookies does each traveler get?",
-        answers: [
-          "3",
-          "4",
-          "5",
-          "6"
-        ],
+        category: "quantitative",
+        question:
+          "Marty shares 12 cookies equally among 3 travelers. How many cookies does each traveler get?",
+        answers: ["3", "4", "5", "6"],
         correct: 1
       },
       {
-        category: "Quantitative Analysis",
-        question: "Doc puts 16 bolts equally into 4 toolboxes. How many bolts go in each toolbox?",
-        answers: [
-          "2",
-          "3",
-          "4",
-          "5"
-        ],
+        category: "quantitative",
+        question:
+          "Doc puts 16 bolts equally into 4 boxes. How many bolts go in each box?",
+        answers: ["2", "3", "4", "5"],
         correct: 2
       },
       {
-        category: "Quantitative Analysis",
-        question: "Fabi places 18 toy DeLoreans equally on 6 shelves. How many toy cars go on each shelf?",
-        answers: [
-          "2",
-          "3",
-          "4",
-          "6"
-        ],
+        category: "quantitative",
+        question:
+          "Fabi puts 18 toy cars equally on 6 shelves. How many cars go on each shelf?",
+        answers: ["2", "3", "4", "6"],
         correct: 1
       },
       {
-        category: "Quantitative Analysis",
-        question: "Doc puts 20 batteries equally into 5 packs. How many batteries go in each pack?",
-        answers: [
-          "3",
-          "4",
-          "5",
-          "6"
-        ],
+        category: "quantitative",
+        question:
+          "Doc puts 20 batteries equally into 5 packs. How many batteries go in each pack?",
+        answers: ["3", "4", "5", "6"],
         correct: 1
       },
       {
-        category: "Quantitative Analysis",
-        question: "The DeLorean travels at 88 miles per hour. Marty drives another car at 80 miles per hour. Which comparison is correct?",
+        category: "quantitative",
+        question:
+          "The DeLorean travels at 88 miles per hour. Another car travels at 80 miles per hour. Which is correct?",
         answers: [
           "88 < 80",
           "88 > 80",
@@ -1279,8 +1086,9 @@
         correct: 1
       },
       {
-        category: "Quantitative Analysis",
-        question: "Doc has 42 tools, and Marty has 42 tools. Which comparison is correct?",
+        category: "quantitative",
+        question:
+          "Doc has 42 tools, and Marty has 42 tools. Which is correct?",
         answers: [
           "42 > 42",
           "42 < 42",
@@ -1290,8 +1098,9 @@
         correct: 2
       },
       {
-        category: "Quantitative Analysis",
-        question: "Doc draws a triangle-shaped warning sign. How many sides and vertices does a triangle have?",
+        category: "quantitative",
+        question:
+          "Doc draws a triangle-shaped warning sign. How many sides and vertices does it have?",
         answers: [
           "2 sides and 2 vertices",
           "3 sides and 3 vertices",
@@ -1301,8 +1110,9 @@
         correct: 1
       },
       {
-        category: "Quantitative Analysis",
-        question: "The time-circuit screen is shaped like a rectangle. How many sides and vertices does a rectangle have?",
+        category: "quantitative",
+        question:
+          "The time screen is shaped like a rectangle. How many sides and vertices does it have?",
         answers: [
           "3 sides and 3 vertices",
           "4 sides and 3 vertices",
@@ -1313,309 +1123,21 @@
       }
     ];
 
-    const state = {
-      currentQuestion: 0,
-      answers: new Array(questions.length).fill(null),
-      studentName: ""
+    const containers = {
+      reading: document.getElementById("readingQuestions"),
+      critical: document.getElementById("criticalQuestions"),
+      quantitative: document.getElementById(
+        "quantitativeQuestions"
+      )
     };
 
-    const introScreen = document.getElementById("introScreen");
-    const testScreen = document.getElementById("testScreen");
-    const resultScreen = document.getElementById("resultScreen");
+    const form = document.getElementById("testForm");
+    const studentName = document.getElementById("studentName");
+    const errorMessage = document.getElementById("errorMessage");
+    const results = document.getElementById("results");
 
-    const studentNameInput = document.getElementById("studentName");
-    const nameError = document.getElementById("nameError");
-    const startButton = document.getElementById("startButton");
-
-    const categoryDisplay = document.getElementById("categoryDisplay");
-    const progressText = document.getElementById("progressText");
-    const progressBar = document.getElementById("progressBar");
-    const questionNumber = document.getElementById("questionNumber");
-    const questionText = document.getElementById("questionText");
-    const answersContainer = document.getElementById("answersContainer");
-    const previousButton = document.getElementById("previousButton");
-    const nextButton = document.getElementById("nextButton");
-
-    const resultIcon = document.getElementById("resultIcon");
-    const resultTitle = document.getElementById("resultTitle");
-    const studentResultName = document.getElementById("studentResultName");
-    const finalPercentage = document.getElementById("finalPercentage");
-    const finalScore = document.getElementById("finalScore");
-    const readingScore = document.getElementById("readingScore");
-    const criticalScore = document.getElementById("criticalScore");
-    const mathScore = document.getElementById("mathScore");
-    const resultMessage = document.getElementById("resultMessage");
-    const reviewButton = document.getElementById("reviewButton");
-    const restartButton = document.getElementById("restartButton");
-    const printButton = document.getElementById("printButton");
-    const reviewContainer = document.getElementById("reviewContainer");
-    const reviewList = document.getElementById("reviewList");
-
-    function showScreen(screen) {
-      [introScreen, testScreen, resultScreen].forEach((item) => {
-        item.classList.remove("active");
-      });
-
-      screen.classList.add("active");
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-
-    function startTest() {
-      const enteredName = studentNameInput.value.trim();
-
-      if (!enteredName) {
-        nameError.textContent = "Please enter the student's name.";
-        studentNameInput.focus();
-        return;
-      }
-
-      nameError.textContent = "";
-      state.studentName = enteredName;
-      state.currentQuestion = 0;
-      state.answers.fill(null);
-
-      showScreen(testScreen);
-      renderQuestion();
-    }
-
-    function renderQuestion() {
-      const question = questions[state.currentQuestion];
-      const selectedAnswer = state.answers[state.currentQuestion];
-
-      categoryDisplay.textContent = question.category;
-      questionNumber.textContent = `Question ${state.currentQuestion + 1}`;
-      questionText.textContent = question.question;
-      progressText.textContent =
-        `Question ${state.currentQuestion + 1} of ${questions.length}`;
-
-      const progress =
-        ((state.currentQuestion + 1) / questions.length) * 100;
-
-      progressBar.style.width = `${progress}%`;
-      progressBar.parentElement.setAttribute(
-        "aria-valuenow",
-        Math.round(progress)
-      );
-
-      answersContainer.innerHTML = "";
-
-      question.answers.forEach((answer, answerIndex) => {
-        const optionButton = document.createElement("button");
-
-        optionButton.type = "button";
-        optionButton.className = "answer-option";
-        optionButton.dataset.answerIndex = String(answerIndex);
-
-        if (selectedAnswer === answerIndex) {
-          optionButton.classList.add("selected");
-        }
-
-        const letter = String.fromCharCode(65 + answerIndex);
-
-        optionButton.innerHTML = `
-          <span class="answer-letter">${letter}</span>
-          <span>${escapeHTML(answer)}</span>
-        `;
-
-        optionButton.addEventListener("click", () => {
-          selectAnswer(answerIndex);
-        });
-
-        answersContainer.appendChild(optionButton);
-      });
-
-      previousButton.disabled = state.currentQuestion === 0;
-      nextButton.disabled = selectedAnswer === null;
-
-      nextButton.textContent =
-        state.currentQuestion === questions.length - 1
-          ? "Finish Test ✓"
-          : "Next Question →";
-    }
-
-    function selectAnswer(answerIndex) {
-      state.answers[state.currentQuestion] = answerIndex;
-
-      document.querySelectorAll(".answer-option").forEach((option) => {
-        option.classList.remove("selected");
-      });
-
-      const selectedButton = document.querySelector(
-        `.answer-option[data-answer-index="${answerIndex}"]`
-      );
-
-      if (selectedButton) {
-        selectedButton.classList.add("selected");
-      }
-
-      nextButton.disabled = false;
-    }
-
-    function goToPreviousQuestion() {
-      if (state.currentQuestion > 0) {
-        state.currentQuestion -= 1;
-        renderQuestion();
-      }
-    }
-
-    function goToNextQuestion() {
-      if (state.answers[state.currentQuestion] === null) {
-        return;
-      }
-
-      if (state.currentQuestion < questions.length - 1) {
-        state.currentQuestion += 1;
-        renderQuestion();
-      } else {
-        calculateResults();
-      }
-    }
-
-    function calculateResults() {
-      let totalCorrect = 0;
-      let readingCorrect = 0;
-      let criticalCorrect = 0;
-      let quantitativeCorrect = 0;
-
-      questions.forEach((question, index) => {
-        const isCorrect = state.answers[index] === question.correct;
-
-        if (isCorrect) {
-          totalCorrect += 1;
-
-          if (question.category === "Reading Comprehension") {
-            readingCorrect += 1;
-          } else if (question.category === "Critical Thinking") {
-            criticalCorrect += 1;
-          } else {
-            quantitativeCorrect += 1;
-          }
-        }
-      });
-
-      const percentage = Math.round(
-        (totalCorrect / questions.length) * 100
-      );
-
-      finalPercentage.textContent = `${percentage}%`;
-      finalScore.textContent = `${totalCorrect} of ${questions.length}`;
-      readingScore.textContent = `${readingCorrect} / 10`;
-      criticalScore.textContent = `${criticalCorrect} / 10`;
-      mathScore.textContent = `${quantitativeCorrect} / 20`;
-
-      studentResultName.textContent =
-        `${state.studentName}, you completed the time-travel adventure!`;
-
-      setResultFeedback(percentage);
-      buildReview();
-      reviewContainer.classList.remove("visible");
-      reviewButton.textContent = "Review Answers";
-
-      showScreen(resultScreen);
-    }
-
-    function setResultFeedback(percentage) {
-      if (percentage >= 90) {
-        resultIcon.textContent = "🏆";
-        resultTitle.textContent = "Excellent Time Traveler!";
-        resultMessage.textContent =
-          "Amazing work! You showed excellent reading, reasoning, and math skills. Doc and Marty are ready for another adventure with you.";
-      } else if (percentage >= 80) {
-        resultIcon.textContent = "🌟";
-        resultTitle.textContent = "Great Job!";
-        resultMessage.textContent =
-          "You did very well! Review the questions you missed, and your skills will become even stronger.";
-      } else if (percentage >= 70) {
-        resultIcon.textContent = "🚘";
-        resultTitle.textContent = "Good Adventure!";
-        resultMessage.textContent =
-          "Good work! You understood many parts of the story and solved many math problems. A little more practice will help.";
-      } else if (percentage >= 60) {
-        resultIcon.textContent = "⚡";
-        resultTitle.textContent = "Keep Practicing!";
-        resultMessage.textContent =
-          "You are making progress. Read the story again and review your answers before your next time-travel mission.";
-      } else {
-        resultIcon.textContent = "📚";
-        resultTitle.textContent = "Try Again!";
-        resultMessage.textContent =
-          "Every great time traveler practices. Review the story and math questions, then take the test again.";
-      }
-    }
-
-    function buildReview() {
-      reviewList.innerHTML = "";
-
-      questions.forEach((question, index) => {
-        const selectedIndex = state.answers[index];
-        const isCorrect = selectedIndex === question.correct;
-        const item = document.createElement("article");
-
-        item.className = `review-item ${isCorrect ? "correct" : ""}`;
-
-        const selectedText =
-          selectedIndex !== null
-            ? question.answers[selectedIndex]
-            : "No answer";
-
-        const correctText = question.answers[question.correct];
-
-        item.innerHTML = `
-          <h4>
-            ${index + 1}. ${escapeHTML(question.question)}
-          </h4>
-
-          <p class="review-answer">
-            Your answer:
-            <span class="${isCorrect ? "correct-text" : "incorrect-text"}">
-              ${escapeHTML(selectedText)}
-            </span>
-          </p>
-
-          ${
-            !isCorrect
-              ? `
-                <p class="review-answer">
-                  Correct answer:
-                  <span class="correct-text">
-                    ${escapeHTML(correctText)}
-                  </span>
-                </p>
-              `
-              : ""
-          }
-        `;
-
-        reviewList.appendChild(item);
-      });
-    }
-
-    function toggleReview() {
-      const isVisible = reviewContainer.classList.toggle("visible");
-
-      reviewButton.textContent = isVisible
-        ? "Hide Answer Review"
-        : "Review Answers";
-
-      if (isVisible) {
-        reviewContainer.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
-      }
-    }
-
-    function restartTest() {
-      state.currentQuestion = 0;
-      state.answers.fill(null);
-      reviewContainer.classList.remove("visible");
-      studentNameInput.value = state.studentName;
-
-      showScreen(introScreen);
-    }
-
-    function escapeHTML(value) {
-      return String(value)
+    function escapeHTML(text) {
+      return String(text)
         .replaceAll("&", "&amp;")
         .replaceAll("<", "&lt;")
         .replaceAll(">", "&gt;")
@@ -1623,18 +1145,260 @@
         .replaceAll("'", "&#039;");
     }
 
-    startButton.addEventListener("click", startTest);
-    previousButton.addEventListener("click", goToPreviousQuestion);
-    nextButton.addEventListener("click", goToNextQuestion);
-    reviewButton.addEventListener("click", toggleReview);
-    restartButton.addEventListener("click", restartTest);
-    printButton.addEventListener("click", () => window.print());
+    function renderQuestions() {
+      questions.forEach((question, index) => {
+        const card = document.createElement("article");
 
-    studentNameInput.addEventListener("keydown", (event) => {
-      if (event.key === "Enter") {
-        startTest();
+        card.className = "question-card";
+        card.id = `question-card-${index}`;
+
+        const answerHTML = question.answers
+          .map((answer, answerIndex) => {
+            const letter = String.fromCharCode(65 + answerIndex);
+
+            return `
+              <label class="answer-label">
+                <input
+                  type="radio"
+                  name="question-${index}"
+                  value="${answerIndex}"
+                >
+                <span>
+                  <strong>${letter}.</strong>
+                  ${escapeHTML(answer)}
+                </span>
+              </label>
+            `;
+          })
+          .join("");
+
+        card.innerHTML = `
+          <h3 class="question-text">
+            <span class="question-number">${index + 1}.</span>
+            ${escapeHTML(question.question)}
+          </h3>
+
+          <div class="answers">
+            ${answerHTML}
+          </div>
+
+          <div id="feedback-${index}" class="feedback"></div>
+        `;
+
+        containers[question.category].appendChild(card);
+      });
+    }
+
+    function submitTest(event) {
+      event.preventDefault();
+
+      clearPreviousResults();
+
+      const name = studentName.value.trim();
+
+      if (!name) {
+        errorMessage.textContent =
+          "Please enter the student's name.";
+
+        studentName.focus();
+        studentName.scrollIntoView({
+          behavior: "smooth",
+          block: "center"
+        });
+
+        return;
       }
-    });
+
+      const unansweredQuestions = [];
+
+      questions.forEach((question, index) => {
+        const selected = document.querySelector(
+          `input[name="question-${index}"]:checked`
+        );
+
+        if (!selected) {
+          unansweredQuestions.push(index);
+          document
+            .getElementById(`question-card-${index}`)
+            .classList.add("unanswered");
+        }
+      });
+
+      if (unansweredQuestions.length > 0) {
+        errorMessage.textContent =
+          `Please answer all questions. ` +
+          `${unansweredQuestions.length} question(s) are unanswered.`;
+
+        document
+          .getElementById(
+            `question-card-${unansweredQuestions[0]}`
+          )
+          .scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+          });
+
+        return;
+      }
+
+      errorMessage.textContent = "";
+
+      let totalCorrect = 0;
+      let readingCorrect = 0;
+      let criticalCorrect = 0;
+      let quantitativeCorrect = 0;
+
+      questions.forEach((question, index) => {
+        const selected = Number(
+          document.querySelector(
+            `input[name="question-${index}"]:checked`
+          ).value
+        );
+
+        const card = document.getElementById(
+          `question-card-${index}`
+        );
+
+        const feedback = document.getElementById(
+          `feedback-${index}`
+        );
+
+        if (selected === question.correct) {
+          totalCorrect += 1;
+          card.classList.add("correct");
+
+          feedback.textContent = "Correct!";
+          feedback.className =
+            "feedback show correct-feedback";
+
+          if (question.category === "reading") {
+            readingCorrect += 1;
+          } else if (question.category === "critical") {
+            criticalCorrect += 1;
+          } else {
+            quantitativeCorrect += 1;
+          }
+        } else {
+          card.classList.add("incorrect");
+
+          const correctLetter = String.fromCharCode(
+            65 + question.correct
+          );
+
+          feedback.textContent =
+            `Correct answer: ${correctLetter}. ` +
+            `${question.answers[question.correct]}`;
+
+          feedback.className =
+            "feedback show incorrect-feedback";
+        }
+      });
+
+      const percentage = Math.round(
+        (totalCorrect / questions.length) * 100
+      );
+
+      document.getElementById("studentResult").textContent =
+        `${name}, you answered ${totalCorrect} of ` +
+        `${questions.length} questions correctly.`;
+
+      document.getElementById("finalScore").textContent =
+        `${percentage}%`;
+
+      document.getElementById("readingScore").textContent =
+        `${readingCorrect} / 10`;
+
+      document.getElementById("criticalScore").textContent =
+        `${criticalCorrect} / 10`;
+
+      document.getElementById(
+        "quantitativeScore"
+      ).textContent = `${quantitativeCorrect} / 20`;
+
+      setResultMessage(percentage);
+
+      results.classList.add("show");
+
+      results.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
+
+    function setResultMessage(percentage) {
+      const title = document.getElementById("resultTitle");
+      const message = document.getElementById("resultMessage");
+
+      if (percentage >= 90) {
+        title.textContent = "Excellent Time Traveler! 🏆";
+        message.textContent =
+          "Amazing work! You showed excellent reading, " +
+          "reasoning, and math skills.";
+      } else if (percentage >= 80) {
+        title.textContent = "Great Job! 🌟";
+        message.textContent =
+          "You did very well. Review the questions you missed " +
+          "to make your skills even stronger.";
+      } else if (percentage >= 70) {
+        title.textContent = "Good Adventure! 🚘";
+        message.textContent =
+          "Good work! You understood many parts of the story " +
+          "and solved many math problems.";
+      } else if (percentage >= 60) {
+        title.textContent = "Keep Practicing! ⚡";
+        message.textContent =
+          "You are making progress. Review the story and the " +
+          "questions you missed.";
+      } else {
+        title.textContent = "Try Again! 📚";
+        message.textContent =
+          "Every great time traveler practices. Read the story " +
+          "again and try the test one more time.";
+      }
+    }
+
+    function clearPreviousResults() {
+      document.querySelectorAll(".question-card").forEach(
+        (card) => {
+          card.classList.remove(
+            "unanswered",
+            "correct",
+            "incorrect"
+          );
+        }
+      );
+
+      document.querySelectorAll(".feedback").forEach(
+        (feedback) => {
+          feedback.className = "feedback";
+          feedback.textContent = "";
+        }
+      );
+
+      results.classList.remove("show");
+      errorMessage.textContent = "";
+    }
+
+    function restartTest() {
+      form.reset();
+      clearPreviousResults();
+
+      studentName.value = "";
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+
+    form.addEventListener("submit", submitTest);
+
+    document
+      .getElementById("restartButton")
+      .addEventListener("click", restartTest);
+
+    renderQuestions();
   </script>
+
 </body>
 </html>
